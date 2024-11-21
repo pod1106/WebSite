@@ -107,11 +107,20 @@
             background-color: rgba(225, 255, 225, 0.9);
             color: rgba(25, 100, 25, 1);
             border: 2px solid rgba(200, 255, 200, 1);
-            position: fixed;
-            left: 50%;               /* Position the left edge at 50% of the viewport */
-            top: 650px;                /* Optional: Center it vertically as well */
-            transform: translate(-50%, -50%);
         }
+        .gender-options label {
+            display: inline-block; /* Align the labels horizontally */
+            margin-right: 4px; /* Adds some space between options */
+            background-color: rgba(0, 0, 0, 0.05);
+            width: 120px;
+            padding: 5px;
+            border: 2px solid rgba(100, 100, 100, 0.8);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+
+
 
     </style>
 
@@ -140,16 +149,21 @@
                 setTimeout(() => {
                     popup.style.visibility = 'hidden'; // Hide the popup
                 }, 600); // Wait for 0.6 seconds before hiding the popup
-            }, 2000); // Hide after 3 seconds (adjust as needed)
+            }, 3000); // Hide after 3 seconds (adjust as needed)
         }
 
         function validInputs() {
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const gender = document.querySelector('input[name="gender"]:checked');
 
-            showPopup("New account was created!", "green", 'popupNameText');
+            console.log(gender);
+
+            showPopup("New account was created!", "green", 'popupText');
             return;
+
 
 
             if (name) {
@@ -196,7 +210,24 @@
                 return;
             }
 
-            showPopup("New account was created!", "green", 'popupNameText');
+            if (confirmPassword) {
+                if (password !== confirmPassword) {
+                    showPopup("Passwords must be the same", "red", "popupConfirmPasswordText");
+                    return;
+                }
+            } else {
+                showPopup("must Confirm the password", "red", "popupConfirmPasswordText");
+                return;
+            }
+
+
+            if (!gender) {
+                showPopup("Please select a gender", "red", "popupGender");
+                return;
+            }
+
+            console.log("username: " + name + "\nemail: " + email + "\npassword: " + password + "\ngender: " + gender.id);
+            showPopup("New account was created!", "green", 'popupText');
 
             // Reset form fields
             //document.getElementById('name').value = '';
@@ -235,16 +266,41 @@
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
                 <span class="popup-text" id="popupPasswordText"></span>
             </label>
-            <input type="text" id="password" name="password" placeholder="Enter your password" required autocomplete="off" />
+            <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="off" />
 
             <label for="confirm-password">confirm password
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
                 <span class="popup-text" id="popupConfirmPasswordText"></span>
             </label>
-            <input type="text" id="confirm-password" name="password" placeholder="Confirm password" required autocomplete="off" />
+            <input type="password" id="confirm-password" name="password" placeholder="Confirm password" required autocomplete="off" />
+
+
+
+
+            <div style="border: 2px solid rgba(50, 50, 50, 0.8); border-radius: 8px; padding: 10px; position: relative; right: 10px; margin-bottom: 10px; background-color: white;">
+                 <label for="gender" style="text-align: center;">Gender
+                     <span class="popup-text" id="popupGender"></span>
+                 </label>
+                <div class="gender-options">
+                    <label>
+                        <input type="radio" id="male" name="gender" value="Male" required>
+                        Male
+                    </label>
+                    <label>
+                        <input type="radio" id="female" name="gender" value="Female">
+                        Female
+                    </label>
+                    <label>
+                        <input type="radio" id="Other" name="gender" value="Not-Say">
+                        Other
+                    </label>
+                </div>
+             </div>
 
             <button type="button">Send</button>
+            
         </form>
-        <div class="popup-text" id="popupText"></div>
+       <div class="popup-text" id="popupText" style="position: relative;">
+       </div>
     </div>
 </asp:Content>
