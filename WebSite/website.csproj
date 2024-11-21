@@ -80,12 +80,6 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="idotamir.Master.cs">
-      <DependentUpon>idotamir.Master</DependentUpon>
-    </Compile>
-    <Compile Include="idotamir.Master.designer.cs">
-      <DependentUpon>idotamir.Master</DependentUpon>
-    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,7 +98,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyMaster.Master" />
-    <Content Include="idotamir.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
