@@ -70,7 +70,6 @@
     <Content Include=".gitignore" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +79,12 @@
     </Compile>
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="idotamir.Master.cs">
+      <DependentUpon>idotamir.Master</DependentUpon>
+    </Compile>
+    <Compile Include="idotamir.Master.designer.cs">
+      <DependentUpon>idotamir.Master</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -96,16 +101,10 @@
       <DependentUpon>MyMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MyMaster.Master" />
+    <Content Include="idotamir.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
