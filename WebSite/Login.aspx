@@ -251,36 +251,38 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="form-container">
         <form autocomplete="off">
+            <!-- Username Field -->
             <label for="name">User Name
-                <span class="tooltip-text">Username must be at least 4 charachters</span>
+                <span class="tooltip-text">Username must be at least 4 characters</span>
                 <span class="popup-text" id="popupNameText"></span>
-            </label> 
+            </label>
             <input type="text" id="name" name="name" placeholder="Enter your username" required autocomplete="off" />
 
+            <!-- Email Field -->
             <label for="email">Email
                 <span class="popup-text" id="popupEmailText"></span> 
             </label>
             <input type="text" id="email" name="email" placeholder="Enter your email" required autocomplete="off" />
 
+            <!-- Password Field -->
             <label for="password">Password
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
                 <span class="popup-text" id="popupPasswordText"></span>
             </label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="off" />
 
-            <label for="confirm-password">confirm password
+            <!-- Confirm Password Field -->
+            <label for="confirm-password">Confirm Password
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
                 <span class="popup-text" id="popupConfirmPasswordText"></span>
             </label>
             <input type="password" id="confirm-password" name="password" placeholder="Confirm password" required autocomplete="off" />
 
-
-
-
+            <!-- Gender Selection -->
             <div style="border: 2px solid rgba(50, 50, 50, 0.8); border-radius: 8px; padding: 10px; position: relative; right: 10px; margin-bottom: 10px; background-color: white;">
-                 <label for="gender" style="text-align: center;">Gender
-                     <span class="popup-text" id="popupGender"></span>
-                 </label>
+                <label for="gender" style="text-align: center;">Gender
+                    <span class="popup-text" id="popupGender"></span>
+                </label>
                 <div class="gender-options">
                     <label>
                         <input type="radio" id="male" name="gender" value="Male" required>
@@ -295,11 +297,27 @@
                         Other
                     </label>
                 </div>
-             </div>
+            </div>
+           
 
+            <!-- Interest Slider -->
+            <div>
+                <label for="interest-level" style="margin-top: 30px;">Rate your interest in learning about the 7 Wonders (1 - Not Interested, 10 - Very Interested)
+                    <span class="tooltip-text">Use the slider to indicate your interest.</span>
+                </label>
+                <input style="width: 200px;" type="range" id="interest-level" name="interest-level" min="1" max="10" value="5" oninput="document.getElementById('interest-output').value = this.value">
+                <output id="interest-output" style="border: 1px solid black; padding: 5px; border-radius: 4px; font-size: 35px;">5</output>
+
+            </div>
+             <label for="favorite-wonder">Which of the 7 Wonders fascinates you the most? Tell us why!
+                 <span class="tooltip-text">Share your thoughts about your favorite Wonder.</span>
+             </label>
+             <textarea id="favorite-wonder" name="favorite-wonder" rows="4" cols="50" placeholder="Write your thoughts here..." style="margin-right: 20px; resize: none; width: 450px; height: 100px;"></textarea>
+
+            <!-- Submit Button -->
             <button type="button">Send</button>
-            
         </form>
+
        <div class="popup-text" id="popupText" style="position: relative;">
        </div>
     </div>
