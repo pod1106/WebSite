@@ -205,11 +205,31 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirm-password').value;
-            const gender = document.querySelector('input[name="gender"]:checked');
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            localStorage.setItem('password', password);
 
-            console.log("test");
+
+            
+            const male = document.getElementById('male').checked;
+            const female = document.getElementById('female').checked;
+            const other = document.getElementById('other').checked;
+
+
+            let gender = 0;
+
             return true;
+
+
+            if (male === true) {
+                gender = "male";
+            } else if (female === true) {
+                gender = "female";
+            } else if (other === true) {
+                gender = "other";
+            }
+
+
+
 
             if (name) {
                 if (name.length < 4) {
@@ -274,10 +294,39 @@
             console.log("username: " + name + "\nemail: " + email + "\npassword: " + password + "\ngender: " + gender.id);
             showPopup("New account was created!", "green", 'popupText');
 
+            
             // Reset form fields
-            //document.getElementById('name').value = '';
-            //document.getElementById('email').value = '';
-            //document.getElementById('password').value = '';
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+
+            localStorage.setItem('password', "");
+
+            return true;
+        }
+
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('confirmPassword');
+            const showPasswordCheckbox = document.getElementById('showPassword');
+
+            // Toggle the type of the password fields based on the checkbox state
+            if (showPasswordCheckbox.checked) {
+                // Show the password
+                passwordField.type = 'text';
+                confirmPasswordField.type = 'text';
+            } else {
+                // Hide the password
+                passwordField.type = 'password';
+                confirmPasswordField.type = 'password';
+            }
+        }
+
+
+        window.onload = function () {
+            if (localStorage.getItem('password')) {
+                document.getElementById('password').value = localStorage.getItem('password');
+            }
         }
 
 
@@ -289,6 +338,7 @@
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     
     <div class="form-container" runat="server">
         <form autocomplete="off" runat="server">
@@ -297,28 +347,38 @@
                 <span class="tooltip-text">Username must be at least 4 characters</span>
                 <span class="popup-text" id="popupNameText"></span>
             </label>
-            <asp:TextBox ID="name" runat="server" ClientIDMode="Static" placeholder="Enter your username" autocomplete="off" />
+            <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="off" />
 
 
             <!-- Email Field -->
             <label for="email">Email
                 <span class="popup-text" id="popupEmailText"></span> 
             </label>
-            <asp:TextBox ID="email" runat="server" ClientIDMode="Static" placeholder="Enter your email" autocomplete="off" />
+            <input type="text" id="email" name="email" placeholder="Enter your email" autocomplete="off" />
+
 
             <!-- Password Field -->
             <label for="password">Password
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
                 <span class="popup-text" id="popupPasswordText"></span>
             </label>
-            <asp:TextBox ID="password" runat="server" TextMode="Password" ClientIDMode="Static" placeholder="Enter your password" autocomplete="off" />
+            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="off" style="margin-bottom: 5px;" />
+
+
+
+            <!-- Show Password Checkbox -->
+            <label style="font-size:16px; display: flex; align-items: center; justify-content: flex-start; padding: 5px; margin-top: 0px;">
+                <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()" style="margin-right: 10px; width: 16px; height: 16px; border: 1px solid black;">
+                <span style="position: relative; top: -10px;">Show Password</span>
+            </label>
 
             <!-- Confirm Password Field -->
             <label for="confirm-password">Confirm Password
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
                 <span class="popup-text" id="popupConfirmPasswordText"></span>
             </label>
-            <asp:TextBox ID="confirmPassword" runat="server" TextMode="Password" ClientIDMode="Static" placeholder="Confirm password" autocomplete="off" />
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" autocomplete="off" />
+
 
             <!-- Gender Selection -->
             <div class="gender-window">
@@ -328,20 +388,19 @@
 
                 <div class="gender-options">
                     <label>
-                        <asp:RadioButton ID="male" ClientIDMode="Static" runat="server" GroupName="gender" />
+                        <input type="radio" id="male" name="gender" value="Male" />
                         Male
                     </label>
 
                     <label>
-                        <asp:RadioButton ID="female" ClientIDMode="Static" runat="server" GroupName="gender" />
+                        <input type="radio" id="female" name="gender" value="Female" />
                         Female
                     </label>
 
                     <label>
-                        <asp:RadioButton ID="Other" ClientIDMode="Static" runat="server" GroupName="gender" />
+                        <input type="radio" id="other" name="gender" value="Other" />
                         Other
                     </label>
-
                 </div>
             </div>
 
@@ -354,11 +413,14 @@
                 <label for="interest-level" style="margin-top: 30px;">Rate your interest in learning about the 7 Wonders <br>(1 - Not Interested, 10 - Very Interested)
                     <span class="tooltip-text">Use the slider to indicate your interest.</span>
                 </label>
-    
-                <input style="width: 80%; display: block; margin: 0 auto;" type="range" id="interest-level" name="interest-level" min="1" max="10" value="5" oninput="document.getElementById('interestOutput').value = this.value">
-    
-                <asp:TextBox ID="interestOutput" ClientIDMode="Static" runat="server" Text="5" ReadOnly="true" 
-                             Style="display: block; margin: 0px auto; margin-bottom: 30px; border: 1px solid black; padding: 5px; border-radius: 4px; font-size: 35px; width: 60px; text-align: center;" />
+
+                <input style="width: 80%; display: block; margin: 0 auto;" type="range" id="interest-level" name="interest-level" min="1" max="10" value="5"
+                    oninput="document.getElementById('interestOutput').value = this.value; document.getElementById('sliderValueHidden').value = this.value;">
+
+                <input type="text" id="interestOutput" name="interestOutput" value="5" readonly 
+                       style="display: block; margin: 0px auto; margin-bottom: 30px; border: 1px solid black; padding: 5px; border-radius: 4px; font-size: 35px; width: 60px; text-align: center;" />
+
+                <input type="hidden" id="sliderValueHidden" name="sliderValueHidden" />
             </div>
 
 
@@ -366,16 +428,21 @@
                 <span class="tooltip-text">Share your thoughts about your favorite Wonder.</span>
             </label>
 
-            <asp:TextBox ID="favoriteWonder" runat="server" TextMode="MultiLine" 
-                         Rows="4" Columns="50" 
-                         placeholder="Write your thoughts here..." 
-                         Style="margin-right: 20px; resize: none; width: 450px; height: 100px; font-size: 18px;" />
+            <textarea id="favoriteWonder" name="favoriteWonder" placeholder="Write your thoughts here..." 
+                      style="margin-right: 20px; resize: none; width: 95%; height: 100px; font-size: 18px;" rows="4" cols="50"></textarea>
+
 
 
             <!-- Submit Button -->
-            <asp:Button ID="btnSubmit" CssClass="send-button" runat="server" Text="Send" OnClientClick="validInputs();" OnClick="BtnSubmit_Click" ClientIDMode="Static" />
+            <asp:Button ID="btnSubmit" CssClass="send-button" runat="server" Text="Send" 
+                OnClientClick="return validInputs(event);" OnClick="Submit" ClientIDMode="Static"/>
 
 
+
+
+            <asp:Label ID="resultLabel" runat="server" 
+               Text="" 
+               Style="font-size: 18px; color: blue;" />
             
         </form>
 
@@ -386,4 +453,5 @@
     
 
 </asp:Content>
+
 
