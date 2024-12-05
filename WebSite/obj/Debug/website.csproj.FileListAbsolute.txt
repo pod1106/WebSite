@@ -236,3 +236,5 @@ C:\Users\idotamir\source\repos\GitWebSite\website\obj\Debug\website.dll
 C:\Users\idotamir\source\repos\GitWebSite\website\obj\Debug\website.pdb
 C:\Users\idotamir\Source\Repos\GitWebSite\website\bin\System.Data.SQLite.dll
 C:\Users\idotamir\Source\Repos\GitWebSite\website\bin\System.Data.SQLite.xml
+C:\Users\user\Source\Repos\GitWebSite\website\bin\System.Data.SQLite.dll
+C:\Users\user\Source\Repos\GitWebSite\website\bin\System.Data.SQLite.xml

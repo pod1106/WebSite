@@ -41,7 +41,7 @@ namespace website
                 resultLabel.Text = "something is wrong";
             }
 
-            
+
 
 
         }
@@ -85,7 +85,7 @@ namespace website
 
             if (string.IsNullOrEmpty(gender))
             {
-                return false; // Gender not selected
+                return false;
             }
 
             return true;

@@ -11,6 +11,11 @@
     </asp:ContentPlaceHolder>
 
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
         header {
             background: rgb(40, 40, 40);
             color: white;

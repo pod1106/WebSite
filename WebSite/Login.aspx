@@ -3,7 +3,9 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
     <style>
         .form-container {
-            max-width: 35%; 
+             width: 800px;
+             max-width: 100%;
+
             margin: 50px auto; 
             padding: 20px;
 
@@ -15,6 +17,12 @@
             border-radius: 8px;
             text-align: center;
             position: relative;
+        }
+
+        @media (max-width: 1000px) {
+            .form-container {
+            width: 80%; /* Set to 80% when window is less than 1000px */
+            }
         }
 
 
@@ -63,9 +71,9 @@
         }
 
 
-        /* Tooltip style */
+
         .tooltip-text {
-            visibility: hidden;     /* default value, hidden */
+            visibility: hidden;   
             opacity: 0;
 
             width: 300px;           /* window width */
@@ -201,23 +209,17 @@
             }, 3000);
         }
 
-        function validInputs() {
-            const name = document.getElementById('name').value;
+        function validInputs(even) {
+            const name = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            localStorage.setItem('password', password);
-
-
-            
+            const confirmPassword = document.getElementById('confirmPassword').value; 
             const male = document.getElementById('male').checked;
             const female = document.getElementById('female').checked;
             const other = document.getElementById('other').checked;
 
-
+            
             let gender = 0;
-
-            return true;
 
 
             if (male === true) {
@@ -435,7 +437,7 @@
 
             <!-- Submit Button -->
             <asp:Button ID="btnSubmit" CssClass="send-button" runat="server" Text="Send" 
-                OnClientClick="return validInputs(event);" OnClick="Submit" ClientIDMode="Static"/>
+                OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static"/>
 
 
 
