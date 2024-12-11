@@ -34,12 +34,12 @@ namespace website
             }
 
 
-            if (ValidateInputs(username, email, password, confirmPassword, gender)) {
-                resultLabel.Text = "all good!";
-            } else
-            {
-                resultLabel.Text = "something is wrong";
-            }
+            //if (ValidateInputs(username, email, password, confirmPassword, gender)) {
+            //    resultLabel.Text = "all good!";
+            //} else
+            //{
+            //    resultLabel.Text = "something is wrong";
+            //}
 
 
 

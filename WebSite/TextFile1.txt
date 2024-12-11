@@ -1,0 +1,82 @@
+﻿        <div class="sidebar">
+            <h2>7 Wonders of the World</h2>
+            <ul>
+                <li id="wonder1" class="active"><a href="#wonder1">Great Wall of China</a></li>
+                <li id="wonder2"><a href="#wonder2">Petra</a></li>
+                <li id="wonder3"><a href="#wonder3">Christ the Redeemer</a></li>
+                <li id="wonder4"><a href="#wonder4">Machu Picchu</a></li>
+                <li id="wonder5"><a href="#wonder5">Chichen Itza</a></li>
+                <li id="wonder6"><a href="#wonder6">Roman Colosseum</a></li>
+                <li id="wonder7"><a href="#wonder7">Taj Mahal</a></li>
+            </ul>
+        </div>
+
+
+----------------------------------------------
+
+.sidebar {
+            position: fixed;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: 2px solid black; 
+            border-radius: 8px;
+            color: black;
+            padding: 20px;
+            height: 70vh;
+            margin: 40px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .sidebar ul li.active a {
+            background-color: #4CAF50;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+
+----------------------------------------------
+
+
+
+
+
+<script>
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        const links = document.querySelectorAll('.sidebar ul li a');
+
+        let currentSection = '';
+        sections.forEach(section => {
+            if (window.scrollY >= section.offsetTop - 50 && window.scrollY < section.offsetTop + section.offsetHeight) {
+                currentSection = section.id; // Directly use `id` to simplify
+            }
+        });
+
+        links.forEach(link => {
+            link.parentElement.classList.toggle('active', link.getAttribute('href').substring(1) === currentSection);
+        });
+    });
+</script>

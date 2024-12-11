@@ -1,11 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="website.Login" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
-    <style>
-        .form-container {
-             width: 800px;
-             max-width: 100%;
+    <style>    
 
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .form-container {
+            width: min(800px, 80vw); 
+            max-width: 100%;
             margin: 50px auto; 
             padding: 20px;
 
@@ -19,11 +23,6 @@
             position: relative;
         }
 
-        @media (max-width: 1000px) {
-            .form-container {
-            width: 80%; /* Set to 80% when window is less than 1000px */
-            }
-        }
 
 
         .form-container label {
@@ -42,11 +41,30 @@
         .form-container input {
             width: 90%; 
             padding: 10px; 
+            margin: 0 auto;
             margin-bottom: 20px; 
             border: 1px solid #ccc; 
             border-radius: 6px; 
             font-size: 18px;
             text-align: left;
+        }
+
+        .form-container select {
+            width: 40%;
+            padding: 10px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 18px;
+            text-align: left;
+            background-color: #fff;
+        }
+
+
+
+        .form-container select option {
+            font-size: 16px; /* Optional: change the font size of the options */
         }
 
 
@@ -73,31 +91,31 @@
 
 
         .tooltip-text {
-            visibility: hidden;   
-            opacity: 0;
-
-            width: 300px;           /* window width */
-            color: #6f816fff;            /* text color */
-            font-size: 18px;        /* text size */
-            background-color: #dcfed7ee; /* window color */
-            border: 2px solid #abd4abff; /* boarder width, type and color */
-            border-radius: 8px;     /* boarder radius */
-             
-            text-align: center;     /* text possition in window */
-            padding: 10px;          /* in window padding */
-            
-            position: absolute;     /* window possition */
-            right: 105%;            /* window possition relative to the label */
-            top: -10px;
-
-            transition: opacity 0.6s ease;   /* animation  */
-            
+            opacity: 0;  
+            transform: translateY(15px);
+    
+            width: 300px;              
+            color: #6f816fff;  
+            font-size: 18px;     
+            background-color: #dcfed7ee;
+            border: 2px solid #abd4abff;
+            border-radius: 8px;     
+    
+            text-align: center;      
+            padding: 10px;           
+    
+            position: absolute;      
+            right: 105%;             
+            top: -10px;              
+    
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
         .form-container label:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
+            opacity: 1;              
+            transform: translateY(0);
         }
+
 
 
         .popup-text {
@@ -110,12 +128,12 @@
     
             visibility: hidden;
             opacity: 0;
-            position: absolute;  /* Positioning the popup relative to the label */
-            width: 300px;        /* Adjust the width of the popup */
+            position: absolute;  
+            width: 300px;        
 
-            top: 30px;              /* Align with the top of the label */
-            left: 103%;          /* Place the popup to the right of the label */
-            margin-left: 10px;   /* Add some space between the label and popup */
+            top: 30px;           
+            left: 103%;          
+            margin-left: 10px;   
 
             padding: 10px;
             border-radius: 8px;
@@ -134,40 +152,42 @@
             border: 2px solid rgba(200, 255, 200, 1);
 
             font-size: 30px;
-
             position: fixed;
-            
-            
             width: 400px;
             z-index: 1000;
-    
 
             left: 50%;
             transform: translate(-50%);
         }
 
 
-.gender-options label {
-    display: inline-block;
-    margin-right: 4px;
-    background-color: rgba(0, 0, 0, 0.05);
-    width: 120px;
-    padding: 5px;
-    border: 2px solid rgba(100, 100, 100, 0.8);
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer; 
-}
+        .gender-options label {
+            display: inline-block;
+            margin-right: 5px;
+            margin-left: 5px;
+            background-color: rgba(0, 0, 0, 0.05);
+            width: 120px;
+            height: 70px;
+            padding: 5px;
+            border: 2px solid rgba(100, 100, 100, 0.8);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer; 
+        }
 
-.gender-window {
-    border: 2px solid rgba(50, 50, 50, 0.8);
-    border-radius: 8px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    position: relative;
-    margin-bottom: 10px;
-    background-color: white;
-}
+        .gender-window {
+            border: 2px solid rgba(50, 50, 50, 0.8);
+            border-radius: 8px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            position: relative;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            background-color: white;
+            width: min(600px, 95%);
+        }
+
+
 
 
 
@@ -181,7 +201,7 @@
 
 
     <script>
-        window.onbeforeunload = null; 
+        
 
 
         function showPopup(message, theme = 'red', targetId) {
@@ -217,7 +237,6 @@
             const male = document.getElementById('male').checked;
             const female = document.getElementById('female').checked;
             const other = document.getElementById('other').checked;
-
             
             let gender = 0;
 
@@ -236,10 +255,12 @@
             if (name) {
                 if (name.length < 4) {
                     showPopup("Username has to be at least 4 characters!", 'red', 'popupNameText');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
             } else {
                 showPopup("Username is not set!", 'red', 'popupNameText');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
 
@@ -247,10 +268,12 @@
                 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if (!emailRegex.test(email)) {
                     showPopup("Email is not valid!", 'red', 'popupEmailText');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
             } else {
                 showPopup("Email is not set!", 'red', 'popupEmailText');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
 
@@ -258,32 +281,39 @@
                 if (password.length >= 7) {
                     if (!/[a-z]/.test(password)) {
                         showPopup("Password needs to contain a lowercase letter.", 'red', 'popupPasswordText');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                         return false;
                     }
                     if (!/[A-Z]/.test(password)) {
                         showPopup("Password needs to contain an uppercase letter.", 'red', 'popupPasswordText');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                         return false;
                     }
                     if (!/[0-9]/.test(password)) {
                         showPopup("Password needs to contain a number.", 'red', 'popupPasswordText');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
                         return false;
                     }
                 } else {
                     showPopup("Password must be at least 7 characters long.", 'red', 'popupPasswordText');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
             } else {
                 showPopup("Password is not set!", 'red', 'popupPasswordText');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
 
             if (confirmPassword) {
                 if (password !== confirmPassword) {
                     showPopup("Passwords must be the same", "red", "popupConfirmPasswordText");
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
             } else {
                 showPopup("must Confirm the password", "red", "popupConfirmPasswordText");
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
 
@@ -425,6 +455,17 @@
                 <input type="hidden" id="sliderValueHidden" name="sliderValueHidden" />
             </div>
 
+
+             <label for="wonders">Choose a Wonder of the World:</label>
+            <select id="wonders" name="wonder">
+              <option value="great_wall">Great Wall of China</option>
+              <option value="petra">Petra, Jordan</option>
+              <option value="colosseum">Colosseum, Italy</option>
+              <option value="chichen_itza">Chichen Itza, Mexico</option>
+              <option value="machu_picchu">Machu Picchu, Peru</option>
+              <option value="christ_the_redeemer">Christ the Redeemer, Brazil</option>
+              <option value="taj_mahal">Taj Mahal, India</option>
+            </select>
 
              <label for="favorite-wonder">Which of the 7 Wonders fascinates you the most? Tell us why!
                 <span class="tooltip-text">Share your thoughts about your favorite Wonder.</span>

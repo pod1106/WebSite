@@ -26,7 +26,7 @@
             padding-right: 40px;
         }
 
-        .site-name { font-size: 2em; font-weight: bold; }
+        .site-name { font-size: 2em; font-weight: bold; margin: 0 auto;}
 
         nav ul {
             list-style: none;
