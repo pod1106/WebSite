@@ -34,12 +34,14 @@ namespace website
             }
 
 
-            //if (ValidateInputs(username, email, password, confirmPassword, gender)) {
-            //    resultLabel.Text = "all good!";
-            //} else
-            //{
-            //    resultLabel.Text = "something is wrong";
-            //}
+            if (ValidateInputs(username, email, password, confirmPassword, gender))
+            {
+                resultLabel.Text = "all good!";
+            }
+            else
+            {
+                resultLabel.Text = "something is wrong";
+            }
 
 
 
@@ -53,40 +55,22 @@ namespace website
                 return false; // Invalid name
             }
 
-            if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"))
+            if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"))
             {
                 return false; // Invalid email
             }
 
 
-            if (string.IsNullOrEmpty(password) || password.Length < 7)
-            {
-                return false; 
-            }
-            if (!Regex.IsMatch(password, @"[a-z]")) 
-            {
-                return false;
-            }
-            if (!Regex.IsMatch(password, @"[A-Z]")) 
-            {
-                return false;
-            }
-            if (!Regex.IsMatch(password, @"[0-9]")) 
+            if (string.IsNullOrEmpty(password) ||
+                password.Length < 7 ||
+                !Regex.IsMatch(password, "[a-z]") ||
+                !Regex.IsMatch(password, "[A-Z]") ||
+                !Regex.IsMatch(password, "[0-9]"))
             {
                 return false;
             }
 
 
-            if (password != confirmPassword)
-            {
-                return false; 
-            }
-
-
-            if (string.IsNullOrEmpty(gender))
-            {
-                return false;
-            }
 
             return true;
         }

@@ -2,41 +2,97 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         /* Basic styles for the layout */
+        body {
+            background-size: cover; 
+            background-position: center center;
+            background-attachment: fixed;
 
+            animation: slide 50s ease-in-out infinite;
+        }
+
+        @keyframes slide {
+            0% { background-image: url("img/great_wall_of_china.jpg"); }
+            14.28% { background-image: url('img/petra.jpg'); }
+            28.56% { background-image: url('img/christ_the_redeemer.jpg'); }
+            42.84% { background-image: url('img/machu_picchu.jpg'); }
+            57.12% { background-image: url("img/chichen_itza.jpg"); }
+            71.4% { background-image: url("img/romancolosseum.jpg"); }
+            85.68% { background-image: url("img/taj_mahal.jpg"); }
+            100% { background-image: url("img/chichen_itza.jpg"); }
+        }
 
         .container {
-            display: flex;
+            display: flex;             /* Enable Flexbox */
+            justify-content: center;   /* Center horizontally */
+            align-items: center;       /* Center vertically */
+            height: 90%;             /* Use full viewport height */
+        }
+
+
+
+        table {
+            width: 70%;
+            margin: 50px auto;
+
+            border-collapse: separate;
+            border-spacing: 15px;
+            
+            overflow: hidden;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            background-color: rgba(240, 240, 240, 0.4);
+            border-radius: 8px;
+
+            backdrop-filter: blur(10px);
+
+            height: 100px;
+        }
+        td[colspan="4"], th[colspan="4"] {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+        .wonder-link {
+            text-align: center;
+            display: block;
+        }
+
+        .wonder-img {
             width: 100%;
+            height: 180px;
+            object-fit: cover; 
+            border-radius: 8px;
+        }
+
+        .wonder-link h3 {
+            font-size: 1.2em;
+            margin-top: 10px;
+            color: black;
         }
 
         
-
-        .main-content {
-            margin-left: 400px;
-            flex-grow: 1;
-            padding: 20px;
-            overflow: auto;
+        .tablelink {
+            transition: transform 0.3s ease-in-out;
         }
 
-        section {
-            margin-bottom: 30px;
-            background-color: rgba(0, 0, 0, 0.05);
-            border: 2px solid black; 
-            border-radius: 8px;
-            padding: 10px;
-            width: 50vw;
-
+        .tablelink:hover {
+            text-decoration: underline;
+            color: black;
+            transform: scale(1.05);
         }
 
-        section h1 {
-            font-size: 32px;
-            color: #333;
-        }
 
-        section p {
-            font-size: 18px;
-            color: #666;
-        }
+
+
+
+
+
     </style>
 </asp:Content>
 
@@ -45,43 +101,72 @@
         <!-- Sidebar -->
 
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <section id="wonder1" style="height: 300px">
-                <h1>Great Wall of China</h1>
-                <p>Information about the Great Wall of China...</p>
-            </section>
+        <table>
+            <tr>
+                <td colspan="4" style="padding-inline: 50px; font-size: 30px;">
+                    <h2>Welcome to the 7 Wonders of the World!</h2>
+                    <p>Explore the incredible landmarks that have captivated the world for centuries.<br /> Learn fascinating facts, test your knowledge with fun quizzes, and enjoy stunning images of these awe-inspiring wonders. Let the adventure begin!</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">Second Row - Full Span (All 4 columns)</td>
+            </tr>
+            <tr>
+                <td class="tablelink">
+                    <a href="Pages/great_wall_of_china.aspx" class="wonder-link">
+                        <img src="img/great_wall_of_china.jpg" alt="Great Wall of China" class="wonder-img">
+                        <h3>Great Wall of China</h3>
+                    </a>
+                </td>
+                <td class="tablelink">
+                    <a href="petra.aspx" class="wonder-link">
+                        <img src="img/petra.jpg" alt="Petra" class="wonder-img">
+                        <h3>Petra</h3>
+                    </a>
+                </td>
+                <td class="tablelink">
+                    <a href="christ_the_redeemer.aspx" class="wonder-link">
+                        <img src="img/christ_the_redeemer.jpg" alt="Christ the Redeemer" class="wonder-img">
+                        <h3>Christ the Redeemer</h3>
+                    </a>
+                </td>
+                <td class="tablelink">
+                    <a href="machu_picchu.aspx" class="wonder-link">
+                        <img src="img/machu_picchu.jpg" alt="Machu Picchu" class="wonder-img">
+                        <h3>Machu Picchu</h3>
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td class="tablelink">
+                    <a href="chichen_itza.aspx" class="wonder-link">
+                        <img src="img/chichen_itza.jpg" alt="Chichen Itza" class="wonder-img">
+                        <h3>Chichen Itza</h3>
+                    </a>
+                </td>
+                <td class="tablelink">
+                    <a href="romancolosseum.aspx" class="wonder-link">
+                        <img src="img/romancolosseum.jpg" alt="Roman Colosseum" class="wonder-img">
+                        <h3>Roman Colosseum</h3>
+                    </a>
+                </td>
+                <td class="tablelink">
+                    <a href="taj_mahal.aspx" class="wonder-link">
+                        <img src="img/taj_mahal.jpg" alt="Taj Mahal" class="wonder-img">
+                        <h3>Taj Mahal</h3>
+                    </a>
+                </td>
+                   
+                <td class="tablelink"> <!-- Empty cell to maintain structure -->
+                     quiz. soon!!
+                </td> 
+            </tr>
+        </table>
 
-            <section id="wonder2" style="height: 300px">
-                <h1>Petra</h1>
-                <p>Information about Petra...</p>
-            </section>
 
-            <section id="wonder3" style="height: 300px">
-                <h1>Christ the Redeemer</h1>
-                <p>Information about Christ the Redeemer...</p>
-            </section>
 
-            <section id="wonder4"" style="height: 300px">
-                <h1>Machu Picchu</h1>
-                <p>Information about Machu Picchu...</p>
-            </section>
 
-            <section id="wonder5"" style="height: 300px">
-                <h1>Chichen Itza</h1>
-                <p>Information about Chichen Itza...</p>
-            </section>
 
-            <section id="wonder6"" style="height: 300px">
-                <h1>Roman Colosseum</h1>
-                <p>Information about Roman Colosseum...</p>
-            </section>
-
-            <section id="wonder7"" style="height: 300px">
-                <h1>Taj Mahal</h1>
-                <p>Information about Taj Mahal...</p>
-            </section>
-        </div>
     </div>
 
 

@@ -74,6 +74,8 @@
     <Content Include="Admin.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Pages\great_wall_of_china.aspx" />
+    <Content Include="TextFile1.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +107,13 @@
     <Compile Include="MyMaster.Master.designer.cs">
       <DependentUpon>MyMaster.Master</DependentUpon>
     </Compile>
+    <Compile Include="Pages\great_wall_of_china.aspx.cs">
+      <DependentUpon>great_wall_of_china.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\great_wall_of_china.aspx.designer.cs">
+      <DependentUpon>great_wall_of_china.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataBase\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
