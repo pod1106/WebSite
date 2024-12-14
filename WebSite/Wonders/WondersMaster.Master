@@ -1,0 +1,124 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WondersMaster.master.cs" Inherits="website.Wonders.WondersMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: rgb(40, 40, 40);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 40px;
+        }
+
+        .site-name { 
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0;
+            background: rgb(40, 40, 40);
+
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin-left: 40px;
+        }
+
+        nav ul li a:hover { text-decoration: underline; }
+
+
+
+        #master-style-footer footer {
+            display: flex; 
+            justify-content: space-between;
+            align-items: center; 
+            background-color: rgb(240,240,240); 
+            color: black;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            right: 0; 
+            box-sizing: border-box;
+        }
+
+        #master-style-footer .footer-content {
+            width: 70%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #master-style-footer .footer-content a.footer-link {
+            text-decoration: none; 
+            color: inherit;        
+            cursor: pointer;       
+        }
+
+        #master-style-footer .footer-content a.footer-link:hover {
+            color: inherit;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="site-name">7 Wonderes of The World</div>
+        
+        <!-- Navigation Menu -->
+        <nav>
+            <ul>
+                <li><a href="Home.aspx">Home</a></li>
+                <li><a href="Quiz.aspx">Quiz</a></li>
+                <li><a href="Login.aspx">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <!-- Main Content Section (Specific to each page) -->
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <!-- Footer Section -->
+
+        <footer id="master-style-footer">
+            <div class="footer-content">
+                <span><a href="Home.aspx">Home Page</a></span>
+                <span>Information</span>
+                <span><a href="Login.aspx">Login</a></span>
+                <span>Contact</span>
+                <span>&copy; 2024 All rights reserved.</span>
+            </div>
+        </footer>
+
+</body>
+</html>

@@ -29,15 +29,23 @@
         }
 
 
+        .table-background {
+            position: sticky;
+            top: 0;
+            background-color: white;
+            min-height: 300px;
+        }
+
+
 
         table {
             width: 70%;
-            margin: 50px auto;
-
+            margin: 500px auto;
             border-collapse: separate;
             border-spacing: 15px;
-            
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
         th, td {
             padding: 10px;
@@ -100,7 +108,8 @@
     <div class="container">
         <!-- Sidebar -->
 
-
+        <div class="table-background">
+        
         <table>
             <tr>
                 <td colspan="4" style="padding-inline: 50px; font-size: 30px;">
@@ -109,29 +118,26 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4">Second Row - Full Span (All 4 columns)</td>
-            </tr>
-            <tr>
                 <td class="tablelink">
-                    <a href="Pages/great_wall_of_china.aspx" class="wonder-link">
+                    <a href="Wonders/great_wall_of_china.aspx" class="wonder-link">
                         <img src="img/great_wall_of_china.jpg" alt="Great Wall of China" class="wonder-img">
                         <h3>Great Wall of China</h3>
                     </a>
                 </td>
                 <td class="tablelink">
-                    <a href="petra.aspx" class="wonder-link">
+                    <a href="Wonders/petra.aspx" class="wonder-link">
                         <img src="img/petra.jpg" alt="Petra" class="wonder-img">
                         <h3>Petra</h3>
                     </a>
                 </td>
                 <td class="tablelink">
-                    <a href="christ_the_redeemer.aspx" class="wonder-link">
+                    <a href="Wonders/christ_the_redeemer.aspx" class="wonder-link">
                         <img src="img/christ_the_redeemer.jpg" alt="Christ the Redeemer" class="wonder-img">
                         <h3>Christ the Redeemer</h3>
                     </a>
                 </td>
                 <td class="tablelink">
-                    <a href="machu_picchu.aspx" class="wonder-link">
+                    <a href="Wonders/machu_picchu.aspx" class="wonder-link">
                         <img src="img/machu_picchu.jpg" alt="Machu Picchu" class="wonder-img">
                         <h3>Machu Picchu</h3>
                     </a>
@@ -139,19 +145,19 @@
             </tr>
             <tr>
                 <td class="tablelink">
-                    <a href="chichen_itza.aspx" class="wonder-link">
+                    <a href="Wonders/chichen_itza.aspx" class="wonder-link">
                         <img src="img/chichen_itza.jpg" alt="Chichen Itza" class="wonder-img">
                         <h3>Chichen Itza</h3>
                     </a>
                 </td>
                 <td class="tablelink">
-                    <a href="romancolosseum.aspx" class="wonder-link">
+                    <a href="Wonders/romancolosseum.aspx" class="wonder-link">
                         <img src="img/romancolosseum.jpg" alt="Roman Colosseum" class="wonder-img">
                         <h3>Roman Colosseum</h3>
                     </a>
                 </td>
                 <td class="tablelink">
-                    <a href="taj_mahal.aspx" class="wonder-link">
+                    <a href="Wonders/taj_mahal.aspx" class="wonder-link">
                         <img src="img/taj_mahal.jpg" alt="Taj Mahal" class="wonder-img">
                         <h3>Taj Mahal</h3>
                     </a>
@@ -162,6 +168,7 @@
                 </td> 
             </tr>
         </table>
+            </div>
 
 
 
