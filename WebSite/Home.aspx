@@ -3,22 +3,21 @@
     <style>
         /* Basic styles for the layout */
         body {
+            height: 200vh;
             background-size: cover; 
             background-position: center center;
             background-attachment: fixed;
 
-            animation: slide 50s ease-in-out infinite;
+            animation: slide 60s ease-in-out infinite;
         }
 
         @keyframes slide {
-            0% { background-image: url("img/great_wall_of_china.jpg"); }
-            14.28% { background-image: url('img/petra.jpg'); }
-            28.56% { background-image: url('img/christ_the_redeemer.jpg'); }
-            42.84% { background-image: url('img/machu_picchu.jpg'); }
-            57.12% { background-image: url("img/chichen_itza.jpg"); }
-            71.4% { background-image: url("img/romancolosseum.jpg"); }
-            85.68% { background-image: url("img/taj_mahal.jpg"); }
-            100% { background-image: url("img/chichen_itza.jpg"); }
+            0%, 100% { background-image: url("img/great_wall_of_china.jpg"); }
+            16.67% { background-image: url('img/petra.jpg'); }
+            33.33% { background-image: url('img/christ_the_redeemer.jpg'); }
+            50% { background-image: url('img/machu_picchu.jpg'); }
+            66.67% { background-image: url("img/chichen_itza.jpg"); }
+            83.33% { background-image: url("img/romancolosseum.jpg"); }
         }
 
         .container {
@@ -29,37 +28,43 @@
         }
 
 
-        .table-background {
-            position: sticky;
-            top: 0;
-            background-color: white;
-            min-height: 300px;
+
+        @keyframes fadeInUp {
+              0% { opacity: 0; transform: translateY(50px); }
+              100% { opacity: 1; transform: translateY(0); }
         }
 
-
-
         table {
+            position: sticky;
             width: 70%;
+            top: 250px;
             margin: 500px auto;
             border-collapse: separate;
             border-spacing: 15px;
             overflow: hidden;
             position: relative;
-            z-index: 1;
-        }
-        th, td {
-            padding: 10px;
-            text-align: center;
+            padding: 20px;
             background-color: rgba(240, 240, 240, 0.4);
-            border-radius: 8px;
-
-            backdrop-filter: blur(10px);
-
-            height: 100px;
+            backdrop-filter: blur(20px);
+            border-radius: 10px;
+            animation: fadeInUp 1s ease-in-out;
         }
-        td[colspan="4"], th[colspan="4"] {
+
+
+        th, td {
+            padding: 20px;
             text-align: center;
+            background-color: rgba(240, 240, 240, 0.6);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+
+        td:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle hover effect */
+        }
+
 
         a {
             text-decoration: none;
@@ -78,11 +83,11 @@
             border-radius: 8px;
         }
 
-        .wonder-link h3 {
-            font-size: 1.2em;
+       .wonder-link h3 {
+            font-size: 1.5em;
+            color: #333;
             margin-top: 10px;
-            color: black;
-        }
+       }
 
         
         .tablelink {
@@ -101,6 +106,11 @@
 
 
 
+
+
+
+
+
     </style>
 </asp:Content>
 
@@ -108,7 +118,7 @@
     <div class="container">
         <!-- Sidebar -->
 
-        <div class="table-background">
+
         
         <table>
             <tr>
@@ -168,13 +178,8 @@
                 </td> 
             </tr>
         </table>
-            </div>
+     </div>
 
-
-
-
-
-    </div>
 
 
 </asp:Content>

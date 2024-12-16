@@ -10,8 +10,12 @@
 
     <style>
         html, body {
+            font-family: Arial, sans-serif; 
+            line-height: 1.6;
+            background-color: #e3e3e3; 
             margin: 0;
             padding: 0;
+            margin-bottom: 40px;
         }
 
         header {
@@ -24,13 +28,7 @@
             padding-right: 40px;
         }
 
-        .site-name { 
-            font-size: 2em;
-            font-weight: bold;
-            margin: 0;
-            background: rgb(40, 40, 40);
-
-        }
+        .site-name { font-size: 2em; font-weight: bold; margin: 0 auto;}
 
         nav ul {
             list-style: none;
@@ -38,9 +36,6 @@
             padding: 0;
             display: flex;
         }
-
-
-
         nav ul li a {
             color: white;
             text-decoration: none;
@@ -51,40 +46,186 @@
         nav ul li a:hover { text-decoration: underline; }
 
 
-
-        #master-style-footer footer {
+        footer {
+            font-family: Arial;
+            font-size: 16px;
+            color: black;
+        
             display: flex; 
             justify-content: space-between;
             align-items: center; 
             background-color: rgb(240,240,240); 
-            color: black;
+            border-radius: 8px;
+        
             padding: 10px;
             position: fixed;
-            width: 100%;
-            bottom: 0;
+            width: 90%; 
+            bottom: 6px;
             left: 0;
             right: 0; 
-            box-sizing: border-box;
+            margin: 0 auto;
         }
 
-        #master-style-footer .footer-content {
+        .footer-content {
             width: 70%;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
         }
 
-        #master-style-footer .footer-content a.footer-link {
+        .footer-content a.footer-link {
             text-decoration: none; 
             color: inherit;        
             cursor: pointer;       
         }
 
-        #master-style-footer .footer-content a.footer-link:hover {
+        .footer-content a.footer-link:hover {
             color: inherit;
         }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
 
+        a:hover {
+            text-decoration: underline; 
+        }
+
+
+
+
+
+
+
+         /* Main container for the entire content */
+         #main {
+             max-width: min(70%, 1200px);
+             margin: 0 auto;
+             margin-top: 30px;
+             padding: 30px; 
+             padding-top: 10px;
+             background-color: #ffffff; 
+             border-radius: 10px; 
+             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+         }
+
+         .title {
+             text-align: center;
+             font-size: 2.5rem; 
+             color: #333;
+             margin-bottom: 20px;
+             margin-top: 0;
+         }
+
+
+         .section-title {
+             font-size: 1.8rem;
+             color: #2c3e50;
+             border-bottom: 2px solid #3498db;
+             padding-bottom: 5px; 
+             margin-bottom: 15px; 
+         }
+
+
+         img {
+             display: block;
+             margin: 20px auto;
+             max-width: 80%;
+             border-radius: 4px;
+             box-shadow: 0 0 15px rgba(100, 100, 100, 1); 
+         }
+
+
+         p {
+             font-size: 1.1rem;
+             color: #555;
+             margin: 10px;
+             margin-bottom: 15px;
+         }
+
+
+         section {
+             margin-bottom: 30px;
+         }
+
+
+         h2:hover {
+             color: #3498db;
+         }
+
+
+         #navigation {
+             position: fixed;
+             top: 150px;
+             left: 50px;
+
+             width: 220px;
+             height: auto;
+
+             background-color: rgb(116, 219, 233);
+             box-shadow: 0 0 15px rgba(100, 100, 100, 0.4); 
+             border-radius: 8px;
+
+             padding: 20px;
+             gap: 20px;
+
+             display: flex;
+
+             flex-direction: column;
+             align-items: center;
+             text-align: center;
+             justify-content: space-between;
+
+             padding-left: 0px;
+             padding-right: 0px;
+             font-size: 20px; 
+         }
+
+         .navigation-item {
+             border-radius: 4px;
+             background-color: rgb(182, 236, 243);
+             width: 80%;
+             padding: 5px;
+         }
+
+         .navigation-item:hover {
+             cursor: pointer;
+             transform: scale(1.05);
+             background-color: rgb(192, 246, 253);
+             box-shadow: 0 0 15px rgba(100, 100, 100, 0.3); 
+         }
     </style>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            document.querySelectorAll('.navigation-item').forEach((item, index) => {
+                const sections = document.querySelectorAll('#main h2');
+
+                item.addEventListener('click', () => {
+                    const target = sections[index];
+
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+                    target.style.transition = 'transform 0.3s ease-in-out';
+
+                    setTimeout(() => {
+                        target.style.transform = 'scale(1.03)';
+                        setTimeout(() => {
+                            target.style.transform = 'scale(0.96)';  // Scale back to normal
+                            setTimeout(() => {
+                                target.style.transform = 'scale(1)';  // Scale back to normal
+                            }, 200);
+                        }, 200);
+
+                    }, 600);
+                });
+            });
+        });
+    </script>
+
+
+
 </head>
 
 <body>
@@ -95,9 +236,9 @@
         <!-- Navigation Menu -->
         <nav>
             <ul>
-                <li><a href="Home.aspx">Home</a></li>
-                <li><a href="Quiz.aspx">Quiz</a></li>
-                <li><a href="Login.aspx">Login</a></li>
+                <li><a href="/Home.aspx">Home</a></li>
+                <li><a href="/Quiz.aspx">Quiz</a></li>
+                <li><a href="/Login.aspx">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -110,11 +251,11 @@
 
     <!-- Footer Section -->
 
-        <footer id="master-style-footer">
+        <footer class="master-footer">
             <div class="footer-content">
-                <span><a href="Home.aspx">Home Page</a></span>
+                <span><a href="/Home.aspx">Home Page</a></span>
                 <span>Information</span>
-                <span><a href="Login.aspx">Login</a></span>
+                <span><a href="/Login.aspx">Login</a></span>
                 <span>Contact</span>
                 <span>&copy; 2024 All rights reserved.</span>
             </div>
