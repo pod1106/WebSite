@@ -160,6 +160,20 @@
             transform: translate(-50%);
         }
 
+        .popup-text.red-popup2 {
+            background-color: rgba(255, 225, 225, 0.9);
+            color: rgba(100, 25, 25, 1);
+            border: 2px solid rgba(255, 200, 200, 1);
+
+            font-size: 30px;
+            position: fixed;
+            width: 400px;
+            z-index: 1000;
+
+            left: 50%;
+            transform: translate(-50%);
+        }
+
 
         .gender-options label {
             display: inline-block;
@@ -201,27 +215,33 @@
 
 
     <script>
-        
-
 
         function showPopup(message, theme = 'red', targetId) {
             const popup = document.getElementById(targetId);
             popup.innerText = message;
 
-            // Remove the old theme class (if any) and add the new theme class
-            popup.classList.remove('red-popup', 'green-popup');
-            if (theme === 'green') {
-                popup.classList.add('green-popup');
-            } else {
-                popup.classList.add('red-popup');
+
+            popup.classList.remove('red-popup', 'green-popup', 'red-popup2');
+
+           
+            switch (theme) {
+                case 'green':
+                    popup.classList.add('green-popup');
+                    break;
+                case 'red':
+                    popup.classList.add('red-popup');
+                    break;
+                case 'red2':
+                    popup.classList.add('red-popup2');
+                    break;
             }
 
             popup.style.visibility = 'visible';
             popup.style.opacity = 1;
 
-            // Optional: Automatically hide the popup after 3 seconds
+            // hide the popup after 3 seconds
             setTimeout(() => {
-                popup.style.opacity = 0; // Fade out the popup (opacity)
+                popup.style.opacity = 0; // Fade out the popup
 
                 setTimeout(() => {
                     popup.style.visibility = 'hidden';
@@ -230,6 +250,7 @@
         }
 
         function validInputs(even) {
+            return true;
             const name = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -456,7 +477,9 @@
             </div>
 
 
-             <label for="wonders">Choose a Wonder of the World:</label>
+
+
+            <label for="wonders">Choose a Wonder of the World:</label>
             <select id="wonders" name="wonder">
               <option value="great_wall">Great Wall of China</option>
               <option value="petra">Petra, Jordan</option>
@@ -466,6 +489,8 @@
               <option value="christ_the_redeemer">Christ the Redeemer, Brazil</option>
               <option value="taj_mahal">Taj Mahal, India</option>
             </select>
+
+
 
              <label for="favorite-wonder">Which of the 7 Wonders fascinates you the most? Tell us why!
                 <span class="tooltip-text">Share your thoughts about your favorite Wonder.</span>
