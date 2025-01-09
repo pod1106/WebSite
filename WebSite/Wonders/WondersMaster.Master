@@ -179,6 +179,7 @@
              padding-left: 0px;
              padding-right: 0px;
              font-size: 20px; 
+             visibility: hidden;
          }
 
          .navigation-item {
@@ -194,9 +195,28 @@
              background-color: rgb(192, 246, 253);
              box-shadow: 0 0 15px rgba(100, 100, 100, 0.3); 
          }
+
+
     </style>
 
     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navigation = document.querySelector('#navigation');
+
+            function toggleNavigation() {
+                console.log(window.innerWidth);
+                if (window.innerWidth > 1800) {
+                    navigation.style.visibility = 'visible';
+
+                } else {
+                    navigation.style.visibility = 'hidden';
+                }
+            }
+
+            toggleNavigation();
+            window.addEventListener('resize', toggleNavigation);
+        });
+
 
         document.addEventListener("DOMContentLoaded", function () {
 
@@ -212,9 +232,9 @@
                     setTimeout(() => {
                         target.style.transform = 'scale(1.03)';
                         setTimeout(() => {
-                            target.style.transform = 'scale(0.96)';  // Scale back to normal
+                            target.style.transform = 'scale(0.96)';
                             setTimeout(() => {
-                                target.style.transform = 'scale(1)';  // Scale back to normal
+                                target.style.transform = 'scale(1)';
                             }, 200);
                         }, 200);
 
@@ -222,6 +242,7 @@
                 });
             });
         });
+
     </script>
 
 
