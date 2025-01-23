@@ -37,33 +37,29 @@ namespace website
             }
 
 
-            if (ValidateInputs(username, email, password, confirmPassword, gender))
-            {
-                string CheckUser = CheckUserExistence(username, email);
-
-
-                if (CheckUser == null) {
-
-                    resultLabel.Text = "all good!";
-
-
-                } else {
-
-                    resultLabel.Text = "this " + CheckUser + " is already been used";
-
-                    string script = $"window.onload = function() {{ showPopup('This {wonder} has already been used', 'red2', 'popupText'); }};";
-                    ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
-
-                }
-
-            }
-            else
+            if (!ValidateInputs(username, email, password))
             {
                 resultLabel.Text = "something is wrong";
+                KeepFormData(username, email, password, confirmPassword, gender, sliderValue, text);
+                return;
             }
-            KeepFormData(username, email, password, confirmPassword, gender, sliderValue, text);
+
+
+            string CheckUser = CheckUserExistence(username, email);
+
+            if (!(CheckUser == null)) {
+
+                resultLabel.Text = "this " + CheckUser + " is already been used";
+                string script = $"window.onload = function() {{ showPopup('This {wonder} has already been used', 'red2', 'popupText'); }};";
+                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
+
+
+            } else {
+                resultLabel.Text = "all good!";
+            }
 
         }
+
 
         private string CheckUserExistence(string name, string email)
         {
@@ -75,15 +71,15 @@ namespace website
                 conn.Open();
 
 
-                string query = "SELECT COUNT(1) FROM Users WHERE Username = @name";
+                string query = "SELECT COUNT(*) FROM Users WHERE Username = @name"; // check is username is in use
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@name", name);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count > 0) { return "username"; }
+                    if (count > 0) { return "username, "; }
                 }
 
-                query = "SELECT COUNT(1) FROM Users WHERE Email = @email";
+                query = "SELECT COUNT(*) FROM Users WHERE Email = @email";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
@@ -94,9 +90,11 @@ namespace website
             return null;
         }
 
-        private bool ValidateInputs(string name, string email, string password, string confirmPassword, string gender)
+
+        private bool ValidateInputs(string name, string email, string password)
         {
             return true;
+            
             if (string.IsNullOrEmpty(name) || name.Length < 4)
             {
                 return false; // Invalid name
@@ -107,7 +105,6 @@ namespace website
                 return false; // Invalid email
             }
 
-
             if (string.IsNullOrEmpty(password) ||
                 password.Length < 7 ||
                 !Regex.IsMatch(password, "[a-z]") ||
@@ -117,8 +114,6 @@ namespace website
                 return false;
             }
 
-
-
             return true;
         }
 
@@ -127,7 +122,7 @@ namespace website
         private void KeepFormData(string username, string email, string password, string confirmPassword, string gender, string sliderValue, string text)
         {
             string keepFormDataScript = $@"
-        // Keep the form data
+        
         document.getElementById('username').value = '{username}';
         document.getElementById('email').value = '{email}';
         document.getElementById('password').value = '{password}';
@@ -146,9 +141,7 @@ namespace website
             document.getElementById('other').checked = true;
         }}
 
-        // Set the wonder dropdown value
-        document.getElementById('wonders').value = '{Request.Form["wonder"]}';
-    ";
+        document.getElementById('wonders').value = '{Request.Form["wonder"]}';";
 
             // Execute the script to re-fill the form fields with the values entered by the user
             ClientScript.RegisterStartupScript(this.GetType(), "KeepFormData", keepFormDataScript, true);

@@ -251,6 +251,7 @@
 
         function validInputs(even) {
             return true;
+            
             const name = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
@@ -286,7 +287,7 @@
             }
 
             if (email) {
-                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if (!emailRegex.test(email)) {
                     showPopup("Email is not valid!", 'red', 'popupEmailText');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -325,6 +326,7 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
+
 
             if (confirmPassword) {
                 if (password !== confirmPassword) {
