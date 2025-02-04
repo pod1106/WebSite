@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WondersMaster.master.cs" Inherits="website.Wonders.WondersMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WondersMaster.master.cs" Inherits="website.MasterPages.WondersMaster" %>
 
 <!DOCTYPE html>
 
@@ -124,6 +124,8 @@
              border-bottom: 2px solid #3498db;
              padding-bottom: 5px; 
              margin-bottom: 15px; 
+             padding: 5px;
+             border-radius: 5px;
          }
 
 
@@ -219,7 +221,6 @@
 
 
         document.addEventListener("DOMContentLoaded", function () {
-
             document.querySelectorAll('.navigation-item').forEach((item, index) => {
                 const sections = document.querySelectorAll('#main h2');
 
@@ -227,21 +228,24 @@
                     const target = sections[index];
 
                     target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-                    target.style.transition = 'transform 0.3s ease-in-out';
 
                     setTimeout(() => {
-                        target.style.transform = 'scale(1.03)';
-                        setTimeout(() => {
-                            target.style.transform = 'scale(0.96)';
-                            setTimeout(() => {
-                                target.style.transform = 'scale(1)';
-                            }, 200);
-                        }, 200);
+                        target.style.transition = "background-color 0.7s ease";
+                        target.style.backgroundColor = "rgb(220, 240, 200)";
 
-                    }, 600);
+                        setTimeout(() => { target.style.backgroundColor = ""; }, 1000);
+
+                    }, 500);
+
+
                 });
             });
         });
+
+
+
+
+
 
     </script>
 
@@ -257,9 +261,9 @@
         <!-- Navigation Menu -->
         <nav>
             <ul>
-                <li><a href="/Home.aspx">Home</a></li>
-                <li><a href="/Quiz.aspx">Quiz</a></li>
-                <li><a href="/Login.aspx">Login</a></li>
+                <li><a href="../Home.aspx">Home</a></li>
+                <li><a href="../Quiz.aspx">Quiz</a></li>
+                <li><a href="../Login.aspx">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -274,9 +278,9 @@
 
         <footer class="master-footer">
             <div class="footer-content">
-                <span><a href="/Home.aspx">Home Page</a></span>
+                <span><a href="../Home.aspx">Home Page</a></span>
                 <span>Information</span>
-                <span><a href="/Login.aspx">Login</a></span>
+                <span><a href="../Login.aspx">Login</a></span>
                 <span>Contact</span>
                 <span>&copy; 2024 All rights reserved.</span>
             </div>

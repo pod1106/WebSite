@@ -1,7 +1,6 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.master.cs" Inherits="website.MyMaster" %>
 
 
-
 <!DOCTYPE html>
 
 <html>

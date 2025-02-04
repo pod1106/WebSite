@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace website.Wonders
+namespace website.MasterPages
 {
 
 

@@ -5,13 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace website.Wonders
+using System.Data.SQLite;
+
+namespace website
 {
-    public partial class WondersMaster : System.Web.UI.MasterPage
+    public partial class Admin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
+
     }
 }

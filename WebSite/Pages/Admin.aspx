@@ -1,5 +1,5 @@
 ﻿
-<%@ Page Title="Admin - User List" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="website.Admin" %>
+<%@ Page Title="Admin - User List" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="website.Pages.Admin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Admin - User List</title>
@@ -9,7 +9,7 @@
     <!-- Form needs to be inside ContentPlaceHolder -->
     <form id="form1" runat="server">
         <div>
-            <asp:GridView ID="UserGridView" runat="server" AutoGenerateColumns="true" />
+            
         </div>
     </form>
 </asp:Content>

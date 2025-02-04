@@ -1,4 +1,4 @@
-﻿<%@ Page Title="7 Wonders of the World" Language="C#" MasterPageFile="~/MyMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="website.Home" %>
+﻿<%@ Page Title="7 Wonders of the World" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="website.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         /* Basic styles for the layout */
@@ -12,12 +12,12 @@
         }
 
         @keyframes slide {
-            0%, 100% { background-image: url("img/great_wall_of_china.jpg"); }
-            16.67% { background-image: url('img/petra.jpg'); }
-            33.33% { background-image: url('img/christ_the_redeemer.jpg'); }
-            50% { background-image: url('img/machu_picchu.jpg'); }
-            66.67% { background-image: url("img/chichen_itza.jpg"); }
-            83.33% { background-image: url("img/romancolosseum.jpg"); }
+            0%, 100% { background-image: url("../img/great_wall_of_china.jpg"); }
+            16.67% { background-image: url('../img/petra.jpg'); }
+            33.33% { background-image: url('../img/christ_the_redeemer.jpg'); }
+            50% { background-image: url('../img/machu_picchu.jpg'); }
+            66.67% { background-image: url("../img/chichen_itza.jpg"); }
+            83.33% { background-image: url("../img/romancolosseum.jpg"); }
         }
 
         .container {
@@ -130,25 +130,25 @@
             <tr>
                 <td class="tablelink">
                     <a href="Wonders/great_wall_of_china.aspx" class="wonder-link">
-                        <img src="img/great_wall_of_china.jpg" alt="Great Wall of China" class="wonder-img">
+                        <img src="../img/great_wall_of_china.jpg" alt="Great Wall of China" class="wonder-img">
                         <h3>Great Wall of China</h3>
                     </a>
                 </td>
                 <td class="tablelink">
                     <a href="Wonders/petra.aspx" class="wonder-link">
-                        <img src="img/petra.jpg" alt="Petra" class="wonder-img">
+                        <img src="../img/petra.jpg" alt="Petra" class="wonder-img">
                         <h3>Petra</h3>
                     </a>
                 </td>
                 <td class="tablelink">
                     <a href="Wonders/christ_the_redeemer.aspx" class="wonder-link">
-                        <img src="img/christ_the_redeemer.jpg" alt="Christ the Redeemer" class="wonder-img">
+                        <img src="../img/christ_the_redeemer.jpg" alt="Christ the Redeemer" class="wonder-img">
                         <h3>Christ the Redeemer</h3>
                     </a>
                 </td>
                 <td class="tablelink">
                     <a href="Wonders/machu_picchu.aspx" class="wonder-link">
-                        <img src="img/machu_picchu.jpg" alt="Machu Picchu" class="wonder-img">
+                        <img src="../img/machu_picchu.jpg" alt="Machu Picchu" class="wonder-img">
                         <h3>Machu Picchu</h3>
                     </a>
                 </td>
@@ -156,19 +156,19 @@
             <tr>
                 <td class="tablelink">
                     <a href="Wonders/chichen_itza.aspx" class="wonder-link">
-                        <img src="img/chichen_itza.jpg" alt="Chichen Itza" class="wonder-img">
+                        <img src="../img/chichen_itza.jpg" alt="Chichen Itza" class="wonder-img">
                         <h3>Chichen Itza</h3>
                     </a>
                 </td>
                 <td class="tablelink">
                     <a href="Wonders/romancolosseum.aspx" class="wonder-link">
-                        <img src="img/romancolosseum.jpg" alt="Roman Colosseum" class="wonder-img">
+                        <img src="../img/romancolosseum.jpg" alt="Roman Colosseum" class="wonder-img">
                         <h3>Roman Colosseum</h3>
                     </a>
                 </td>
                 <td class="tablelink">
                     <a href="Wonders/taj_mahal.aspx" class="wonder-link">
-                        <img src="img/taj_mahal.jpg" alt="Taj Mahal" class="wonder-img">
+                        <img src="../img/taj_mahal.jpg" alt="Taj Mahal" class="wonder-img">
                         <h3>Taj Mahal</h3>
                     </a>
                 </td>
