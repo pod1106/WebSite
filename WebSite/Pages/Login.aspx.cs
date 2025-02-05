@@ -1,152 +1,69 @@
 ﻿using System;
 using System.Data.SQLite;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
 using System.Web.UI;
-using System.Xml.Linq;
-
-
 
 namespace website
 {
-    public partial class Login : Page
+    public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            if (!IsPostBack)
-            {
-            }
         }
 
         protected void Submit(object sender, EventArgs e)
         {
             string username = Request.Form["username"];
-            string email = Request.Form["email"];
             string password = Request.Form["password"];
-            string confirmPassword = Request.Form["confirmPassword"];
-            string gender = Request.Form["gender"];
-            string sliderValue = Request.Form["interestOutput"];
-            string text = Request.Form["favoriteWonder"];
-            string wonder = Request.Form["wonder"];
 
+            bool isUserValid = CheckUserInDatabase(username, password);
 
-            if (!string.IsNullOrEmpty(gender))
+            if (isUserValid)
             {
-                gender = gender.ToLower().Trim();
+                resultLabel.Text = "Login successful!";
             }
-
-
-            if (!ValidateInputs(username, email, password))
+            else
             {
-                resultLabel.Text = "something is wrong";
-                KeepFormData(username, email, password, confirmPassword, gender, sliderValue, text);
-                return;
+                resultLabel.Text = "Invalid username or password.";
+
+                
+                ClientScript.RegisterStartupScript(this.GetType(), "InvalidLogin",
+                    "window.onload = function() { showPopup('Invalid Username or Password', 'red2', 'popupText'); };", true);
+
+                KeepFormData(username, password);
             }
-
-
-            string CheckUser = CheckUserExistence(username, email);
-
-            if (!(CheckUser == null)) {
-
-                resultLabel.Text = "this " + CheckUser + " is already been used";
-                string script = $"window.onload = function() {{ showPopup('This {wonder} has already been used', 'red2', 'popupText'); }};";
-                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
-
-
-            } else {
-                resultLabel.Text = "all good!";
-            }
-
         }
 
-
-        private string CheckUserExistence(string name, string email)
+        private bool CheckUserInDatabase(string username, string password)
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
-            string connectionString = $"Data Source={dbPath};Version=3;";
+            bool userExists = false;
 
-            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + dbPath))
             {
                 conn.Open();
 
-
-                string query = "SELECT COUNT(*) FROM Users WHERE Username = @name"; // check is username is in use
+                string query = "SELECT COUNT(1) FROM Users WHERE username = @username AND password = @password";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@name", name);
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count > 0) { return "username, "; }
-                }
+                    cmd.Parameters.AddWithValue("@username", username);
+                    cmd.Parameters.AddWithValue("@password", password);
 
-                query = "SELECT COUNT(*) FROM Users WHERE Email = @email";
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@email", email);
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count > 0) { return "email"; }
+                    userExists = Convert.ToInt32(cmd.ExecuteScalar()) > 0;
                 }
             }
-            return null;
+
+            return userExists;
         }
 
 
-        private bool ValidateInputs(string name, string email, string password)
-        {
-            return true;
-            
-            if (string.IsNullOrEmpty(name) || name.Length < 4)
-            {
-                return false; // Invalid name
-            }
-
-            if (string.IsNullOrEmpty(email) || !Regex.IsMatch(email, "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"))
-            {
-                return false; // Invalid email
-            }
-
-            if (string.IsNullOrEmpty(password) ||
-                password.Length < 7 ||
-                !Regex.IsMatch(password, "[a-z]") ||
-                !Regex.IsMatch(password, "[A-Z]") ||
-                !Regex.IsMatch(password, "[0-9]"))
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-
-
-        private void KeepFormData(string username, string email, string password, string confirmPassword, string gender, string sliderValue, string text)
+        private void KeepFormData(string username, string password)
         {
             string keepFormDataScript = $@"
-        
+
         document.getElementById('username').value = '{username}';
-        document.getElementById('email').value = '{email}';
-        document.getElementById('password').value = '{password}';
-        document.getElementById('confirmPassword').value = '{confirmPassword}';
-        document.getElementById('interest-level').value = '{sliderValue}';
-        document.getElementById('interestOutput').value = '{sliderValue}';
-        document.getElementById('sliderValueHidden').value = '{sliderValue}';
-        document.getElementById('favoriteWonder').value = '{text}';
+        document.getElementById('password').value = '{password}';";
 
-        // Set the gender radio buttons
-        if ('{gender}' === 'male') {{
-            document.getElementById('male').checked = true;
-        }} else if ('{gender}' === 'female') {{
-            document.getElementById('female').checked = true;
-        }} else if ('{gender}' === 'other') {{
-            document.getElementById('other').checked = true;
-        }}
-
-        document.getElementById('wonders').value = '{Request.Form["wonder"]}';";
-
-            // Execute the script to re-fill the form fields with the values entered by the user
             ClientScript.RegisterStartupScript(this.GetType(), "KeepFormData", keepFormDataScript, true);
         }
-
-
     }
 }

@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="website.Login" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-<asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
-    <style>    
+
+        <style>    
 
         html, body {
             width: 100%;
@@ -49,33 +50,16 @@
             text-align: left;
         }
 
-        .form-container select {
-            width: 40%;
-            padding: 10px;
-            margin: 0 auto;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 18px;
-            text-align: left;
-            background-color: #fff;
-        }
 
 
-
-        .form-container select option {
-            font-size: 16px; /* Optional: change the font size of the options */
-        }
-
-
-        .form-container .send-button {
-            width: 100px; 
+        .form-container .login-button {
+            width: 260px; 
             padding: 12px; 
             font-weight: bold;
             background-color: #35c2dc; 
             color: white; 
             font-size: 24px;
-            margin: 20px;
+            margin: 10px;
             border: none; 
             border-radius: 4px; 
             text-align: center;
@@ -84,9 +68,11 @@
             transition: background-color 0.3s ease;
         }
 
-        .form-container button:hover {
+        .form-container .login-button:hover {
             background-color: #14a8e6;
         }
+
+
 
 
 
@@ -118,6 +104,7 @@
 
 
 
+
         .popup-text {
             background-color: rgba(255, 225, 225, 0.9);
             color: rgba(100, 25, 25, 1);
@@ -140,6 +127,7 @@
             transition: opacity 0.6s ease;
         }
 
+
         .popup-text.red-popup {
             background-color: rgba(255, 225, 225, 0.9);
             color: rgba(100, 25, 25, 1);
@@ -160,8 +148,8 @@
             transform: translate(-50%);
         }
 
-        .popup-text.red-popup2 {
-            background-color: rgba(255, 225, 225, 0.9);
+        .popup-text.red2-popup {
+            background-color: rgba(255, 225, 225, 1);
             color: rgba(100, 25, 25, 1);
             border: 2px solid rgba(255, 200, 200, 1);
 
@@ -175,31 +163,39 @@
         }
 
 
-        .gender-options label {
-            display: inline-block;
-            margin-right: 5px;
-            margin-left: 5px;
-            background-color: rgba(0, 0, 0, 0.05);
-            width: 120px;
-            height: 70px;
-            padding: 5px;
-            border: 2px solid rgba(100, 100, 100, 0.8);
-            border-radius: 8px;
+        a.create-account {
+            width: 236px;
+            font-family: Arial;
+            padding: 12px; 
+            font-weight: bold;
+
+            background-color: #35c2dc; 
+            color: white; 
+
+            font-size: 24px;
+            margin: 10px;
+
+            border: none; 
+            border-radius: 4px; 
             text-align: center;
+            
+            display: inline-block;
+
+            text-decoration:none !important;
+
             cursor: pointer; 
+            transition: background-color 0.3s ease;
+            text-decoration: none; /* Remove underline */
         }
 
-        .gender-window {
-            border: 2px solid rgba(50, 50, 50, 0.8);
-            border-radius: 8px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            position: relative;
-            margin: 0 auto;
-            margin-bottom: 10px;
-            background-color: white;
-            width: min(600px, 95%);
+        /* Hover effect for the create account link */
+        a.create-account:hover {
+            background-color: #14a8e6;
         }
+
+
+
+
 
 
 
@@ -216,67 +212,47 @@
 
     <script>
 
-        function showPopup(message, theme = 'red', targetId) {
+        function showPopup(message, theme, targetId) {
             const popup = document.getElementById(targetId);
             popup.innerText = message;
 
+            const themes = ['red-popup', 'green-popup', 'red-popup2'];
+    
+            popup.classList.remove(...themes);
 
-            popup.classList.remove('red-popup', 'green-popup', 'red-popup2');
-
-           
-            switch (theme) {
-                case 'green':
-                    popup.classList.add('green-popup');
-                    break;
-                case 'red':
-                    popup.classList.add('red-popup');
-                    break;
-                case 'red2':
-                    popup.classList.add('red-popup2');
-                    break;
+            if (theme) {
+                popup.classList.add(`${theme}-popup`);
             }
 
             popup.style.visibility = 'visible';
             popup.style.opacity = 1;
 
-            // hide the popup after 3 seconds
+            const fadeOutDelay = 3000;
+            const fadeDuration = 600;
+
             setTimeout(() => {
-                popup.style.opacity = 0; // Fade out the popup
+                popup.style.opacity = 0;
 
                 setTimeout(() => {
                     popup.style.visibility = 'hidden';
-                }, 600);
-            }, 3000);
+                }, fadeDuration);
+            }, fadeOutDelay);
         }
 
+
+
         function validInputs(even) {
-            return true;
+            
             
             const name = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value; 
-            const male = document.getElementById('male').checked;
-            const female = document.getElementById('female').checked;
-            const other = document.getElementById('other').checked;
-            
-            let gender = 0;
-
-
-            if (male === true) {
-                gender = "male";
-            } else if (female === true) {
-                gender = "female";
-            } else if (other === true) {
-                gender = "other";
-            }
-
+            return true;
 
 
 
             if (name) {
                 if (name.length < 4) {
-                    showPopup("Username has to be at least 4 characters!", 'red', 'popupNameText');
+                    showPopup("Username too short!", 'red', 'popupNameText');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
@@ -286,65 +262,20 @@
                 return false;
             }
 
-            if (email) {
-                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                if (!emailRegex.test(email)) {
-                    showPopup("Email is not valid!", 'red', 'popupEmailText');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return false;
-                }
-            } else {
-                showPopup("Email is not set!", 'red', 'popupEmailText');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return false;
-            }
 
             if (password) {
-                if (password.length >= 7) {
-                    if (!/[a-z]/.test(password)) {
-                        showPopup("Password needs to contain a lowercase letter.", 'red', 'popupPasswordText');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return false;
-                    }
-                    if (!/[A-Z]/.test(password)) {
-                        showPopup("Password needs to contain an uppercase letter.", 'red', 'popupPasswordText');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return false;
-                    }
-                    if (!/[0-9]/.test(password)) {
-                        showPopup("Password needs to contain a number.", 'red', 'popupPasswordText');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return false;
-                    }
-                } else {
-                    showPopup("Password must be at least 7 characters long.", 'red', 'popupPasswordText');
+                if (password.length <= 6) {
+                    showPopup("Password is too short!", 'red', 'popupPasswordText');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
+
             } else {
                 showPopup("Password is not set!", 'red', 'popupPasswordText');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
 
-
-            if (confirmPassword) {
-                if (password !== confirmPassword) {
-                    showPopup("Passwords must be the same", "red", "popupConfirmPasswordText");
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return false;
-                }
-            } else {
-                showPopup("must Confirm the password", "red", "popupConfirmPasswordText");
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return false;
-            }
-
-
-            if (!gender) {
-                showPopup("Please select a gender", "red", "popupGender");
-                return false;
-            }
 
             console.log("username: " + name + "\nemail: " + email + "\npassword: " + password + "\ngender: " + gender.id);
             showPopup("New account was created!", "green", 'popupText');
@@ -390,11 +321,19 @@
 
 
     </script>
+
+
+
 </asp:Content>
 
-<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    
+
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
+
+
     <div class="form-container" runat="server">
         <form autocomplete="off" runat="server">
             <!-- Username Field -->
@@ -403,13 +342,6 @@
                 <span class="popup-text" id="popupNameText"></span>
             </label>
             <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="off" />
-
-
-            <!-- Email Field -->
-            <label for="email">Email
-                <span class="popup-text" id="popupEmailText"></span> 
-            </label>
-            <input type="text" id="email" name="email" placeholder="Enter your email" autocomplete="off" />
 
 
             <!-- Password Field -->
@@ -427,101 +359,32 @@
                 <span style="position: relative; top: -10px;">Show Password</span>
             </label>
 
-            <!-- Confirm Password Field -->
-            <label for="confirm-password">Confirm Password
-                <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
-                <span class="popup-text" id="popupConfirmPasswordText"></span>
-            </label>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" autocomplete="off" />
-
-
-            <!-- Gender Selection -->
-            <div class="gender-window">
-                <label style="text-align: center;">Gender
-                    <span class="popup-text" id="popupGender"></span>
-                </label>
-
-                <div class="gender-options">
-                    <label>
-                        <input type="radio" id="male" name="gender" value="Male" />
-                        Male
-                    </label>
-
-                    <label>
-                        <input type="radio" id="female" name="gender" value="Female" />
-                        Female
-                    </label>
-
-                    <label>
-                        <input type="radio" id="other" name="gender" value="Other" />
-                        Other
-                    </label>
-                </div>
-            </div>
-
-           
-
-
-
-            <!-- Interest Slider -->
-            <div>
-                <label for="interest-level" style="margin-top: 30px;">Rate your interest in learning about the 7 Wonders <br>(1 - Not Interested, 10 - Very Interested)
-                    <span class="tooltip-text">Use the slider to indicate your interest.</span>
-                </label>
-
-                <input style="width: 80%; display: block; margin: 0 auto;" type="range" id="interest-level" name="interest-level" min="1" max="10" value="5"
-                    oninput="document.getElementById('interestOutput').value = this.value; document.getElementById('sliderValueHidden').value = this.value;">
-
-                <input type="text" id="interestOutput" name="interestOutput" value="5" readonly 
-                       style="display: block; margin: 0px auto; margin-bottom: 30px; border: 1px solid black; padding: 5px; border-radius: 4px; font-size: 35px; width: 60px; text-align: center;" />
-
-                <input type="hidden" id="sliderValueHidden" name="sliderValueHidden" />
-            </div>
-
-
-
-
-            <label for="wonders">Choose a Wonder of the World:</label>
-            <select id="wonders" name="wonder">
-              <option value="great_wall">Great Wall of China</option>
-              <option value="petra">Petra, Jordan</option>
-              <option value="colosseum">Colosseum, Italy</option>
-              <option value="chichen_itza">Chichen Itza, Mexico</option>
-              <option value="machu_picchu">Machu Picchu, Peru</option>
-              <option value="christ_the_redeemer">Christ the Redeemer, Brazil</option>
-              <option value="taj_mahal">Taj Mahal, India</option>
-            </select>
-
-
-
-             <label for="favorite-wonder">Which of the 7 Wonders fascinates you the most? Tell us why!
-                <span class="tooltip-text">Share your thoughts about your favorite Wonder.</span>
-            </label>
-
-            <textarea id="favoriteWonder" name="favoriteWonder" placeholder="Write your thoughts here..." 
-                      style="margin-right: 20px; resize: none; width: 95%; height: 100px; font-size: 18px;" rows="4" cols="50"></textarea>
-
-
 
             <!-- Submit Button -->
-            <asp:Button ID="btnSubmit" CssClass="send-button" runat="server" Text="Send" 
-                OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static"/>
+            <div>
+                <asp:Button ID="btnSubmit" CssClass="login-button" runat="server" Text="Login" 
+                    OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static" />
+            </div>
+
+
+            
+            <div>
+                <a href="Register.aspx" class="create-account">Create New Account</a>
+            </div>
 
 
 
-
+            <div style="margin: 40px">
             <asp:Label ID="resultLabel" runat="server" 
                Text="" 
                Style="font-size: 18px; color: blue;" />
+            </div>
             
         </form>
 
          
     </div>
     <div class="popup-text" id="popupText"></div>
-    
-    
+
 
 </asp:Content>
-
-

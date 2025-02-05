@@ -3,7 +3,7 @@
     <style>
         /* Basic styles for the layout */
         body {
-            height: 200vh;
+            height: 100vh;
             background-size: cover; 
             background-position: center center;
             background-attachment: fixed;
@@ -24,7 +24,7 @@
             display: flex;             /* Enable Flexbox */
             justify-content: center;   /* Center horizontally */
             align-items: center;       /* Center vertically */
-            height: 90%;             /* Use full viewport height */
+            height: 80%;             /* Use full viewport height */
         }
 
 
@@ -37,7 +37,7 @@
         table {
             position: sticky;
             width: 70%;
-            top: 250px;
+            top: 40px;
             margin: 500px auto;
             border-collapse: separate;
             border-spacing: 15px;
@@ -52,7 +52,7 @@
 
 
         th, td {
-            padding: 20px;
+            padding: 8px;
             text-align: center;
             background-color: rgba(240, 240, 240, 0.6);
             border-radius: 8px;
@@ -63,6 +63,11 @@
         td:hover {
             transform: scale(1.05);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle hover effect */
+        }
+
+        td.no-hover:hover {
+            transform: none;
+            box-shadow: none;
         }
 
 
@@ -78,7 +83,7 @@
 
         .wonder-img {
             width: 100%;
-            height: 180px;
+            height: 140px;
             object-fit: cover; 
             border-radius: 8px;
         }
@@ -86,7 +91,7 @@
        .wonder-link h3 {
             font-size: 1.5em;
             color: #333;
-            margin-top: 10px;
+            margin-top: 6px;
        }
 
         
@@ -122,7 +127,7 @@
         
         <table>
             <tr>
-                <td colspan="4" style="padding-inline: 50px; font-size: 30px;">
+                <td colspan="4" style="padding-inline: 50px; font-size: 24px;" class="no-hover">
                     <h2>Welcome to the 7 Wonders of the World!</h2>
                     <p>Explore the incredible landmarks that have captivated the world for centuries.<br /> Learn fascinating facts, test your knowledge with fun quizzes, and enjoy stunning images of these awe-inspiring wonders. Let the adventure begin!</p>
                 </td>
