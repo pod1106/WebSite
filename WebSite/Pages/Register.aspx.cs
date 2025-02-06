@@ -51,14 +51,18 @@ namespace website
             }
 
             if (AddNewUser(username, email, password)) {
-                string script = $"window.onload = function() {{ showPopup('ADDED!!!', 'red2', 'popupText', 6000); }};";
 
-                ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
-                KeepFormData(username, email, password, confirmPassword, gender, sliderValue, text);
+                System.Threading.Thread.Sleep(1000);
+
+                Session["Username"] = username;
+                Response.Redirect("Home.aspx");
+
                 return;
+
+
             } else
             {
-                string script = $"window.onload = function() {{ showPopup('NOT GOOD!!!', 'red2', 'popupText', 6000); }};";
+                string script = $"window.onload = function() {{ showPopup('Please try again', 'red2', 'popupText', 6000); }};";
 
                 ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
                 KeepFormData(username, email, password, confirmPassword, gender, sliderValue, text);
@@ -84,7 +88,7 @@ namespace website
                 {
                     cmd.Parameters.AddWithValue("@name", name);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count > 0) { return "username, "; }
+                    if (count > 0) { return "username"; }
                 }
 
                 query = "SELECT COUNT(*) FROM Users WHERE Email = @email";

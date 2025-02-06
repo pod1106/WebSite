@@ -19,13 +19,12 @@ namespace website
 
             if (isUserValid)
             {
-                resultLabel.Text = "Login successful!";
+                Session["Username"] = username;
+                Response.Redirect("Home.aspx");
             }
             else
             {
-                resultLabel.Text = "Invalid username or password.";
 
-                
                 ClientScript.RegisterStartupScript(this.GetType(), "InvalidLogin",
                     "window.onload = function() { showPopup('Invalid Username or Password', 'red2', 'popupText'); };", true);
 

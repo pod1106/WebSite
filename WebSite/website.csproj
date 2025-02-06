@@ -86,6 +86,9 @@
     <Content Include="img\petra_history.jpg" />
     <Content Include="img\petra_trade.jpg" />
     <Content Include="Pages\Login.aspx" />
+    <Content Include="Pages\LogoutHandler.aspx" />
+    <Content Include="Pages\Quiz.aspx" />
+    <Content Include="Pages\Quiz.js" />
     <Content Include="Pages\Register.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -117,6 +120,20 @@
     </Compile>
     <Compile Include="Pages\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\LogoutHandler.aspx.cs">
+      <DependentUpon>LogoutHandler.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\LogoutHandler.aspx.designer.cs">
+      <DependentUpon>LogoutHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Quiz.aspx.cs">
+      <DependentUpon>Quiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Quiz.aspx.designer.cs">
+      <DependentUpon>Quiz.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

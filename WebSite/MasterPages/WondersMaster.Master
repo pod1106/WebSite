@@ -43,6 +43,13 @@
             margin-left: 40px;
         }
 
+        nav ul li span {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5em;
+            margin-left: 40px;
+        }
+
         nav ul li a:hover { text-decoration: underline; }
 
 
@@ -144,6 +151,43 @@
              margin: 10px;
              margin-bottom: 15px;
          }
+         p strong {
+            transition: color 0.3s ease;
+         }
+ 
+         p strong:hover {
+             color: #d23a3a;
+         }
+
+         
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 220px;
+            background-color: rgba(100, 100, 0, 0.95);
+            color: white;
+            text-align: center;
+            border: solid, 2px, black;
+            border-radius: 8px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 115%;
+            left: 50%;
+            margin-left: -110px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
 
 
          section {
@@ -197,6 +241,11 @@
              background-color: rgb(192, 246, 253);
              box-shadow: 0 0 15px rgba(100, 100, 100, 0.3); 
          }
+
+
+
+
+
 
 
     </style>
@@ -260,13 +309,24 @@
         <div class="site-name">7 Wonderes of The World</div>
         
         <!-- Navigation Menu -->
-        <nav>
-            <ul>
-                <li><a href="../Home.aspx">Home</a></li>
-                <li><a href="../Quiz.aspx">Quiz</a></li>
-                <li><a href="../Login.aspx">Login</a></li>
-            </ul>
-        </nav>
+            <nav>
+                <ul>
+                    <li><a href="../Home.aspx">Home</a></li>
+                    <li><a href="../Quiz.aspx">Quiz</a></li>
+
+                    <li>
+                        <% if (Session["Username"] != null) { %>
+
+                            <a href="../LogoutHandler.aspx">Logout</a>
+                        
+                            <span>Welcome, <%= Session["Username"] %>!</span>
+                            
+                        <% } else { %>
+                            <a href="../Login.aspx">Login</a>
+                        <% } %>
+                    </li>
+                </ul>
+            </nav>
     </header>
 
 

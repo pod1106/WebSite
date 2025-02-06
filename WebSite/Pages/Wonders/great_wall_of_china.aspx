@@ -17,14 +17,28 @@
                 History
             </h2>
 
-            <p>
-                The Great Wall of China began as a series of fortifications built as early as the 7th century BC by different Chinese states to defend against invasions from nomadic groups.
-                After China was unified in 221 BC by Qin Shi Huang, he connected existing walls to form a cohesive defense system against northern invaders, particularly the Xiongnu.
-                Over the centuries, different dynasties added to and repaired the wall, with the most extensive construction taking place during the Ming dynasty (1368–1644).
-                The Ming were particularly concerned about Mongol incursions and built much of what remains today using stronger materials like bricks and stone.
-                The Great Wall served as a military defense, a control mechanism for immigration and trade, and a symbol of the strength of the Chinese empire.
-                <img src="\img\great_wall_of_china_history.jpg"" />
-            </p>
+           <p>
+            <strong>The Great Wall of China</strong> began as a series of fortifications built as early as the 
+
+            <strong class="tooltip">7th century BC
+                <span class="tooltiptext">Construction started over 2,700 years ago!</span>
+            </strong>
+
+             by different Chinese states to defend against invasions from nomadic groups.
+            After China was unified in <em>221 BC</em> by <strong class="tooltip">Qin Shi Huang
+
+            <span class="tooltiptext">The first emperor of unified China</span>
+
+            </strong>, he connected existing walls to form a cohesive defense system against northern invaders, particularly the Xiongnu.
+            Over the centuries, different dynasties added to and repaired the wall, with the most extensive construction taking place during the 
+
+            <strong class="tooltip">Ming dynasty
+                <span class="tooltiptext">Known for building the most durable sections of the wall</span>
+            </strong> (<em>1368–1644</em>).
+
+            <img src="\img\great_wall_of_china_history.jpg" style="border: 2px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 10px #aaa;" />
+        </p>
+
         </section>
 
         <section>
@@ -33,12 +47,17 @@
             </h2>
 
             <p>
-                The wall stretches over 21,000 km (13,170 miles), traversing mountains, deserts, and plains.
-                The construction techniques and materials used varied depending on the region, with earlier sections made from rammed earth and later sections built with brick, stone, and other durable materials.
+                The wall stretches over <strong class="tooltip">21,000 km (13,170 miles)
+                    <span class="tooltiptext">That's over half the circumference of the Earth!</span>
+                </strong>, traversing mountains, deserts, and plains.
+                The construction techniques and materials used varied depending on the region, with earlier sections made from <strong>rammed earth</strong> and later sections built with <strong class="tooltip">brick, stone
+                    <span class="tooltiptext">Materials used during the Ming dynasty for durability.</span>
+                </strong>, and other durable materials.
                 The Ming dynasty fortified their sections of the wall with watchtowers, signal towers, and garrison stations.
                 The design of the wall also adapted to the terrain, winding over rugged mountains and through arid deserts, making it one of the most impressive architectural and engineering feats in history.
                 <img src="\img\great_wall_of_china_construction.jpg" />
             </p>
+
         </section>
 
         <section>
@@ -46,14 +65,19 @@
                 Significance
             </h2>
 
-            <p>
-                The Great Wall served as much more than a physical barrier. It was a symbol of the strength and determination of the Chinese people to protect their culture and land.
-                Militarily, it provided an early warning system through its signaling towers, where smoke signals and fires would be used to relay messages.
-                Economically, it controlled trade routes such as the Silk Road by regulating the flow of goods and imposing duties.
-                It also helped with immigration control, ensuring that people crossing into China did so through regulated checkpoints.
-                The wall was not just a defense structure but a tool for governance and control.
-                <img src="\img\great_wall_of_china_significance.jpg" />
-            </p>
+                <p>
+                    The Great Wall served as much more than a physical barrier. It was a symbol of the <strong class="tooltip">strength and determination
+                        <span class="tooltiptext">Represented the resilience of the Chinese people.</span>
+                    </strong> of the Chinese people to protect their culture and land.
+                    Militarily, it provided an early warning system through its signaling towers, where <strong class="tooltip">smoke signals and fires
+                        <span class="tooltiptext">Used for fast communication over long distances.</span>
+                    </strong> would be used to relay messages.
+                    Economically, it controlled trade routes such as the <strong>Silk Road</strong> by regulating the flow of goods and imposing duties.
+                    It also helped with immigration control, ensuring that people crossing into China did so through regulated checkpoints.
+                    The wall was not just a defense structure but a tool for governance and control.
+                    <img src="\img\great_wall_of_china_significance.jpg" />
+                </p>
+
         </section>
 
         <section>
@@ -61,13 +85,18 @@
                 Present Day
             </h2>
 
-            <p>
-                Today, the Great Wall is one of the most visited tourist attractions in the world and has become a symbol of China’s cultural heritage and historical resilience.
-                Many parts of the wall, especially those near Beijing, have been restored for tourism, while other sections have fallen into disrepair or have been eroded by natural forces.
-                The wall was designated a UNESCO World Heritage Site in 1987, ensuring that efforts to preserve and maintain it continue.
-                While the wall is no longer a functional defense mechanism, it remains an iconic representation of China’s rich history.
-                <img src="\img\great_wall_of_china_presentday.jpg" />
-            </p>
+                <p>
+                    Today, the Great Wall is one of the most visited <strong class="tooltip">tourist attractions
+                        <span class="tooltiptext">Over 10 million visitors annually.</span>
+                    </strong> in the world and has become a symbol of China’s cultural heritage and historical resilience.
+                    Many parts of the wall, especially those near <strong>Beijing</strong>, have been restored for tourism, while other sections have fallen into disrepair or have been eroded by natural forces.
+                    The wall was designated a <strong class="tooltip">UNESCO World Heritage Site
+                        <span class="tooltiptext">Recognized for its cultural significance in 1987.</span>
+                    </strong>, ensuring that efforts to preserve and maintain it continue.
+                    While the wall is no longer a functional defense mechanism, it remains an iconic representation of China’s rich history.
+                    <img src="\img\great_wall_of_china_presentday.jpg" />
+                </p>
+
         </section>
 
 

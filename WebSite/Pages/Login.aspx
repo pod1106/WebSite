@@ -372,13 +372,6 @@
                 <a href="Register.aspx" class="create-account">Create New Account</a>
             </div>
 
-
-
-            <div style="margin: 40px">
-            <asp:Label ID="resultLabel" runat="server" 
-               Text="" 
-               Style="font-size: 18px; color: blue;" />
-            </div>
             
         </form>
 

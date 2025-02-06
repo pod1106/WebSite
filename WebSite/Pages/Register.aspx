@@ -174,6 +174,21 @@
             transform: translate(-50%);
         }
 
+        .popup-text.green2-popup {
+
+            background-color: rgba(225, 255, 225, 1);
+            color: rgba(25, 100, 25, 1);
+            border: 2px solid rgba(200, 255, 200, 1);
+
+            font-size: 30px;
+            position: fixed;
+            width: 500px;
+            z-index: 1000;
+
+            left: 50%;
+            transform: translate(-50%);
+        }
+
 
         .gender-options label {
             display: inline-block;
