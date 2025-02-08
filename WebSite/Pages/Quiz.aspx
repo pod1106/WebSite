@@ -12,15 +12,14 @@
             overflow-x: hidden;
         }
         .quiz-container {
-            width: min(800px, 80vw); 
-            max-width: 100%;
+            width: 70%;
             margin: 50px auto; 
             padding: 20px;
 
             padding-left: 20px;
             padding-right: 20px;
             border: 2px solid black; 
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: rgb(171, 219, 255);
       
             border-radius: 8px;
             text-align: center;
@@ -32,26 +31,29 @@
         .quiz-container label {
             font-size: 20px; 
             font-family: Arial;
+            background-color: rgb(243, 255, 189);
 
-            display: block; 
+            display: inline-flex; 
+            align-items: center;
             font-weight: bold; 
-            margin-bottom: 5px;
+            margin: 5px;
+
+            border: solid 2px black;
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
 
             text-align: left;
             position: relative;
+            transition: background-color 0.3s ease;
         }
 
 
-        .quiz-container input {
-            width: 90%; 
-            padding: 10px; 
-            margin: 0 auto;
-            margin-bottom: 20px; 
-            border: 1px solid #ccc; 
-            border-radius: 6px; 
-            font-size: 18px;
-            text-align: left;
+        .quiz-container label:hover {
+            background-color: rgb(220, 255, 160);
+            text-decoration: underline;
         }
+
 
 
 
@@ -75,6 +77,20 @@
             background-color: #14a8e6;
         }
 
+        #question-container {
+            font-size: 34px;
+            font-weight: bold;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 8px;
+
+            background-color: rgb(191, 239, 255);
+
+            margin-bottom: 40px;
+            
+        }
 
 
 
@@ -88,29 +104,41 @@
 
 
     <div class="quiz-container">
+        <div id="Quiz">
+
         <div id="question-container" class="question"></div>
-        <label>
-            <input type="radio" />
-            a
+
+        
+        <label >
+            <input type="radio" name="answ" id="option-1"/>
+            <p id="answ-1"></p>
         </label>
 
-        <label>
-            <input type="radio" />
-            b
-        </label>
 
         <label>
-            <input type="radio" />
-            c
+            <input type="radio" name="answ" id="option-2" />     
+            <p id="answ-2"></p>
         </label>
+
+
+        <label>
+            <input type="radio" name="answ" id="option-3" />
+            <p id="answ-3"></p>
+        </label>
+
 
          <label>
-            <input type="radio" />
-            d
+            <input type="radio" name="answ" id="option-4" />
+             <p id="answ-4"></p>
         </label>
+
+
+
         <ul id="options-container" class="options"></ul>
 
-        <button id="submit-btn">Submit Answer</button>
+        <button id="submit-btn">Next Question</button>
+
+        </div>
     </div>
 
 

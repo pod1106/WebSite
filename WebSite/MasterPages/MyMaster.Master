@@ -25,7 +25,14 @@
             padding-right: 40px;
         }
 
-        .site-name { font-size: 2em; font-weight: bold; margin: 0 auto;}
+        .site-name {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+
 
         nav ul {
             list-style: none;
