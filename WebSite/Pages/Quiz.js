@@ -75,6 +75,7 @@ const q = [
 
 
 
+
 const questions = [
     {
         question: "Which of the following is one of the Seven Wonders of the Ancient World?",
@@ -159,11 +160,17 @@ function handleSubmit() {
         selectedOption = null;
 
     } else {
-        Quiz = document.getElementById("Quiz");
-        Quiz.style.visibility = "hidden";
-        alert("Quiz finished!" + correctAnswers);
+
+        document.getElementById("Quiz").style.display = "none";
+        document.getElementById("result").style.display = "block";
+
+        document.getElementById("score").textContent = correctAnswers;
+
+
         
     }
-    
+}
 
+function leaderboard() {
+    window.location.href = 'Leaderboard.aspx';
 }

@@ -85,8 +85,10 @@
     <Content Include="img\petra_decline.jpg" />
     <Content Include="img\petra_history.jpg" />
     <Content Include="img\petra_trade.jpg" />
+    <Content Include="Pages\Leaderboard.aspx" />
     <Content Include="Pages\Login.aspx" />
     <Content Include="Pages\LogoutHandler.aspx" />
+    <Content Include="Pages\NoAccessQuiz.aspx" />
     <Content Include="Pages\Quiz.aspx" />
     <Content Include="Pages\Quiz.js" />
     <Content Include="Pages\Register.aspx" />
@@ -114,6 +116,13 @@
     <Compile Include="Pages\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Leaderboard.aspx.cs">
+      <DependentUpon>Leaderboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Leaderboard.aspx.designer.cs">
+      <DependentUpon>Leaderboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -127,6 +136,13 @@
     </Compile>
     <Compile Include="Pages\LogoutHandler.aspx.designer.cs">
       <DependentUpon>LogoutHandler.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NoAccessQuiz.aspx.cs">
+      <DependentUpon>NoAccessQuiz.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NoAccessQuiz.aspx.designer.cs">
+      <DependentUpon>NoAccessQuiz.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Quiz.aspx.cs">
       <DependentUpon>Quiz.aspx</DependentUpon>

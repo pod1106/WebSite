@@ -179,7 +179,9 @@
                 </td>
                    
                 <td class="tablelink"> <!-- Empty cell to maintain structure -->
-                     quiz. soon!!
+                     <a href="Quiz.aspx" class="wonder-link">
+                         <h3>Test Your Knowledge!</h3>
+                     </a>
                 </td> 
             </tr>
         </table>

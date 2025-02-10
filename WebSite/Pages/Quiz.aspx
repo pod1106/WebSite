@@ -92,10 +92,45 @@
             
         }
 
+        #result h2 {
+            font-size: 38px;
+        }
+
+        #result p {
+            font-size: 30px;
+        }
+
+        #result button {
+            padding: 10px;
+            background-color: #4caf50;
+            margin: 10px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #result button:hover {
+            background-color: #34a049;
+        }
+        #score {
+            font-weight: bold;
+        }
+
+
 
 
 
     </style>
+
+    <script>
+        var username = '<%= Session["Username"] %>';
+        if (username === "") {
+            window.location.href = 'NoAccessQuiz.aspx';
+        }
+    </script>
 
 </asp:Content>
 
@@ -137,6 +172,15 @@
         <ul id="options-container" class="options"></ul>
 
         <button id="submit-btn">Next Question</button>
+
+        </div>
+
+        <div id="result" style="display: none;">
+            <h2>Quiz Completed!</h2>
+            <p>Your final score is: <span id="score"></span></p>
+
+            <button onclick="location.reload()">Try Again</button>
+            <button onclick="leaderboard()">LeaderBoard</button>
 
         </div>
     </div>
