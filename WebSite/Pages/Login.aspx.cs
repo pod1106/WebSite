@@ -20,16 +20,26 @@ namespace website
             if (isUserValid)
             {
                 Session["Username"] = username;
-                Response.Redirect("Home.aspx");
+
+                string returnUrl = Request.QueryString["ReturnUrl"];
+
+                if (!string.IsNullOrEmpty(returnUrl))
+                {
+                    Response.Redirect(returnUrl);
+                }
+                else
+                {
+                    Response.Redirect("Home.aspx");
+                }
             }
             else
             {
-
                 ClientScript.RegisterStartupScript(this.GetType(), "InvalidLogin",
                     "window.onload = function() { showPopup('Invalid Username or Password', 'red2', 'popupText'); };", true);
 
                 KeepFormData(username, password);
             }
+
         }
 
         private bool CheckUserInDatabase(string username, string password)

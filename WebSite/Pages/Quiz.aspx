@@ -182,6 +182,9 @@
             <button onclick="location.reload()">Try Again</button>
             <button onclick="leaderboard()">LeaderBoard</button>
 
+
+            <asp:HiddenField ID="hiddenScore" runat="server" />
+            <asp:Button ID="submitScoreBtn" runat="server" OnClick="SubmitScore" style="display:none;" />
         </div>
     </div>
 

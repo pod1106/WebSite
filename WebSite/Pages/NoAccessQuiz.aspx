@@ -64,6 +64,6 @@
         <h1>Access Denied</h1>
         <p>Only logged-in users can play the quiz. Please log in to access the quiz.</p>
         <button class="home-button" onclick="location.href='Home.aspx'">Go to Home</button>
-        <button class="login-button" onclick="location.href='Login.aspx'">Login</button>
+        <button class="login-button" onclick="location.href='Login.aspx?ReturnUrl=Quiz.aspx'">Login</button>
     </div>
 </asp:Content>
