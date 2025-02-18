@@ -13,5 +13,12 @@ namespace website.Pages
         {
 
         }
+
+
+
+        protected void SubmitScore(object sender, EventArgs e)
+        {
+
+        }
     }
 }

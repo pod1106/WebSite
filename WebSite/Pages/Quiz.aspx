@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Quiz.aspx.cs" Inherits="website.Pages.Quiz" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script src="Quiz.js"></script>
@@ -137,59 +136,57 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
+    <form runat="server">
+        <div class="quiz-container">
+            <div id="Quiz">
 
-    <div class="quiz-container">
-        <div id="Quiz">
-
-        <div id="question-container" class="question"></div>
+            <div id="question-container" class="question"></div>
 
         
-        <label >
-            <input type="radio" name="answ" id="option-1"/>
-            <p id="answ-1"></p>
-        </label>
+            <label >
+                <input type="radio" name="answ" id="option-1"/>
+                <p id="answ-1"></p>
+            </label>
 
 
-        <label>
-            <input type="radio" name="answ" id="option-2" />     
-            <p id="answ-2"></p>
-        </label>
+            <label>
+                <input type="radio" name="answ" id="option-2" />     
+                <p id="answ-2"></p>
+            </label>
 
 
-        <label>
-            <input type="radio" name="answ" id="option-3" />
-            <p id="answ-3"></p>
-        </label>
+            <label>
+                <input type="radio" name="answ" id="option-3" />
+                <p id="answ-3"></p>
+            </label>
 
 
-         <label>
-            <input type="radio" name="answ" id="option-4" />
-             <p id="answ-4"></p>
-        </label>
+             <label>
+                <input type="radio" name="answ" id="option-4" />
+                 <p id="answ-4"></p>
+            </label>
 
 
 
-        <ul id="options-container" class="options"></ul>
+            <ul id="options-container" class="options"></ul>
 
-        <button id="submit-btn">Next Question</button>
+            <button id="submit-btn" type="button">Next Question</button>
 
+            </div>
+
+            <div id="result" style="display: none;">
+                <h2>Quiz Completed!</h2>
+                <p>Your final score is: <span id="score"></span></p>
+
+                <button onclick="location.reload()">Try Again</button>
+                <button onclick="leaderboard()">LeaderBoard</button>
+
+
+                <asp:HiddenField ID="hiddenScore" runat="server" />
+                <asp:Button ID="submitScoreBtn" runat="server" OnClick="SubmitScore" style="display:none;" />
+            </div>
         </div>
-
-        <div id="result" style="display: none;">
-            <h2>Quiz Completed!</h2>
-            <p>Your final score is: <span id="score"></span></p>
-
-            <button onclick="location.reload()">Try Again</button>
-            <button onclick="leaderboard()">LeaderBoard</button>
-
-
-            <asp:HiddenField ID="hiddenScore" runat="server" />
-            <asp:Button ID="submitScoreBtn" runat="server" OnClick="SubmitScore" style="display:none;" />
-        </div>
-    </div>
-
-
-
+    </form>
 
 
 

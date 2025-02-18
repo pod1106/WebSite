@@ -76,32 +76,31 @@ const q = [
 
 
 
-<script>
-    const questions = [
+const questions = [
     {
         question: "Which of the following is one of the Seven Wonders of the Ancient World?",
-    options: ["The Great Wall of China", "The Colosseum", "The Lighthouse of Alexandria", "Christ the Redeemer"],
-    answer: 2
-        },
+        options: ["The Great Wall of China", "The Colosseum", "The Lighthouse of Alexandria", "Christ the Redeemer"],
+        answer: 2
+    },
     {
         question: "Where was the Statue of Zeus, one of the Seven Wonders of the Ancient World, located?",
-    options: ["Rome", "Athens", "Babylon", "Cairo"],
-    answer: 1
-        }
-    ];
+        options: ["Rome", "Athens", "Babylon", "Cairo"],
+        answer: 1
+    }
+];
 
-    let correctAnswers = 0;
-    let currentQuestionIndex = 0;
+let correctAnswers = 0;
+let currentQuestionIndex = 0;
 
-    document.addEventListener("DOMContentLoaded", function () {
-        loadQuestion();
+document.addEventListener("DOMContentLoaded", function () {
+    loadQuestion();
 
     const submitBtn = document.getElementById("submit-btn");
     submitBtn.addEventListener("click", handleSubmit);
-    });
+});
 
-    function loadQuestion() {
-        const questionContainer = document.getElementById("question-container");
+function loadQuestion() {
+    const questionContainer = document.getElementById("question-container");
 
     let currentQuestion = questions[currentQuestionIndex];
     questionContainer.innerText = currentQuestion.question;
@@ -112,44 +111,43 @@ const q = [
     document.getElementById("answ-4").innerText = currentQuestion.options[3];
 
     const radioButtons = document.querySelectorAll('input[name="answ"]');
-        radioButtons.forEach(radio => radio.checked = false);
+    radioButtons.forEach(radio => radio.checked = false);
 
     const submitBtn = document.getElementById("submit-btn");
     if (currentQuestionIndex === questions.length - 1) {
         submitBtn.innerText = "Finish";
-        }
     }
+}
 
-    function handleSubmit() {
-        let selectedOption = document.querySelector('input[name="answ"]:checked');
+function handleSubmit() {
+    let selectedOption = document.querySelector('input[name="answ"]:checked');
     if (selectedOption === null) {
         alert("Please select an option!");
-    return;
-        }
+        return;
+    }
 
     selectedOption = parseInt(selectedOption.id.replace("option-", ""));
     const currentQuestion = questions[currentQuestionIndex];
 
     if (selectedOption === currentQuestion.answer) {
         correctAnswers++;
-        }
+    }
 
     currentQuestionIndex++;
 
     if (currentQuestionIndex < questions.length) {
         loadQuestion();
-        } else {
+    } else {
         document.getElementById("Quiz").style.display = "none";
-    document.getElementById("result").style.display = "block";
-    document.getElementById("score").textContent = correctAnswers;
+        document.getElementById("result").style.display = "block";
+        document.getElementById("score").textContent = correctAnswers;
 
-    // Set the score in the hidden field and click the hidden button
-    document.getElementById("<%= hiddenScore.ClientID %>").value = correctAnswers;
-    document.getElementById("<%= submitScoreBtn.ClientID %>").click();
-        }
-    }
 
-    function leaderboard() {
-        window.location.href = 'Leaderboard.aspx';
+        document.getElementById("<%= hiddenScore.ClientID %>").value = correctAnswers;
+        document.getElementById("<%= submitScoreBtn.ClientID %>").click();
     }
-</script>
+}
+
+function leaderboard() {
+    window.location.href = 'Leaderboard.aspx';
+}
