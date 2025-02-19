@@ -3,9 +3,7 @@
 
     <script src="Quiz.js"></script>
 
-
-            <style>    
-
+    <style>    
         html, body {
             width: 100%;
             overflow-x: hidden;
@@ -14,48 +12,34 @@
             width: 70%;
             margin: 50px auto; 
             padding: 20px;
-
             padding-left: 20px;
             padding-right: 20px;
             border: 2px solid black; 
             background-color: rgb(171, 219, 255);
-      
             border-radius: 8px;
             text-align: center;
             position: relative;
         }
-
-
-
         .quiz-container label {
             font-size: 20px; 
             font-family: Arial;
             background-color: rgb(243, 255, 189);
-
             display: inline-flex; 
             align-items: center;
             font-weight: bold; 
             margin: 5px;
-
             border: solid 2px black;
             border-radius: 5px;
             padding-left: 10px;
             padding-right: 10px;
-
             text-align: left;
             position: relative;
             transition: background-color 0.3s ease;
         }
-
-
         .quiz-container label:hover {
             background-color: rgb(220, 255, 160);
             text-decoration: underline;
         }
-
-
-
-
         .quiz-container #submit-btn {
             width: 260px; 
             padding: 12px; 
@@ -67,15 +51,12 @@
             border: none; 
             border-radius: 4px; 
             text-align: center;
-
             cursor: pointer; 
             transition: background-color 0.3s ease;
         }
-
         .quiz-container #submit-btn:hover {
             background-color: #14a8e6;
         }
-
         #question-container {
             font-size: 34px;
             font-weight: bold;
@@ -84,21 +65,15 @@
             padding-left: 15px;
             padding-right: 15px;
             border-radius: 8px;
-
             background-color: rgb(191, 239, 255);
-
             margin-bottom: 40px;
-            
         }
-
         #result h2 {
             font-size: 38px;
         }
-
         #result p {
             font-size: 30px;
         }
-
         #result button {
             padding: 10px;
             background-color: #4caf50;
@@ -110,84 +85,54 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-
         #result button:hover {
             background-color: #34a049;
         }
         #score {
             font-weight: bold;
         }
-
-
-
-
-
     </style>
 
     <script>
         var username = '<%= Session["Username"] %>';
         if (username === "") {
-            window.location.href = 'NoAccessQuiz.aspx';
+            window.location.href = 'NoAccessQuiz.aspx?ReturnUrl=Quiz.aspx';
         }
     </script>
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-
-    <form runat="server">
+    <form id="form1" runat="server">
         <div class="quiz-container">
             <div id="Quiz">
-
-            <div id="question-container" class="question"></div>
-
-        
-            <label >
-                <input type="radio" name="answ" id="option-1"/>
-                <p id="answ-1"></p>
-            </label>
-
-
-            <label>
-                <input type="radio" name="answ" id="option-2" />     
-                <p id="answ-2"></p>
-            </label>
-
-
-            <label>
-                <input type="radio" name="answ" id="option-3" />
-                <p id="answ-3"></p>
-            </label>
-
-
-             <label>
-                <input type="radio" name="answ" id="option-4" />
-                 <p id="answ-4"></p>
-            </label>
-
-
-
-            <ul id="options-container" class="options"></ul>
-
-            <button id="submit-btn" type="button">Next Question</button>
-
+                <div id="question-container" class="question"></div>
+                <label>
+                    <input type="radio" name="answ" id="option-1" />
+                    <p id="answ-1"></p>
+                </label>
+                <label>
+                    <input type="radio" name="answ" id="option-2" />
+                    <p id="answ-2"></p>
+                </label>
+                <label>
+                    <input type="radio" name="answ" id="option-3" />
+                    <p id="answ-3"></p>
+                </label>
+                <label>
+                    <input type="radio" name="answ" id="option-4" />
+                    <p id="answ-4"></p>
+                </label>
+                <ul id="options-container" class="options"></ul>
+                <button id="submit-btn" type="button">Next Question</button>
+                <asp:HiddenField ID="hiddenScore" runat="server" />
             </div>
-
             <div id="result" style="display: none;">
                 <h2>Quiz Completed!</h2>
                 <p>Your final score is: <span id="score"></span></p>
-
                 <button onclick="location.reload()">Try Again</button>
-                <button onclick="leaderboard()">LeaderBoard</button>
-
-
-                <asp:HiddenField ID="hiddenScore" runat="server" />
-                <asp:Button ID="submitScoreBtn" runat="server" OnClick="SubmitScore" style="display:none;" />
+                <button onclick="leaderboard()" type="button">LeaderBoard</button>
             </div>
         </div>
     </form>
-
-
-
 </asp:Content>

@@ -58,12 +58,23 @@
             background-color: #27ae60; /* Darker green on hover */
         }
     </style>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const returnUrl = urlParams.get('ReturnUrl') || 'Home.aspx';
+
+        function redirectToLogin() {
+            location.href = `Login.aspx?ReturnUrl=${encodeURIComponent(returnUrl)}`;
+        }
+    </script>
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="no-access-container">
         <h1>Access Denied</h1>
         <p>Only logged-in users can play the quiz. Please log in to access the quiz.</p>
         <button class="home-button" onclick="location.href='Home.aspx'">Go to Home</button>
-        <button class="login-button" onclick="location.href='Login.aspx?ReturnUrl=Quiz.aspx'">Login</button>
+        <button class="login-button" onclick="redirectToLogin()">Login</button>
     </div>
 </asp:Content>

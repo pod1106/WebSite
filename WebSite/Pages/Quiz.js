@@ -1,92 +1,76 @@
 ﻿
-const q = [
-
-    {
-        question: "Where is the Great Wall of China located?",
-        options: ["China", "India", "Japan", "South Korea"],
-        answer: 0
-    },
-    {
-        question: "What material is the Great Wall of China primarily made from?",
-        options: ["Wood", "Stone", "Brick", "Iron"],
-        answer: 2
-    },
-    {
-        question: "Which of the following is considered one of the New Seven Wonders of the World?",
-        options: ["The Taj Mahal", "Machu Picchu", "Chichen Itza", "All of the above"],
-        answer: 3
-    },
-    {
-        question: "Where is the Taj Mahal located?",
-        options: ["India", "Pakistan", "Nepal", "Sri Lanka"],
-        answer: 0
-    },
-    {
-        question: "Which wonder of the world is located in Peru?",
-        options: ["The Colosseum", "Machu Picchu", "Christ the Redeemer", "The Great Wall of China"],
-        answer: 1
-    },
-    {
-        question: "What type of structure is the Colosseum in Rome?",
-        options: ["Temple", "Amphitheater", "Palace", "Pyramid"],
-        answer: 1
-    },
-    {
-        question: "The Christ the Redeemer statue is located in which country?",
-        options: ["Mexico", "Brazil", "Argentina", "Chile"],
-        answer: 1
-    },
-    {
-        question: "What is the Christ the Redeemer statue made of?",
-        options: ["Concrete", "Stone", "Copper", "Marble"],
-        answer: 0
-    },
-    {
-        question: "Which of the following is the largest pyramid in Egypt?",
-        options: ["The Pyramid of Giza", "The Great Pyramid of Cholula", "The Red Pyramid", "The Bent Pyramid"],
-        answer: 0
-    },
-    {
-        question: "Which wonder is located in Jordan?",
-        options: ["Petra", "Machu Picchu", "The Great Wall of China", "Christ the Redeemer"],
-        answer: 0
-    },
-    {
-        question: "Which ancient wonder was located in the city of Babylon?",
-        options: ["The Hanging Gardens", "The Statue of Zeus", "The Lighthouse of Alexandria", "The Temple of Artemis"],
-        answer: 0
-    },
-    {
-        question: "The Machu Picchu ruins are found in which mountain range?",
-        options: ["The Andes", "The Rockies", "The Himalayas", "The Alps"],
-        answer: 0
-    },
-
-];
-
-
-
-
-
-
-
-
-
-
-
-
 
 const questions = [
     {
         question: "Which of the following is one of the Seven Wonders of the Ancient World?",
         options: ["The Great Wall of China", "The Colosseum", "The Lighthouse of Alexandria", "Christ the Redeemer"],
-        answer: 2
+        answer: 3
     },
     {
         question: "Where was the Statue of Zeus, one of the Seven Wonders of the Ancient World, located?",
         options: ["Rome", "Athens", "Babylon", "Cairo"],
+        answer: 2
+    },
+    {
+        question: "Where is the Great Wall of China located?",
+        options: ["Japan", "India", "China", "South Korea"],
+        answer: 3
+    },
+    {
+        question: "What material is the Great Wall of China primarily made from?",
+        options: ["Wood", "Brick", "Stone", "Iron"],
+        answer: 2
+    },
+    {
+        question: "Which of the following is considered one of the New Seven Wonders of the World?",
+        options: ["The Taj Mahal", "Machu Picchu", "Chichen Itza", "All of the above"],
+        answer: 4
+    },
+    {
+        question: "Where is the Taj Mahal located?",
+        options: ["Pakistan", "India", "Nepal", "Sri Lanka"],
+        answer: 2
+    },
+    {
+        question: "Which wonder of the world is located in Peru?",
+        options: ["The Colosseum", "Machu Picchu", "Christ the Redeemer", "The Great Wall of China"],
+        answer: 2
+    },
+    {
+        question: "What type of structure is the Colosseum in Rome?",
+        options: ["Temple", "Palace", "Amphitheater", "Pyramid"],
+        answer: 3
+    },
+    {
+        question: "The Christ the Redeemer statue is located in which country?",
+        options: ["Mexico", "Argentina", "Brazil", "Chile"],
+        answer: 3
+    },
+    {
+        question: "What is the Christ the Redeemer statue made of?",
+        options: ["Marble", "Stone", "Copper", "Concrete"],
+        answer: 4
+    },
+    {
+        question: "Which of the following is the largest pyramid in Egypt?",
+        options: ["The Pyramid of Giza", "The Great Pyramid of Cholula", "The Red Pyramid", "The Bent Pyramid"],
         answer: 1
-    }
+    },
+    {
+        question: "Which wonder is located in Jordan?",
+        options: ["Machu Picchu", "The Great Wall of China", "Petra", "Christ the Redeemer"],
+        answer: 3
+    },
+    {
+        question: "Which ancient wonder was located in the city of Babylon?",
+        options: ["The Statue of Zeus", "The Lighthouse of Alexandria", "The Hanging Gardens", "The Temple of Artemis"],
+        answer: 3
+    },
+    {
+        question: "The Machu Picchu ruins are found in which mountain range?",
+        options: ["The Rockies", "The Himalayas", "The Alps", "The Andes"],
+        answer: 4
+    },
 ];
 
 let correctAnswers = 0;
@@ -115,26 +99,24 @@ function loadQuestion() {
 
     const submitBtn = document.getElementById("submit-btn");
     if (currentQuestionIndex === questions.length - 1) {
-        submitBtn.innerText = "Finish";
+        submitBtn.textContent = "Finish";
     }
 }
 
 function handleSubmit() {
-    let selectedOption = document.querySelector('input[name="answ"]:checked');
-    if (selectedOption === null) {
+    const selectedOption = document.querySelector('input[name="answ"]:checked');
+    if (!selectedOption) {
         alert("Please select an option!");
         return;
     }
 
-    selectedOption = parseInt(selectedOption.id.replace("option-", ""));
     const currentQuestion = questions[currentQuestionIndex];
-
-    if (selectedOption === currentQuestion.answer) {
+    if (parseInt(selectedOption.id.replace("option-", "")) === currentQuestion.answer) {
         correctAnswers++;
+        
     }
 
     currentQuestionIndex++;
-
     if (currentQuestionIndex < questions.length) {
         loadQuestion();
     } else {
@@ -142,11 +124,16 @@ function handleSubmit() {
         document.getElementById("result").style.display = "block";
         document.getElementById("score").textContent = correctAnswers;
 
-
-        document.getElementById("<%= hiddenScore.ClientID %>").value = correctAnswers;
-        document.getElementById("<%= submitScoreBtn.ClientID %>").click();
+        fetch("Quiz.aspx/SubmitScoreAjax", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ score: correctAnswers })
+        });
     }
 }
+
 
 function leaderboard() {
     window.location.href = 'Leaderboard.aspx';
