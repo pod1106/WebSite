@@ -30,10 +30,18 @@ namespace website
             string text = Request.Form["favoriteWonder"];
             string wonder = Request.Form["wonder"];
 
-
-            if (!string.IsNullOrEmpty(gender))
+            gender.ToLower().Trim();
+            if (gender == "Male")
             {
-                gender = gender.ToLower().Trim();
+                gender = "MALE";
+            }
+            else if (gender == "Female")
+            {
+                gender = "FEMALE";
+            }
+            else
+            {
+                gender = "null";
             }
 
 
@@ -50,7 +58,7 @@ namespace website
                 return;
             }
 
-            if (AddNewUser(username, email, password)) {
+            if (AddNewUser(username, email, password, gender)) {
 
                 System.Threading.Thread.Sleep(1000);
 
@@ -102,7 +110,7 @@ namespace website
             return null;
         }
 
-        private bool AddNewUser(string username, string email, string password)
+        private bool AddNewUser(string username, string email, string password, string gender)
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
@@ -110,26 +118,20 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-
-                string query = "INSERT INTO Users (Username, Email, Password) VALUES (@username, @email, @password)";
+                
+                string query = "INSERT INTO Users (Username, Email, Password, Gender, Permission) VALUES (@username, @email, @password, @gender, '')";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@email", email);
                     cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@gender", gender);
 
-                    try
-                    {
 
-                        cmd.ExecuteNonQuery();
-                        return true; 
-                    }
-                    catch (Exception ex)
-                    {
+                    cmd.ExecuteNonQuery();
+                    return true; 
 
-                        return false; 
-                    }
                 }
             }
         }

@@ -1,15 +1,127 @@
 ﻿
-<%@ Page Title="Admin - User List" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="website.Pages.Admin" %>
+<%@ Page Title="Admin" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="website.Admin" %>
+
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Admin - User List</title>
+    <style>
+        .admin-container {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .admin-table th, .admin-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .admin-table th {
+            background-color: #f2f2f2;
+        }
+
+        .admin-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .admin-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .add-user-form {
+            margin-top: 20px;
+        }
+
+        .add-user-form input, .add-user-form select {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 100%;
+            max-width: 200px;
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        .add-user-form button {
+            padding: 10px 20px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-user-form button:hover {
+            background-color: #4cae4c;
+        }
+
+        .search-form {
+            margin-bottom: 20px;
+        }
+
+        .search-form input {
+            padding: 8px;
+            margin-right: 10px;
+        }
+
+        .search-form button {
+            padding: 8px 20px;
+        }
+    </style>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <!-- Form needs to be inside ContentPlaceHolder -->
     <form id="form1" runat="server">
-        <div>
-            
+        <div class="admin-container">
+            <h2>Admin - User Management</h2>
+            <div class="search-form">
+                <asp:TextBox ID="txtSearchUsername" runat="server" placeholder="Search by Username"></asp:TextBox>
+                <asp:TextBox ID="txtSearchEmail" runat="server" placeholder="Search by Email"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="btnClearSearch_Click" />
+            </div>
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="admin-table" DataKeyNames="Username" OnRowEditing="gvUsers_RowEditing" OnRowUpdating="gvUsers_RowUpdating" OnRowCancelingEdit="gvUsers_RowCancelingEdit" OnRowDeleting="gvUsers_RowDeleting" OnRowDataBound="gvUsers_RowDataBound">
+                <Columns>
+                    <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />
+                    <asp:BoundField DataField="Password" HeaderText="Password" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                    <asp:TemplateField HeaderText="Gender">
+                        <ItemTemplate>
+                            <%# Eval("Gender") %>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlGender" runat="server">
+                                <asp:ListItem Text="MALE" Value="MALE" />
+                                <asp:ListItem Text="FEMALE" Value="FEMALE" />
+                                <asp:ListItem Text="null" Value="null" />
+                            </asp:DropDownList>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:BoundField DataField="Permission" HeaderText="Permission" />
+                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                </Columns>
+            </asp:GridView>
+            <div class="add-user-form">
+                <h3>Add New User</h3>
+                <asp:TextBox ID="txtNewUsername" runat="server" placeholder="Username"></asp:TextBox>
+                <asp:TextBox ID="txtNewPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtNewEmail" runat="server" placeholder="Email"></asp:TextBox>
+                <asp:DropDownList ID="ddlNewGender" runat="server">
+                    <asp:ListItem Text="Select Gender" Value="" />
+                    <asp:ListItem Text="MALE" Value="MALE" />
+                    <asp:ListItem Text="FEMALE" Value="FEMALE" />
+                </asp:DropDownList>
+                <asp:TextBox ID="txtNewPermission" runat="server" placeholder="Permission"></asp:TextBox>
+                <asp:Button ID="btnAddUser" runat="server" Text="Add User" OnClick="btnAddUser_Click" CssClass="add-user-button" />
+            </div>
         </div>
     </form>
 </asp:Content>

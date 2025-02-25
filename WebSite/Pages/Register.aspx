@@ -464,7 +464,7 @@
                     </label>
 
                     <label>
-                        <input type="radio" id="other" name="gender" value="Other" />
+                        <input type="radio" id="other" name="gender" value="null" />
                         Other
                     </label>
                 </div>
