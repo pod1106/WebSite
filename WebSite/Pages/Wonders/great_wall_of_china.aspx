@@ -75,8 +75,15 @@
                     Economically, it controlled trade routes such as the <strong>Silk Road</strong> by regulating the flow of goods and imposing duties.
                     It also helped with immigration control, ensuring that people crossing into China did so through regulated checkpoints.
                     The wall was not just a defense structure but a tool for governance and control.
-                    <img src="\img\great_wall_of_china_significance.jpg" />
                 </p>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/23oHqNEqRyo" 
+                            title="YouTube video player" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+
 
         </section>
 

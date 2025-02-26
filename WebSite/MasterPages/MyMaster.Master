@@ -139,11 +139,9 @@
         </nav>
     </header>
 
-    <!-- Main Content Section (Specific to each page) -->
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
 
-    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
             <span><a href="Home.aspx">Home Page</a></span>

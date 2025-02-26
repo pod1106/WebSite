@@ -64,7 +64,7 @@
 
 
         .form-container select option {
-            font-size: 16px; /* Optional: change the font size of the options */
+            font-size: 16px;
         }
 
 
@@ -216,17 +216,8 @@
             width: min(600px, 95%);
         }
 
-
-
-
-
-
-
-
-
-
-
     </style>
+
 
 
     <script>
@@ -235,54 +226,43 @@
             const popup = document.getElementById(targetId);
             popup.innerText = message;
 
-            const themes = ['red-popup', 'green-popup', 'red-popup2'];
-
-            popup.classList.remove(...themes);
-
-            if (theme) {
-                popup.classList.add(`${theme}-popup`);
-            }
+            popup.classList.add(theme + '-popup');
 
             popup.style.visibility = 'visible';
             popup.style.opacity = 1;
 
-            const fadeOutDelay = time;
-            const fadeDuration = 600;
-
             setTimeout(() => {
                 popup.style.opacity = 0;
-
                 setTimeout(() => {
                     popup.style.visibility = 'hidden';
-                }, fadeDuration);
-            }, fadeOutDelay);
+                }, 600);
+            }, time);
         }
 
 
 
-        function validInputs(even) {
-            
-            return true;
+        function validInputs(event) {
             const name = document.getElementById('username').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value; 
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+
+
             const male = document.getElementById('male').checked;
             const female = document.getElementById('female').checked;
             const other = document.getElementById('other').checked;
-            
-            let gender = 0;
 
 
             if (male === true) {
-                gender = "male";
+                const gender = "male";
             } else if (female === true) {
-                gender = "female";
+                const gender = "female";
             } else if (other === true) {
-                gender = "other";
+                const gender = "other";
+            } else {
+                const gender = null;
             }
-
-
 
 
             if (name) {
@@ -351,22 +331,8 @@
                 return false;
             }
 
+            showPopup("New account was created!", "green", 'popupText', 8000);
 
-            if (!gender) {
-                showPopup("Please select a gender", "red", "popupGender");
-                return false;
-            }
-
-            console.log("username: " + name + "\nemail: " + email + "\npassword: " + password + "\ngender: " + gender.id);
-            showPopup("New account was created!", "green", 'popupText');
-
-            
-            // Reset form fields
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('password').value = '';
-
-            localStorage.setItem('password', "");
 
             return true;
         }
@@ -376,9 +342,9 @@
             const confirmPasswordField = document.getElementById('confirmPassword');
             const showPasswordCheckbox = document.getElementById('showPassword');
 
-            // Toggle the type of the password fields based on the checkbox state
+
             if (showPasswordCheckbox.checked) {
-                // Show the password
+
                 passwordField.type = 'text';
                 confirmPasswordField.type = 'text';
             } else {
@@ -388,12 +354,6 @@
             }
         }
 
-
-        window.onload = function () {
-            if (localStorage.getItem('password')) {
-                document.getElementById('password').value = localStorage.getItem('password');
-            }
-        }
 
 
 

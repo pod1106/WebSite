@@ -30,7 +30,11 @@ namespace website
             string text = Request.Form["favoriteWonder"];
             string wonder = Request.Form["wonder"];
 
-            gender.ToLower().Trim();
+            if (gender != null)
+            {
+                gender.ToLower().Trim();
+            }
+            
             if (gender == "Male")
             {
                 gender = "MALE";

@@ -112,12 +112,13 @@
             <div class="add-user-form">
                 <h3>Add New User</h3>
                 <asp:TextBox ID="txtNewUsername" runat="server" placeholder="Username"></asp:TextBox>
-                <asp:TextBox ID="txtNewPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtNewPassword" runat="server" placeholder="Password"></asp:TextBox>
                 <asp:TextBox ID="txtNewEmail" runat="server" placeholder="Email"></asp:TextBox>
                 <asp:DropDownList ID="ddlNewGender" runat="server">
                     <asp:ListItem Text="Select Gender" Value="" />
                     <asp:ListItem Text="MALE" Value="MALE" />
                     <asp:ListItem Text="FEMALE" Value="FEMALE" />
+                    <asp:ListItem Text="null" Value="null" />
                 </asp:DropDownList>
                 <asp:TextBox ID="txtNewPermission" runat="server" placeholder="Permission"></asp:TextBox>
                 <asp:Button ID="btnAddUser" runat="server" Text="Add User" OnClick="btnAddUser_Click" CssClass="add-user-button" />

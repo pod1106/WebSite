@@ -56,6 +56,7 @@ namespace website
         protected void gvUsers_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = gvUsers.Rows[e.RowIndex];
+
             string username = gvUsers.DataKeys[e.RowIndex].Values[0].ToString();
             string password = ((TextBox)row.Cells[1].Controls[0]).Text;
             string email = ((TextBox)row.Cells[2].Controls[0]).Text;
@@ -124,10 +125,26 @@ namespace website
             string gender = ddlNewGender.SelectedValue;
             string permission = txtNewPermission.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(permission))
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                // Add validation message here if needed
                 return;
+            }
+
+            if (string.IsNullOrEmpty(gender) || gender == "null")
+            {
+                gender = null;
+            }
+
+            if (string.IsNullOrEmpty(permission))
+            {
+                permission = null;
+            }
+
+
+            if (string.IsNullOrEmpty(email))
+            {
+                email = "null";
             }
 
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
@@ -142,22 +159,26 @@ namespace website
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Password", password);
                     cmd.Parameters.AddWithValue("@Email", email);
-                    if (!string.IsNullOrEmpty(gender))
+                    // Insert null for Gender if not specified
+                    if (gender != null)
                         cmd.Parameters.AddWithValue("@Gender", gender);
                     else
                         cmd.Parameters.AddWithValue("@Gender", DBNull.Value);
+
+
                     cmd.Parameters.AddWithValue("@Permission", permission);
                     cmd.ExecuteNonQuery();
                 }
             }
 
-            // Clear the input fields
+            // Clear the input fields after adding user
             txtNewUsername.Text = "";
             txtNewPassword.Text = "";
             txtNewEmail.Text = "";
-            ddlNewGender.SelectedIndex = 0;
-            txtNewPermission.Text = "";
+            ddlNewGender.SelectedIndex = 0; // Reset gender dropdown
+            txtNewPermission.Text = ""; // Clear permission field
 
+            // Reload users list after adding a new user
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 

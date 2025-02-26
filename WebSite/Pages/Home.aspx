@@ -21,10 +21,10 @@
         }
 
         .container {
-            display: flex;             /* Enable Flexbox */
-            justify-content: center;   /* Center horizontally */
-            align-items: center;       /* Center vertically */
-            height: 80%;             /* Use full viewport height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80%;
         }
 
 
@@ -62,7 +62,7 @@
 
         td:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Subtle hover effect */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         td.no-hover:hover {
@@ -104,27 +104,14 @@
             color: black;
             transform: scale(1.05);
         }
-
-
-
-
-
-
-
-
-
-
-
-
     </style>
+
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <!-- Sidebar -->
 
-
-        
         <table>
             <tr>
                 <td colspan="4" style="padding-inline: 50px; font-size: 24px;" class="no-hover">
