@@ -84,8 +84,29 @@
             transition: background-color 0.3s ease;
         }
 
-        .form-container button:hover {
+        .send-button:hover {
             background-color: #14a8e6;
+        }
+
+
+        .reset-button {
+            width: 100px; 
+            padding: 12px; 
+            font-weight: bold;
+            background-color: rgb(250, 82, 88); 
+            color: white; 
+            font-size: 24px;
+            margin: 20px;
+            border: none; 
+            border-radius: 4px; 
+            text-align: center;
+
+            cursor: pointer; 
+            transition: background-color 0.3s ease;
+        }
+
+        .reset-button:hover {
+            background-color: rgb(227, 54, 61);
         }
 
 
@@ -473,7 +494,7 @@
                       style="margin-right: 20px; resize: none; width: 95%; height: 100px; font-size: 18px;" rows="4" cols="50"></textarea>
 
 
-
+            <button type="reset" class="reset-button">Reset</button>
             <!-- Submit Button -->
             <asp:Button ID="btnSubmit" CssClass="send-button" runat="server" Text="Send" 
                 OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static"/>

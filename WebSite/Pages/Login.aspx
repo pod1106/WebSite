@@ -42,7 +42,7 @@
         }
 
         .form-container .login-button,a.create-account {
-            width: 260px;
+            width: 200px;
             padding: 12px;
             font-weight: 700;
             background-color: #35c2dc;
@@ -56,8 +56,29 @@
             transition: background-color .3s ease
         }
 
-        .form-container .login-button:hover,a.create-account:hover {
+        .login-button:hover,a.create-account:hover {
             background-color: #14a8e6
+        }
+
+
+        .reset-button {
+            width: 100px; 
+            padding: 12px; 
+            font-weight: bold;
+            background-color: rgb(250, 82, 88); 
+            color: white; 
+            font-size: 24px;
+            margin: 20px;
+            border: none; 
+            border-radius: 4px; 
+            text-align: center;
+
+            cursor: pointer; 
+            transition: background-color 0.3s ease;
+        }
+
+        .reset-button:hover {
+            background-color: rgb(227, 54, 61);
         }
 
         .popup-text,.tooltip-text {
@@ -234,18 +255,16 @@
                 <span style="position: relative; top: -10px;">Show Password</span>
             </label>
 
-
-            <!-- Submit Button -->
-            <div>
-                <asp:Button ID="btnSubmit" CssClass="login-button" runat="server" Text="Login" 
-                    OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static" />
-            </div>
+            <button type="reset" class="reset-button">Reset</button>
 
 
-            
-            <div>
-                <a href="Register.aspx" class="create-account">Create New Account</a>
-            </div>
+            <asp:Button ID="btnSubmit" CssClass="login-button" runat="server" Text="Login" 
+                OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static" />
+
+
+
+           <a href="Register.aspx" class="create-account">Create New Account</a>
+
 
             
         </form>

@@ -120,6 +120,7 @@
                 </td>
             </tr>
             <tr>
+
                 <td class="tablelink">
                     <a href="Wonders/great_wall_of_china.aspx" class="wonder-link">
                         <img src="../img/great_wall_of_china.jpg" alt="Great Wall of China" class="wonder-img">
