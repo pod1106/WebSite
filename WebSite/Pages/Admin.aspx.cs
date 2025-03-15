@@ -22,6 +22,45 @@ namespace website
                 LoadUsers();
             }
         }
+        protected void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+
+            if (ValidateUser(username, password))
+            {
+                Session["LoggedInUser"] = username; // Store user in session
+                pnlAdminSection.Visible = true;    // Show admin panel
+                lblLoginError.Visible = false;     // Hide error message
+                LoginSection.Visible = false;      // Hide login section
+            }
+            else
+            {
+                lblLoginError.Visible = true;      // Show error if login fails
+            }
+        }
+
+        // Validate user from the database
+        private bool ValidateUser(string username, string password)
+        {
+            string dbPath = Server.MapPath("~/DataBase/database.sqlite");
+            string connectionString = $"Data Source={dbPath};Version=3;";
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Admins WHERE Username = @Username AND Password = @Password";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0; // Return true if user exists
+                }
+            }
+        }
+
+
 
         private void LoadUsers(string usernameFilter = "", string emailFilter = "")
         {
@@ -31,7 +70,7 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT Username, Password, Email, IFNULL(Gender, 'null') AS Gender, Permission FROM Users WHERE Username LIKE @Username AND Email LIKE @Email";
+                string query = "SELECT Username, Password, Email, IFNULL(Gender, 'null') AS Gender FROM Users WHERE Username LIKE @Username AND Email LIKE @Email";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", "%" + usernameFilter + "%");
@@ -60,7 +99,6 @@ namespace website
             string password = ((TextBox)row.Cells[1].Controls[0]).Text;
             string email = ((TextBox)row.Cells[2].Controls[0]).Text;
             string gender = ((DropDownList)row.Cells[3].FindControl("ddlGender")).SelectedValue;
-            string permission = ((TextBox)row.Cells[4].Controls[0]).Text;
 
             if (gender == "null") gender = null;
 
@@ -70,7 +108,7 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string query = "UPDATE Users SET Password = @Password, Email = @Email, Gender = @Gender, Permission = @Permission WHERE Username = @Username";
+                string query = "UPDATE Users SET Password = @Password, Email = @Email, Gender = @Gender WHERE Username = @Username";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Password", password);
@@ -79,7 +117,6 @@ namespace website
                         cmd.Parameters.AddWithValue("@Gender", gender);
                     else
                         cmd.Parameters.AddWithValue("@Gender", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Permission", permission);
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.ExecuteNonQuery();
                 }
@@ -122,9 +159,8 @@ namespace website
             string password = txtNewPassword.Text.Trim();
             string email = txtNewEmail.Text.Trim();
             string gender = ddlNewGender.SelectedValue;
-            string permission = txtNewPermission.Text.Trim();
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(permission))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
             {
                 // Add validation message here if needed
                 return;
@@ -136,7 +172,7 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string query = "INSERT INTO Users (Username, Password, Email, Gender, Permission) VALUES (@Username, @Password, @Email, @Gender, @Permission)";
+                string query = "INSERT INTO Users (Username, Password, Email, Gender) VALUES (@Username, @Password, @Email, @Gender)";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", username);
@@ -146,7 +182,6 @@ namespace website
                         cmd.Parameters.AddWithValue("@Gender", gender);
                     else
                         cmd.Parameters.AddWithValue("@Gender", DBNull.Value);
-                    cmd.Parameters.AddWithValue("@Permission", permission);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -156,7 +191,6 @@ namespace website
             txtNewPassword.Text = "";
             txtNewEmail.Text = "";
             ddlNewGender.SelectedIndex = 0;
-            txtNewPermission.Text = "";
 
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }

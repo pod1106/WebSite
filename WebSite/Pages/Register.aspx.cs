@@ -30,6 +30,11 @@ namespace website
             string text = Request.Form["favoriteWonder"];
             string wonder = Request.Form["wonder"];
 
+            if (gender == null)
+            {
+                gender = "null";
+            }
+
             gender.ToLower().Trim();
             if (gender == "Male")
             {
@@ -119,7 +124,7 @@ namespace website
             {
                 conn.Open();
                 
-                string query = "INSERT INTO Users (Username, Email, Password, Gender, Permission) VALUES (@username, @email, @password, @gender, '')";
+                string query = "INSERT INTO Users (Username, Email, Password, Gender) VALUES (@username, @email, @password, @gender)";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
@@ -151,7 +156,6 @@ namespace website
         document.getElementById('sliderValueHidden').value = '{sliderValue}';
         document.getElementById('favoriteWonder').value = '{text}';
 
-        // Set the gender radio buttons
         if ('{gender}' === 'male') {{
             document.getElementById('male').checked = true;
         }} else if ('{gender}' === 'female') {{
@@ -162,7 +166,7 @@ namespace website
 
         document.getElementById('wonders').value = '{Request.Form["wonder"]}';";
 
-            // Execute the script to re-fill the form fields with the values entered by the user
+
             ClientScript.RegisterStartupScript(this.GetType(), "KeepFormData", keepFormDataScript, true);
         }
 
