@@ -1,5 +1,4 @@
-﻿
-<%@ Page Title="Admin" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="website.Admin" %>
+﻿<%@ Page Title="Admin" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="website.Admin" %>
 
 
 
