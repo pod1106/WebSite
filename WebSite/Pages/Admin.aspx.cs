@@ -13,16 +13,16 @@ namespace website
 {
     public partial class Admin : System.Web.UI.Page
     {
-
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 LoadUsers();
+                LoadQuizResults("", "");
             }
         }
-        protected void btnLogin_Click(object sender, EventArgs e)
+
+        protected void Login_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
@@ -30,9 +30,10 @@ namespace website
             if (ValidateUser(username, password))
             {
                 Session["LoggedInUser"] = username; // Store user in session
-                pnlAdminSection.Visible = true;    // Show admin panel
-                lblLoginError.Visible = false;     // Hide error message
-                LoginSection.Visible = false;      // Hide login section
+                pnlAdminSection.Visible = true;     // Show admin panel
+                QuizResults.Visible = true;
+                lblLoginError.Visible = false;      // Hide error message
+                LoginSection.Visible = false;       // Hide login section
             }
             else
             {
@@ -40,7 +41,6 @@ namespace website
             }
         }
 
-        // Validate user from the database
         private bool ValidateUser(string username, string password)
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
@@ -55,7 +55,7 @@ namespace website
                     cmd.Parameters.AddWithValue("@Username", username);
                     cmd.Parameters.AddWithValue("@Password", password);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    return count > 0; // Return true if user exists
+                    return count > 0;
                 }
             }
         }
@@ -85,14 +85,37 @@ namespace website
                 }
             }
         }
+        private void LoadQuizResults(string usernameFilter = "", string scoreFilter = "")
+        {
+            string dbPath = Server.MapPath("~/DataBase/database.sqlite");
+            string connectionString = $"Data Source={dbPath};Version=3;";
 
-        protected void gvUsers_RowEditing(object sender, GridViewEditEventArgs e)
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT Id, Username, Score FROM QuizResults WHERE Username LIKE @Username AND Score LIKE @Score";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", "%" + usernameFilter + "%");
+                    cmd.Parameters.AddWithValue("@Score", "%" + scoreFilter + "%");
+                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        gvQuizResults.DataSource = dt;
+                        gvQuizResults.DataBind();
+                    }
+                }
+            }
+        }
+
+        protected void User_Editing(object sender, GridViewEditEventArgs e)
         {
             gvUsers.EditIndex = e.NewEditIndex;
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
-        protected void gvUsers_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void User_Updating(object sender, GridViewUpdateEventArgs e)
         {
             GridViewRow row = gvUsers.Rows[e.RowIndex];
 
@@ -127,13 +150,13 @@ namespace website
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
-        protected void gvUsers_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        protected void User_CancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvUsers.EditIndex = -1;
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
-        protected void gvUsers_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void User_Deleting(object sender, GridViewDeleteEventArgs e)
         {
             string username = gvUsers.DataKeys[e.RowIndex].Values[0].ToString();
 
@@ -154,7 +177,7 @@ namespace website
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
-        protected void btnAddUser_Click(object sender, EventArgs e)
+        protected void AddUser_Click(object sender, EventArgs e)
         {
             string username = txtNewUsername.Text.Trim();
             string password = txtNewPassword.Text.Trim();
@@ -170,8 +193,6 @@ namespace website
             {
                 gender = null;
             }
-
-
 
             if (string.IsNullOrEmpty(email))
             {
@@ -209,19 +230,19 @@ namespace website
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
-        protected void btnSearch_Click(object sender, EventArgs e)
+        protected void Search_Click(object sender, EventArgs e)
         {
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
-        protected void btnClearSearch_Click(object sender, EventArgs e)
+        protected void ClearSearch_Click(object sender, EventArgs e)
         {
             txtSearchUsername.Text = "";
             txtSearchEmail.Text = "";
             LoadUsers();
         }
 
-        protected void gvUsers_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void User_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
             {
@@ -234,5 +255,18 @@ namespace website
                 }
             }
         }
+
+        protected void SearchQuizResults_Click(object sender, EventArgs e)
+        {
+            LoadQuizResults(TextBox1.Text, TextBox2.Text);
+        }
+
+        protected void ClearQuizResultsSearch_Click(object sender, EventArgs e)
+        {
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            LoadQuizResults();
+        }
+
     }
 }

@@ -7,15 +7,17 @@
         .admin-container {
             margin: 20px;
             padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+            border: 3px solid black;
+            border-radius: 6px;
+            background-color: rgb(240, 240, 240);
+
         }
 
         .admin-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
+            background-color: rgb(225, 254, 152);
         }
 
         .admin-table th, .admin-table td {
@@ -28,12 +30,9 @@
             background-color: #f2f2f2;
         }
 
-        .admin-table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
 
         .admin-table tr:hover {
-            background-color: #f1f1f1;
+            background-color: rgb(210, 240, 145);
         }
 
         .add-user-form {
@@ -69,6 +68,7 @@
         .search-form input {
             padding: 8px;
             margin-right: 10px;
+            max-width: 250px;
         }
 
         .search-form button {
@@ -87,67 +87,83 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <form id="form1" runat="server">
+<form id="form1" runat="server">
+    <asp:Panel ID="LoginSection" runat="server">
+        <div class="login-section" style="margin: 50px; background-color: rgb(220, 220, 220); padding: 20px;">
+            <h2>Admin Login</h2>
+            <asp:TextBox ID="txtUsername" runat="server" placeholder="Username"></asp:TextBox>
+            <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+            <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="Login_Click" />
+            <asp:Label ID="lblLoginError" runat="server" ForeColor="Red" Visible="false" Text="Invalid credentials."></asp:Label>
+        </div>
+    </asp:Panel>
 
-
-        <asp:Panel ID="LoginSection" runat="server">
-            <div class="login-section" style="margin: 50px; background-color: rgb(220, 220, 220); padding: 20px;">
-                <h2>Admin Login</h2>
-                <asp:TextBox ID="txtUsername" runat="server" placeholder="Username"></asp:TextBox>
-                <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-                <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="btnLogin_Click" />
-                <asp:Label ID="lblLoginError" runat="server" ForeColor="Red" Visible="false" Text="Invalid credentials."></asp:Label>
+    <asp:Panel ID="pnlAdminSection" runat="server" Visible="false">
+        <div class="admin-container">
+            <h2>Admin - User Management</h2>
+            <div class="search-form">
+                <asp:TextBox ID="txtSearchUsername" runat="server" placeholder="Search by Username"></asp:TextBox>
+                <asp:TextBox ID="txtSearchEmail" runat="server" placeholder="Search by Email"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="Search_Click" />
+                <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="ClearSearch_Click" />
             </div>
-        </asp:Panel>
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="admin-table" DataKeyNames="Username" OnRowEditing="User_Editing" OnRowUpdating="User_Updating" OnRowCancelingEdit="User_CancelingEdit" OnRowDeleting="User_Deleting" OnRowDataBound="User_RowDataBound">
+                <Columns>
+                    <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />
+                    <asp:BoundField DataField="Password" HeaderText="Password" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                    <asp:TemplateField HeaderText="Gender">
+                        <ItemTemplate>
+                            <%# Eval("Gender") %>
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:DropDownList ID="ddlGender" runat="server">
+                                <asp:ListItem Text="MALE" Value="MALE" />
+                                <asp:ListItem Text="FEMALE" Value="FEMALE" />
+                                <asp:ListItem Text="null" Value="null" />
+                            </asp:DropDownList>
+                        </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                </Columns>
+            </asp:GridView>
 
-
-        <asp:Panel ID="pnlAdminSection" runat="server" Visible="false">
-            <div class="admin-container">
-                <h2>Admin - User Management</h2>
-                <div class="search-form">
-                    <asp:TextBox ID="txtSearchUsername" runat="server" placeholder="Search by Username"></asp:TextBox>
-                    <asp:TextBox ID="txtSearchEmail" runat="server" placeholder="Search by Email"></asp:TextBox>
-                    <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
-                    <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="btnClearSearch_Click" />
-                </div>
-                <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="admin-table" DataKeyNames="Username" OnRowEditing="gvUsers_RowEditing" OnRowUpdating="gvUsers_RowUpdating" OnRowCancelingEdit="gvUsers_RowCancelingEdit" OnRowDeleting="gvUsers_RowDeleting" OnRowDataBound="gvUsers_RowDataBound">
-                    <Columns>
-                        <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />
-                        <asp:BoundField DataField="Password" HeaderText="Password" />
-                        <asp:BoundField DataField="Email" HeaderText="Email" />
-                        <asp:TemplateField HeaderText="Gender">
-
-                            <ItemTemplate>
-                                <%# Eval("Gender") %>
-                            </ItemTemplate>
-
-                            <EditItemTemplate>
-                                <asp:DropDownList ID="ddlGender" runat="server">
-                                    <asp:ListItem Text="MALE" Value="MALE" />
-                                    <asp:ListItem Text="FEMALE" Value="FEMALE" />
-                                    <asp:ListItem Text="null" Value="null" />
-                                </asp:DropDownList>
-                            </EditItemTemplate>
-
-                        </asp:TemplateField>
-                        <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
-                    </Columns>
-                </asp:GridView>
-
-
-                <div class="add-user-form">
-                    <h3>Add New User</h3>
-                    <asp:TextBox ID="txtNewUsername" runat="server" placeholder="Username"></asp:TextBox>
-                    <asp:TextBox ID="txtNewPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-                    <asp:TextBox ID="txtNewEmail" runat="server" placeholder="Email"></asp:TextBox>
-                    <asp:DropDownList ID="ddlNewGender" runat="server">
-                        <asp:ListItem Text="Select Gender" Value="" />
-                        <asp:ListItem Text="MALE" Value="MALE" />
-                        <asp:ListItem Text="FEMALE" Value="FEMALE" />
-                    </asp:DropDownList>
-                    <asp:Button ID="btnAddUser" runat="server" Text="Add User" OnClick="btnAddUser_Click" CssClass="add-user-button" />
-                </div>
+            <div class="add-user-form">
+                <h3>Add New User</h3>
+                <asp:TextBox ID="txtNewUsername" runat="server" placeholder="Username"></asp:TextBox>
+                <asp:TextBox ID="txtNewPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="txtNewEmail" runat="server" placeholder="Email"></asp:TextBox>
+                <asp:DropDownList ID="ddlNewGender" runat="server">
+                    <asp:ListItem Text="Select Gender" Value="" />
+                    <asp:ListItem Text="MALE" Value="MALE" />
+                    <asp:ListItem Text="FEMALE" Value="FEMALE" />
+                </asp:DropDownList>
+                <asp:Button ID="btnAddUser" runat="server" Text="Add User" OnClick="AddUser_Click" CssClass="add-user-button" />
             </div>
-        </asp:Panel>
-    </form>
+        </div>
+    </asp:Panel>
+
+    <div style="height: 50px;" > </div>
+
+    <asp:Panel ID="QuizResults" runat="server" Visible="false">
+        <div class="admin-container">
+            <h2>Admin - Quiz Management</h2>
+            <div class="search-form">
+                <asp:TextBox ID="TextBox1" runat="server" placeholder="Search by Username"></asp:TextBox>
+                <asp:TextBox ID="TextBox2" runat="server" placeholder="Search by Score"></asp:TextBox>
+                <asp:Button ID="Button1" runat="server" Text="Search" OnClick="SearchQuizResults_Click" />
+                <asp:Button ID="Button2" runat="server" Text="Clear" OnClick="ClearQuizResultsSearch_Click" />
+            </div>
+            <asp:GridView ID="gvQuizResults" runat="server" AutoGenerateColumns="False" CssClass="admin-table">
+                <Columns>
+                    <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
+                    <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />
+                    <asp:BoundField DataField="Score" HeaderText="Score" />
+                </Columns>
+            </asp:GridView>
+        </div>
+    </asp:Panel>
+
+
+</form>
 </asp:Content>
