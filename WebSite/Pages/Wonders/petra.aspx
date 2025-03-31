@@ -13,7 +13,15 @@
         </h2>
 
         <p>
-            Petra, once the thriving capital of the Nabataean Kingdom, dates back to the 4th century BC. The Nabataeans, a nomadic Arab people, settled in the area and transformed it into a hub of trade and culture. Petra’s strategic location at the intersection of several ancient trade routes allowed it to flourish as a center for commerce, particularly in spices, incense, and precious metals. By the time of its peak, Petra was known for its advanced water systems and impressive rock-cut architecture, making it one of the most remarkable cities of the ancient world.
+            Petra, once the thriving capital of the Nabataean Kingdom, dates back to the 4th century BC. The Nabataeans, a nomadic Arab people, settled in the area and transformed it into a hub of trade and culture. Petra’s strategic location at the intersection of several ancient trade routes allowed it to flourish as a center for commerce, particularly in:
+        </p>
+        <ul>
+            <li>Spices</li>
+            <li>Incense</li>
+            <li>Precious metals</li>
+        </ul>
+        <p>
+            By the time of its peak, Petra was known for its advanced water systems and impressive rock-cut architecture, making it one of the most remarkable cities of the ancient world.
             <br>
             Over time, the city grew under the rule of Nabataean kings, with the most prosperous period occurring during the reign of King Aretas IV in the 1st century AD, when Petra became an essential stop on trade routes between Arabia, Egypt, and the Mediterranean.
             <img src="\img\petra_history.jpg" />
@@ -40,7 +48,13 @@
 
         <p>
             As a key player in ancient trade, Petra was more than just a city; it was a melting pot of cultures. The city’s location allowed it to become an essential center for trade, where goods such as frankincense, myrrh, and silk were exchanged. Petra’s markets were bustling with merchants and traders from across the ancient world, and the city became a symbol of wealth and prosperity. 
-            <br>
+        </p>
+        <ol>
+            <li>Frankincense</li>
+            <li>Myrrh</li>
+            <li>Silk</li>
+        </ol>
+        <p>
             In addition to its commercial role, Petra was also a cultural center, where the blending of Eastern and Western traditions can be seen in its art, architecture, and religious practices. The Nabataeans developed a unique form of writing and created intricate carvings and reliefs that told stories of their gods, kings, and daily life.
             <img src="\img\petra_trade.jpg" />
         </p>
@@ -84,8 +98,5 @@
         <div class="navigation-item">Petra Today</div>
 
     </div>
-
-
-
 
 </asp:Content>

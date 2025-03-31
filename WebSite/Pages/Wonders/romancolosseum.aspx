@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
 <div id="main">
 
     <h1 class="title">Roman Colosseum</h1>
@@ -13,7 +12,15 @@
         </h2>
 
         <p>
-            The Colosseum, also known as the Flavian Amphitheatre, is an ancient arena located in the heart of Rome, Italy. Completed in AD 80 under the emperor Titus, it was primarily used for gladiatorial contests, animal hunts, and public spectacles such as mock sea battles and executions. As the largest amphitheatre ever built, it could hold up to 50,000 spectators, showcasing the grandeur of the Roman Empire.
+            The Colosseum, also known as the Flavian Amphitheatre, is an ancient arena located in the heart of Rome, Italy. Completed in AD 80 under the emperor Titus, it was primarily used for:
+        </p>
+        <ul>
+            <li>Gladiatorial contests</li>
+            <li>Animal hunts</li>
+            <li>Public spectacles such as mock sea battles and executions</li>
+        </ul>
+        <p>
+            As the largest amphitheatre ever built, it could hold up to 50,000 spectators, showcasing the grandeur of the Roman Empire.
             <img src="\img\colosseum_history.jpg" />
         </p>
     </section>
@@ -24,7 +31,10 @@
         </h2>
 
         <p>
-            The Colosseum's design is a marvel of Roman engineering, featuring a complex system of arches, vaults, and concrete construction. Its elliptical shape was built with tiered seating for spectators, and it included a retractable roof known as the velarium to provide shade. The Colosseum's outer facade was adorned with columns in the Doric, Ionic, and Corinthian styles, demonstrating the Romans' mastery of architectural aesthetics.
+            The Colosseum's design is a marvel of Roman engineering, featuring a complex system of arches, vaults, and concrete construction. Its elliptical shape was built with tiered seating for spectators, and it included a retractable roof known as the velarium to provide shade.
+        </p>
+        <p>
+            The Colosseum's outer facade was adorned with columns in the Doric, Ionic, and Corinthian styles, demonstrating the Romans' mastery of architectural aesthetics.
             <img src="\img\colosseum_architecture.jpg" />
         </p>
     </section>
@@ -35,7 +45,16 @@
         </h2>
 
         <p>
-            The Colosseum was the site of various public spectacles, most notably gladiator combat. These brutal fights were fought between trained warriors, often slaves or prisoners, as a form of entertainment for the masses. Other events included animal hunts, chariot races, and even naval reenactments when the arena was flooded. These events served not only as entertainment but also as a display of Roman power and dominance over both people and nature.
+            The Colosseum was the site of various public spectacles, most notably gladiator combat. These brutal fights were fought between trained warriors, often slaves or prisoners, as a form of entertainment for the masses. Other events included animal hunts, chariot races, and even naval reenactments when the arena was flooded.
+        </p>
+        <ul>
+            <li>Gladiator combat</li>
+            <li>Animal hunts</li>
+            <li>Chariot races</li>
+            <li>Naval reenactments</li>
+        </ul>
+        <p>
+            These events served not only as entertainment but also as a display of Roman power and dominance over both people and nature.
             <img src="\img\colosseum_events.jpg" />
         </p>
     </section>
@@ -46,7 +65,10 @@
         </h2>
 
         <p>
-            After the fall of the Western Roman Empire in the 5th century, the Colosseum fell into disrepair. Earthquakes in the 8th and 9th centuries caused significant damage, and much of the stone was repurposed for other construction projects. By the medieval period, the Colosseum had been abandoned for a time, and the area surrounding it was repurposed for various uses. However, it never lost its symbolic significance.
+            After the fall of the Western Roman Empire in the 5th century, the Colosseum fell into disrepair. Earthquakes in the 8th and 9th centuries caused significant damage, and much of the stone was repurposed for other construction projects.
+        </p>
+        <p>
+            By the medieval period, the Colosseum had been abandoned for a time, and the area surrounding it was repurposed for various uses. However, it never lost its symbolic significance.
             <img src="\img\colosseum_decline.jpg"/>
         </p>
     </section>
@@ -72,7 +94,5 @@
     <div class="navigation-item">Legacy</div>
 
 </div>
-
-
 
 </asp:Content>
