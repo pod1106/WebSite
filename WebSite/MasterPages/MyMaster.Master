@@ -14,85 +14,76 @@
             font-family: Arial;
         }
 
+                
         header {
             background: rgb(40, 40, 40);
             color: white;
-            padding: 15px;
-            padding-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            padding-right: 30px;
+            padding: 15px 30px 20px 15px
         }
 
         .site-name {
             font-size: 30px;
             font-weight: bold;
-            text-align: center;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
         }
 
-        nav {
-            margin-left: auto;
-        }
+         nav {
+             margin-left: auto;
+         }
 
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
+         nav ul {
+             list-style: none;
+             margin: 0;
+             padding: 0;
+             display: flex;
+             gap: 40px;
+         }
 
-        nav ul li {
-            margin-left: 40px;
-        }
+         nav ul li a, nav ul li span {
+             color: white;
+             text-decoration: none;
+             font-size: 1.5em;
+         }
 
-        nav ul li a, nav ul li span {
-            color: white;
-            text-decoration: none;
-            font-size: 1.5em;
-        }
+         nav ul li a:hover {
+             text-decoration: underline;
+         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
-        }
 
         footer {
             font-family: Arial;
             font-size: 16px;
             color: black;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: rgb(240,240,240);
+        
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            background-color: rgb(240,240,240); 
             border-radius: 8px;
+        
             padding: 10px;
             position: fixed;
-            width: 90%;
+            width: 90%; 
             bottom: 6px;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .footer-content {
-            width: 70%;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
+            width: 70%;
         }
 
         .footer-content a.footer-link {
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
-
-        .footer-content a.footer-link:hover {
-            color: inherit;
+            text-decoration: none; 
+            color: inherit;             
         }
 
         a {
@@ -101,29 +92,23 @@
         }
 
         a:hover {
-            text-decoration: underline;
+            text-decoration: underline; 
         }
 
         .separator {
-            margin-left: 20px;
-            margin-right: 20px;
+            margin: 0 20px;
             font-size: 20px;
         }
-
-
-
-
-
 
     </style>
 </head>
 
 <body>
     <!-- Header Section -->
+
     <header>
         <div class="site-name">7 Wonders of The World</div>
-        
-        <!-- Navigation Menu -->
+
         <nav>
             <ul>
                 <li><a href="Home.aspx">Home</a></li>
@@ -141,17 +126,21 @@
         </nav>
     </header>
 
+
+
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
     </asp:ContentPlaceHolder>
 
     <footer>
         <div class="footer-content">
             <span><a href="Home.aspx">Home Page</a></span>
-            <span>Information</span>
             <span><a href="Login.aspx">Login</a></span>
-            <span>Contact</span>
-            <span>&copy; 2024 All rights reserved.</span>
+            <span><a href="Register.aspx">Register</a></span>
+            <span><a href="Quiz.aspx">Quiz</a></span>
+            <span>&copy; 2025 All rights reserved.</span>
         </div>
     </footer>
+
+
 </body>
 </html>

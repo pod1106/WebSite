@@ -17,17 +17,15 @@
             padding: 0;
             margin-bottom: 40px;
         }
-
+        
         header {
             background: rgb(40, 40, 40);
             color: white;
-            padding: 15px;
-            padding-bottom: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: relative;
-            padding-right: 30px;
+            padding: 15px 30px 20px 15px
         }
 
         .site-name {
@@ -48,10 +46,7 @@
              margin: 0;
              padding: 0;
              display: flex;
-         }
-
-         nav ul li {
-             margin-left: 40px;
+             gap: 40px;
          }
 
          nav ul li a, nav ul li span {
@@ -71,7 +66,7 @@
             color: black;
         
             display: flex; 
-            justify-content: space-between;
+            justify-content: center;
             align-items: center; 
             background-color: rgb(240,240,240); 
             border-radius: 8px;
@@ -80,27 +75,21 @@
             position: fixed;
             width: 90%; 
             bottom: 6px;
-            left: 0;
-            right: 0; 
-            margin: 0 auto;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .footer-content {
-            width: 70%;
-            margin: 0 auto;
             display: flex;
             justify-content: space-between;
+            width: 70%;
         }
 
         .footer-content a.footer-link {
             text-decoration: none; 
-            color: inherit;        
-            cursor: pointer;       
+            color: inherit;             
         }
 
-        .footer-content a.footer-link:hover {
-            color: inherit;
-        }
         a {
             color: #3498db;
             text-decoration: none;
@@ -111,8 +100,7 @@
         }
 
         .separator {
-            margin-left: 20px;
-            margin-right: 20px;
+            margin: 0 20px;
             font-size: 20px;
         }
 
@@ -123,6 +111,7 @@
 
 
          /* Main container for the entire content */
+
          #main {
              max-width: min(70%, 1200px);
              margin: 0 auto;
@@ -198,6 +187,8 @@
             position: relative;
             display: inline-block;
             cursor: pointer;
+            text-decoration: underline;
+            
         }
 
         .tooltip .tooltiptext {
@@ -246,7 +237,8 @@
              box-shadow: 0 0 15px rgba(100, 100, 100, 0.4); 
              border-radius: 8px;
 
-             padding: 20px;
+             padding-top: 20px;
+             padding-bottom: 20px;
              gap: 20px;
 
              display: flex;
@@ -256,8 +248,6 @@
              text-align: center;
              justify-content: space-between;
 
-             padding-left: 0px;
-             padding-right: 0px;
              font-size: 20px; 
              visibility: hidden;
          }
@@ -339,10 +329,10 @@
 
 <body>
     <!-- Header Section -->
+
     <header>
         <div class="site-name">7 Wonders of The World</div>
-        
-        <!-- Navigation Menu -->
+
         <nav>
             <ul>
                 <li><a href="../Home.aspx">Home</a></li>
@@ -353,7 +343,7 @@
                         <span class="separator">|</span>
                         <span>Welcome, <%= Session["Username"] %>!</span>
                     <% } else { %>
-                        <a href="Login.aspx">Login</a>
+                        <a href="../Login.aspx">Login</a>
                     <% } %>
                 </li>
             </ul>
@@ -368,15 +358,15 @@
 
     <!-- Footer Section -->
 
-        <footer class="master-footer">
-            <div class="footer-content">
-                <span><a href="../Home.aspx">Home Page</a></span>
-                <span>Information</span>
-                <span><a href="../Login.aspx">Login</a></span>
-                <span>Contact</span>
-                <span>&copy; 2024 All rights reserved.</span>
-            </div>
-        </footer>
+    <footer>
+        <div class="footer-content">
+            <span><a href="../Home.aspx">Home Page</a></span>
+            <span><a href="../Login.aspx">Login</a></span>
+            <span><a href="../Register.aspx">Register</a></span>
+            <span><a href="../Quiz.aspx">Quiz</a></span>
+            <span>&copy; 2024 All rights reserved.</span>
+        </div>
+    </footer>
 
 </body>
 </html>

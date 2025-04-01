@@ -1,24 +1,26 @@
 ﻿<%@ Page Title="7 Wonders of the World" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="website.Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        /* Basic styles for the layout */
         body {
             height: 100vh;
             background-size: cover; 
-            background-position: center center;
-            background-attachment: fixed;
-
+            background-position: center;
             animation: slide 60s ease-in-out infinite;
         }
 
         @keyframes slide {
             0%, 100% { background-image: url("../img/great_wall_of_china.jpg"); }
-            16.67% { background-image: url('../img/petra.jpg'); }
-            33.33% { background-image: url('../img/christ_the_redeemer.jpg'); }
-            50% { background-image: url('../img/machu_picchu.jpg'); }
-            66.67% { background-image: url("../img/chichen_itza.jpg"); }
-            83.33% { background-image: url("../img/romancolosseum.jpg"); }
+            14.29% { background-image: url('../img/petra.jpg'); }
+            28.57% { background-image: url('../img/christ_the_redeemer.jpg'); }
+            42.86% { background-image: url('../img/machu_picchu.jpg'); }
+            57.14% { background-image: url("../img/chichen_itza.jpg"); }
+            71.43% { background-image: url("../img/romancolosseum.jpg"); }
+            85.71% { background-image: url("../img/taj_mahal.jpg"); }
         }
+
+
+
+
 
         .container {
             display: flex;
@@ -27,21 +29,10 @@
             height: 80%;
         }
 
-
-
-        @keyframes fadeInUp {
-              0% { opacity: 0; transform: translateY(50px); }
-              100% { opacity: 1; transform: translateY(0); }
-        }
-
         table {
-            position: sticky;
             width: 70%;
             top: 40px;
-            margin: 500px auto;
-            border-collapse: separate;
             border-spacing: 15px;
-            overflow: hidden;
             position: relative;
             padding: 20px;
             background-color: rgba(240, 240, 240, 0.4);
@@ -49,6 +40,15 @@
             border-radius: 10px;
             animation: fadeInUp 1s ease-in-out;
         }
+
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+
+
+
 
 
         th, td {
@@ -116,11 +116,13 @@
             <tr>
                 <td colspan="4" style="padding-inline: 50px; font-size: 24px;" class="no-hover">
                     <h2>Welcome to the 7 Wonders of the World!</h2>
-                    <p>Explore the incredible landmarks that have captivated the world for centuries.<br /> Learn fascinating facts, test your knowledge with fun quizzes, and enjoy stunning images of these awe-inspiring wonders. Let the adventure begin!</p>
+                    <p>Explore incredible landmarks that have captivated the world for centuries.<br />
+                        Learn fascinating facts and test your knowledge with fun quizzes.<br />
+                        Enjoy breathtaking images of these famous wonders!</p>
                 </td>
             </tr>
-            <tr>
 
+            <tr>
                 <td class="tablelink">
                     <a href="Wonders/great_wall_of_china.aspx" class="wonder-link">
                         <img src="../img/great_wall_of_china.jpg" alt="Great Wall of China" class="wonder-img">
@@ -146,6 +148,7 @@
                     </a>
                 </td>
             </tr>
+
             <tr>
                 <td class="tablelink">
                     <a href="Wonders/chichen_itza.aspx" class="wonder-link">
@@ -166,10 +169,10 @@
                     </a>
                 </td>
                    
-                <td class="tablelink"> <!-- Empty cell to maintain structure -->
-                     <a href="Quiz.aspx" class="wonder-link">
-                         <h3>Test Your Knowledge!</h3>
-                     </a>
+                <td class="tablelink">
+                        <a href="Quiz.aspx" class="wonder-link">
+                            <h3>Test Your Knowledge!</h3>
+                        </a>
                 </td> 
             </tr>
         </table>
