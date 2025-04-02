@@ -112,44 +112,44 @@
 
          /* Main container for the entire content */
 
-         #main {
-             max-width: min(70%, 1200px);
-             margin: 0 auto;
-             margin-top: 30px;
-             padding: 30px; 
-             padding-top: 10px;
-             background-color: #ffffff; 
-             border-radius: 10px; 
-             box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
-         }
+        #main {
+            max-width: min(70%, 1200px);
+            margin: 0 auto;
+            margin-top: 30px;
+            padding: 30px; 
+            padding-top: 10px;
+            background-color: #ffffff; 
+            border-radius: 10px; 
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); 
+        }
 
-         .title {
-             text-align: center;
-             font-size: 2.5rem; 
-             color: #333;
-             margin-bottom: 20px;
-             margin-top: 0;
-         }
-
-
-         .section-title {
-             font-size: 1.8rem;
-             color: #2c3e50;
-             border-bottom: 2px solid #3498db;
-             padding-bottom: 5px; 
-             margin-bottom: 15px; 
-             padding: 5px;
-             border-radius: 5px;
-         }
+        .title {
+            text-align: center;
+            font-size: 2.5rem; 
+            color: #333;
+            margin-bottom: 20px;
+            margin-top: 0;
+        }
 
 
-         img {
-             display: block;
-             margin: 20px auto;
-             max-width: 80%;
-             border-radius: 4px;
-             box-shadow: 0 0 15px rgba(100, 100, 100, 1); 
-         }
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px; 
+            margin-bottom: 15px; 
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 80%;
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(100, 100, 100, 1); 
+        }
 
         .video-container {
             position: relative;
@@ -168,19 +168,19 @@
         }
 
 
-         p {
-             font-size: 1.1rem;
-             color: #555;
-             margin: 10px;
-             margin-bottom: 15px;
-         }
-         p strong {
+        p {
+            font-size: 1.1rem;
+            color: #555;
+            margin: 10px;
+            margin-bottom: 15px;
+        }
+        p strong {
             transition: color 0.3s ease;
-         }
+        }
  
-         p strong:hover {
-             color: #d23a3a;
-         }
+        p strong:hover {
+            color: #d23a3a;
+        }
 
          
         .tooltip {
@@ -215,56 +215,56 @@
         }
 
 
-         section {
-             margin-bottom: 30px;
-         }
+        section {
+            margin-bottom: 30px;
+        }
 
 
-         h2:hover {
-             color: #3498db;
-         }
+        h2:hover {
+            color: #3498db;
+        }
 
 
-         #navigation {
-             position: fixed;
-             top: 150px;
-             left: 50px;
+        #navigation {
+            position: fixed;
+            top: 150px;
+            left: 50px;
 
-             width: 220px;
-             height: auto;
+            width: 220px;
+            height: auto;
 
-             background-color: rgb(116, 219, 233);
-             box-shadow: 0 0 15px rgba(100, 100, 100, 0.4); 
-             border-radius: 8px;
+            background-color: rgb(116, 219, 233);
+            box-shadow: 0 0 15px rgba(100, 100, 100, 0.4); 
+            border-radius: 8px;
 
-             padding-top: 20px;
-             padding-bottom: 20px;
-             gap: 20px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            gap: 20px;
 
-             display: flex;
+            display: flex;
 
-             flex-direction: column;
-             align-items: center;
-             text-align: center;
-             justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            justify-content: space-between;
 
-             font-size: 20px; 
-             visibility: hidden;
-         }
+            font-size: 20px; 
+            visibility: hidden;
+        }
 
-         .navigation-item {
-             border-radius: 4px;
-             background-color: rgb(182, 236, 243);
-             width: 80%;
-             padding: 5px;
-         }
+        .navigation-item {
+            border-radius: 4px;
+            background-color: rgb(182, 236, 243);
+            width: 80%;
+            padding: 5px;
+        }
 
-         .navigation-item:hover {
-             cursor: pointer;
-             transform: scale(1.05);
-             background-color: rgb(192, 246, 253);
-             box-shadow: 0 0 15px rgba(100, 100, 100, 0.3); 
-         }
+        .navigation-item:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+            background-color: rgb(192, 246, 253);
+            box-shadow: 0 0 15px rgba(100, 100, 100, 0.3); 
+        }
 
 
 
@@ -275,11 +275,11 @@
     </style>
 
     <script>
+
         document.addEventListener("DOMContentLoaded", () => {
             const navigation = document.querySelector('#navigation');
 
             function toggleNavigation() {
-                console.log(window.innerWidth);
                 if (window.innerWidth > 1800) {
                     navigation.style.visibility = 'visible';
 
@@ -292,34 +292,23 @@
             window.addEventListener('resize', toggleNavigation);
         });
 
+        document.addEventListener("DOMContentLoaded", () => {
+            const items = document.querySelectorAll(".navigation-item");
+            const sections = document.querySelectorAll("#main h2");
 
-        document.addEventListener("DOMContentLoaded", function () {
-            document.querySelectorAll('.navigation-item').forEach((item, index) => {
-                const sections = document.querySelectorAll('#main h2');
-
-                item.addEventListener('click', () => {
-                    const target = sections[index];
-
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-
-                    setTimeout(() => {
-                        target.style.transition = "background-color 0.7s ease";
-                        target.style.backgroundColor = "rgb(220, 240, 200)";
-
-                        setTimeout(() => { target.style.backgroundColor = ""; }, 1000);
-
-                    }, 500);
-                });
+            items.forEach((item, index) => {
+                item.addEventListener("click", () => navigateAndHighlight(sections[index]));
             });
         });
 
-
-
-
-
-
-
-
+        function navigateAndHighlight(target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            setTimeout(() => {
+                target.style.transition = "background-color 0.7s ease";
+                target.style.backgroundColor = "rgb(220, 240, 200)";
+                setTimeout(() => target.style.backgroundColor = "", 1000);
+            }, 500);
+        }
 
     </script>
 

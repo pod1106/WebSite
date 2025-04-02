@@ -228,8 +228,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-
-
     <div class="form-container" runat="server">
         <form autocomplete="off" runat="server">
             <!-- Username Field -->
@@ -239,7 +237,6 @@
             </label>
             <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="off" />
 
-
             <!-- Password Field -->
             <label for="password">Password
                 <span class="tooltip-text">Password must be at least 7 characters long, and contain a mix of upper and lowercase letters, and numbers.</span>
@@ -247,30 +244,27 @@
             </label>
             <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="off" style="margin-bottom: 5px;" />
 
-
-
             <!-- Show Password Checkbox -->
             <label style="font-size:16px; display: flex; align-items: center; justify-content: flex-start; padding: 5px; margin-top: 0px;">
                 <input type="checkbox" id="showPassword" onclick="togglePasswordVisibility()" style="margin-right: 10px; width: 16px; height: 16px; border: 1px solid black;">
                 <span style="position: relative; top: -10px;">Show Password</span>
             </label>
 
+            <!-- Reset button -->
             <button type="reset" class="reset-button">Reset</button>
 
-
+            <!-- Submit button -->
             <asp:Button ID="btnSubmit" CssClass="login-button" runat="server" Text="Login" 
                 OnClientClick="return validInputs(event); return false" OnClick="Submit" ClientIDMode="Static" />
 
+            <!-- Register button -->
+            <a href="Register.aspx" class="create-account">Create New Account</a> 
 
 
-           <a href="Register.aspx" class="create-account">Create New Account</a>
-
-
-            
-        </form>
-
-         
+        </form> 
     </div>
+
+
     <div class="popup-text" id="popupText"></div>
 
 
