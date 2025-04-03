@@ -18,16 +18,12 @@ namespace website.Pages
         }
 
         [WebMethod]
-        public static void SubmitScoreAjax(int score)
-        {
-
-            HttpContext.Current.Session["Score"] = score;
+        public static void SubmitScore(int score) {
             string username = HttpContext.Current.Session["Username"].ToString();
             AddScoreToDatabase(username, score);
         }
 
-        private static void AddScoreToDatabase(string username, int score)
-        {
+        private static void AddScoreToDatabase(string username, int score) {
             string dbPath = HttpContext.Current.Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
 

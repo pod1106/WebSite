@@ -4,146 +4,145 @@
 
         <style>    
 
-        body,html {
-            width: 100%;
-            overflow-x: hidden
-        }
+body,html {
+    width: 100%;
+    overflow-x: hidden
+}
 
-        .form-container {
-            width: min(800px,80vw);
-            max-width: 100%;
-            margin: 100px auto;
-            padding: 20px;
-            border: 2px solid #000;
-            background-color: #f0f0f0;
-            border-radius: 8px;
-            text-align: center;
-            position: relative
-        }
+.form-container {
+    width: min(800px,80vw);
+    margin: 100px auto;
+    padding: 20px;
+    border: 2px solid #000;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    text-align: center;
+    position: relative
+}
 
-        .form-container label {
-            font-size: 22px;
-            font-family: Arial;
-            display: block;
-            font-weight: 700;
-            margin-bottom: 5px;
-            text-align: left;
-            position: relative
-        }
+.form-container label {
+    font-size: 22px;
+    font-family: Arial;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: left;
+    position: relative
+}
 
-        .form-container input {
-            width: 90%;
-            padding: 10px;
-            margin: 0 auto 20px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 18px;
-            text-align: left
-        }
+.form-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 18px;
+    text-align: left
+}
 
-        .form-container .login-button,a.create-account {
-            width: 200px;
-            padding: 12px;
-            font-weight: 700;
-            background-color: #35c2dc;
-            color: #fff;
-            font-size: 24px;
-            margin: 10px;
-            border: 0;
-            border-radius: 4px;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color .3s ease
-        }
+.form-container .login-button,a.create-account {
+    width: 200px;
+    padding: 12px;
+    font-weight: 700;
+    background-color: #35c2dc;
+    color: white;
+    font-size: 24px;
+    margin: 10px;
+    border: 0;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .3s ease
+}
 
-        .login-button:hover,a.create-account:hover {
-            background-color: #14a8e6
-        }
+.login-button:hover,a.create-account:hover {
+    background-color: #14a8e6
+}
 
 
-        .reset-button {
-            width: 100px; 
-            padding: 12px; 
-            font-weight: bold;
-            background-color: rgb(250, 82, 88); 
-            color: white; 
-            font-size: 24px;
-            margin: 20px;
-            border: none; 
-            border-radius: 4px; 
-            text-align: center;
+.reset-button {
+    width: 100px; 
+    padding: 12px; 
+    font-weight: bold;
+    background-color: rgb(250, 82, 88); 
+    color: white; 
+    font-size: 24px;
+    margin: 20px;
+    border: none; 
+    border-radius: 4px; 
+    text-align: center;
 
-            cursor: pointer; 
-            transition: background-color 0.3s ease;
-        }
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+}
 
-        .reset-button:hover {
-            background-color: rgb(227, 54, 61);
-        }
+.reset-button:hover {
+    background-color: rgb(227, 54, 61);
+}
 
-        .popup-text,.tooltip-text {
-            font-size: 18px;
-            text-align: center;
-            opacity: 0;
-            position: absolute;
-            width: 300px;
-            padding: 10px;
-            border-radius: 8px
-        }
+.popup-text,.tooltip-text {
+    font-size: 18px;
+    text-align: center;
+    opacity: 0;
+    position: absolute;
+    width: 300px;
+    padding: 10px;
+    border-radius: 8px
+}
 
-        .tooltip-text {
-            transform: translateY(15px);
-            color: #6f816fff;
-            background-color: #dcfed7ee;
-            border: 2px solid #abd4abff;
-            right: 105%;
-            top: -10px;
-            transition: opacity .3s ease-in-out,transform .3s ease-in-out
-        }
+.tooltip-text {
+    transform: translateY(15px);
+    color: #6f816fff;
+    background-color: #dcfed7ee;
+    border: 2px solid #abd4abff;
+    right: 105%;
+    top: -10px;
+    transition: opacity .3s ease-in-out,transform .3s ease-in-out
+}
 
-        .form-container label:hover .tooltip-text {
-            opacity: 1;
-            transform: translateY(0)
-        }
+.form-container label:hover .tooltip-text {
+    opacity: 1;
+    transform: translateY(0)
+}
 
-        .popup-text {
-            visibility: hidden;
-            top: 30px;
-            left: 103%;
-            margin-left: 10px;
-            transition: opacity .6s ease
-        }
+.popup-text {
+    visibility: hidden;
+    top: 30px;
+    left: 103%;
+    margin-left: 10px;
+    transition: opacity .6s ease
+}
 
-        .popup-text,.popup-text.red-popup {
-            background-color: rgba(255,225,225,.9);
-            color: #641919;
-            border: 2px solid #ffc8c8
-        }
+.popup-text,.popup-text.red-popup {
+    background-color: rgba(255,225,225,.9);
+    color: #641919;
+    border: 2px solid #ffc8c8
+}
 
-        .popup-text.green-popup,.popup-text.red2-popup {
-            background-color: #e1ffe1;
-            color: #196419;
-            border: 2px solid #c8ffc8;
-            font-size: 30px;
-            position: fixed;
-            width: 400px;
-            z-index: 1000;
-            left: 50%;
-            transform: translate(-50%)
-        }
+.popup-text.green-popup,.popup-text.red2-popup {
+    background-color: #e1ffe1;
+    color: #196419;
+    border: 2px solid #c8ffc8;
+    font-size: 30px;
+    position: fixed;
+    width: 400px;
+    z-index: 1000;
+    left: 50%;
+    transform: translate(-50%)
+}
 
-        .popup-text.red2-popup {
-            background-color: #ffe1e1;
-            color: #641919;
-            border: 2px solid #ffc8c8
-        }
+.popup-text.red2-popup {
+    background-color: #ffe1e1;
+    color: #641919;
+    border: 2px solid #ffc8c8
+}
 
-        a.create-account {
-            width: 236px;
-            font-family: Arial;
-            display: inline-block;
-            text-decoration: none!important
-        }
+a.create-account {
+    width: 236px;
+    font-family: Arial;
+    display: inline-block;
+    text-decoration: none!important;
+}
 
     </style>
 
@@ -168,7 +167,7 @@
         }
 
 
-        function validInputs(even) {
+        function validInputs(event) {
 
             const name = document.getElementById('username').value;
             const password = document.getElementById('password').value;
@@ -185,13 +184,30 @@
 
 
             if (password) {
-                if (password.length <= 6) {
-                    showPopup("Password is too short!", 'red', 'popupPasswordText');
+                if (password.length >= 7) {
+                    if (!/[a-z]/.test(password)) {
+                        showPopup("Password needs to contain a lowercase letter.", 'red', 'popupPasswordText');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return false;
+                    }
+                    if (!/[A-Z]/.test(password)) {
+                        showPopup("Password needs to contain an uppercase letter.", 'red', 'popupPasswordText');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return false;
+                    }
+                    if (!/[0-9]/.test(password)) {
+                        showPopup("Password needs to contain a number.", 'red', 'popupPasswordText');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        return false;
+                    }
+                } else {
+                    showPopup("Password must be at least 7 characters long.", 'red', 'popupPasswordText');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
-
             } else {
                 showPopup("Password is not set!", 'red', 'popupPasswordText');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
 
@@ -205,7 +221,6 @@
             const passwordField = document.getElementById('password');
             const confirmPasswordField = document.getElementById('confirmPassword');
             const showPasswordCheckbox = document.getElementById('showPassword');
-
 
             if (showPasswordCheckbox.checked) {
                 passwordField.type = 'text';

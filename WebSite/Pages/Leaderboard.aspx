@@ -39,7 +39,7 @@
     <form id="form1" runat="server">
         <div class="leaderboard-container">
             <h2>Leaderboard - Top 10 Scores</h2>
-            <asp:GridView ID="gvLeaderboard" runat="server" AutoGenerateColumns="False" CssClass="leaderboard-table">
+            <asp:GridView ID="leaderboard" runat="server" AutoGenerateColumns="False" CssClass="leaderboard-table">
                 <Columns>
                     <asp:BoundField DataField="Username" HeaderText="Username" />
                     <asp:BoundField DataField="Score" HeaderText="Score" />

@@ -18,7 +18,7 @@ namespace website.Pages
                 LoadLeaderboard();
             }
         }
-
+        
         private void LoadLeaderboard()
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
@@ -34,8 +34,8 @@ namespace website.Pages
                     {
                         DataTable dt = new DataTable();
                         da.Fill(dt);
-                        gvLeaderboard.DataSource = dt;
-                        gvLeaderboard.DataBind();
+                        leaderboard.DataSource = dt;
+                        leaderboard.DataBind();
                     }
                 }
             }

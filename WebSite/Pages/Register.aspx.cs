@@ -19,8 +19,7 @@ namespace website
             }
         }
 
-        protected void Submit(object sender, EventArgs e)
-        {
+        protected void Submit(object sender, EventArgs e) {
             string username = Request.Form["username"];
             string email = Request.Form["email"];
             string password = Request.Form["password"];
@@ -30,26 +29,18 @@ namespace website
             string text = Request.Form["favoriteWonder"];
             string wonder = Request.Form["wonder"];
 
-            if (gender == null)
-            {
+            if (gender == null) {
                 gender = "null";
             }
 
             gender.ToLower().Trim();
-            if (gender == "Male")
-            {
+
+            if (gender == "Male") {
                 gender = "MALE";
             }
-            else if (gender == "Female")
-            {
+            else if (gender == "Female"){
                 gender = "FEMALE";
-            }
-            else
-            {
-                gender = "null";
-            }
-
-
+            } else { gender = "null"; }
 
 
             string CheckUser = CheckUserExistence(username, email);
@@ -73,16 +64,12 @@ namespace website
                 return;
 
 
-            } else
-            {
+            } else {
                 string script = $"window.onload = function() {{ showPopup('Please try again', 'red2', 'popupText', 6000); }};";
 
                 ClientScript.RegisterStartupScript(this.GetType(), "ErrorAlert", script, true);
                 KeepFormData(username, email, password, confirmPassword, gender, sliderValue, text);
             }
-
-
-
         }
 
 

@@ -73,6 +73,7 @@ const questions = [
     },
 ];
 
+
 let correctAnswers = 0;
 let currentQuestionIndex = 0;
 
@@ -124,7 +125,7 @@ function handleSubmit() {
         document.getElementById("result").style.display = "block";
         document.getElementById("score").textContent = correctAnswers;
 
-        fetch("Quiz.aspx/SubmitScoreAjax", {
+        fetch("Quiz.aspx/SubmitScore", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

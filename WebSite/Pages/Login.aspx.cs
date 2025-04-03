@@ -17,23 +17,19 @@ namespace website
 
             bool isUserValid = CheckUserInDatabase(username, password);
 
-            if (isUserValid)
-            {
+            if (isUserValid) {
                 Session["Username"] = username;
 
                 string returnUrl = Request.QueryString["ReturnUrl"];
 
-                if (!string.IsNullOrEmpty(returnUrl))
-                {
+                if (!string.IsNullOrEmpty(returnUrl)) {
                     Response.Redirect(returnUrl);
                 }
-                else
-                {
+                else {
                     Response.Redirect("Home.aspx");
                 }
             }
-            else
-            {
+            else {
                 ClientScript.RegisterStartupScript(this.GetType(), "InvalidLogin",
                     "window.onload = function() { showPopup('Invalid Username or Password', 'red2', 'popupText'); };", true);
 
@@ -47,13 +43,11 @@ namespace website
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             bool userExists = false;
 
-            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + dbPath))
-            {
+            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + dbPath)) {
                 conn.Open();
 
                 string query = "SELECT COUNT(1) FROM Users WHERE username = @username AND password = @password";
-                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
-                {
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn)) {
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@password", password);
 
