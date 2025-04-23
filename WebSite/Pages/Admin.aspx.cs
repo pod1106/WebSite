@@ -59,9 +59,6 @@ namespace website
                 }
             }
         }
-
-
-
         private void LoadUsers(string usernameFilter = "", string emailFilter = "")
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");

@@ -267,12 +267,10 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-
-
-
             const male = document.getElementById('male').checked;
             const female = document.getElementById('female').checked;
             const other = document.getElementById('other').checked;
+
 
 
             if (male === true) {
@@ -292,6 +290,12 @@
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     return false;
                 }
+                if (name.charAt(0) < 'A' || name.charAt(0) > 'Z') {
+                    showPopup("Username has to start with big char", 'red', 'popupNameText');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return false;
+                }
+            
             } else {
                 showPopup("Username is not set!", 'red', 'popupNameText');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -300,6 +304,7 @@
 
             if (email) {
                 const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                // if (!(email.indexOf("@") > 0 && email.indexOf(".") > 3)) {
                 if (!emailRegex.test(email)) {
                     showPopup("Email is not valid!", 'red', 'popupEmailText');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
