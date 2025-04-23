@@ -97,7 +97,7 @@ body,html {
     border: 2px solid #abd4abff;
     right: 105%;
     top: -10px;
-    transition: opacity .3s ease-in-out,transform .3s ease-in-out
+    transition: opacity 0.1s ease-in-out,transform 0.1s ease-in-out
 }
 
 .form-container label:hover .tooltip-text {
@@ -110,7 +110,7 @@ body,html {
     top: 30px;
     left: 103%;
     margin-left: 10px;
-    transition: opacity .6s ease
+    transition: opacity 0.3s ease
 }
 
 .popup-text,.popup-text.red-popup {

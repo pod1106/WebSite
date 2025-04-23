@@ -30,18 +30,18 @@ namespace website
             if (ValidateUser(username, password))
             {
                 Session["LoggedInUser"] = username; // Store user in session
-                pnlAdminSection.Visible = true;     // Show admin panel
+                Users.Visible = true;           // Show admin panel
                 QuizResults.Visible = true;
-                lblLoginError.Visible = false;      // Hide error message
-                LoginSection.Visible = false;       // Hide login section
+                LoginError.Visible = false;     // Hide error message
+                LoginSection.Visible = false;   // Hide login section
             }
             else
             {
-                lblLoginError.Visible = true;      // Show error if login fails
+                LoginError.Visible = true;      // Show error if login fails
             }
         }
 
-        private bool ValidateUser(string username, string password)
+        private bool ValidateUser(string username, string password) // for the admin login
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
@@ -59,7 +59,7 @@ namespace website
                 }
             }
         }
-        private void LoadUsers(string usernameFilter = "", string emailFilter = "")
+        private void LoadUsers(string usernameFilter = "", string emailFilter = "") // load all user table
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
@@ -82,7 +82,7 @@ namespace website
                 }
             }
         }
-        private void LoadQuizResults(string usernameFilter = "", string scoreFilter = "")
+        private void LoadQuizResults(string usernameFilter = "", string scoreFilter = "") // load all quiz results
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
@@ -106,7 +106,7 @@ namespace website
             }
         }
 
-        protected void User_Editing(object sender, GridViewEditEventArgs e)
+        protected void User_Editing(object sender, GridViewEditEventArgs e) // allow the user to edit the data.
         {
             gvUsers.EditIndex = e.NewEditIndex;
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
@@ -146,7 +146,7 @@ namespace website
             gvUsers.EditIndex = -1;
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
-
+        
         protected void User_CancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             gvUsers.EditIndex = -1;

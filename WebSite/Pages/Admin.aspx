@@ -76,6 +76,12 @@
         }
 
         input {
+            padding: 2px;
+            max-width: 300px;
+            font-size: 16px;
+        }
+
+        .main-input {
             margin-bottom: 10px;
             padding: 8px;
             width: 100%;
@@ -85,27 +91,26 @@
         }
     </style>
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <form id="form1" runat="server">
     <asp:Panel ID="LoginSection" runat="server">
         <div class="login-section" style="margin: 50px; background-color: rgb(220, 220, 220); padding: 20px;">
             <h2>Admin Login</h2>
-            <asp:TextBox ID="txtUsername" runat="server" placeholder="Username"></asp:TextBox>
+            <asp:TextBox ID="txtUsername" runat="server" placeholder="Enter Username"></asp:TextBox>
             <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="Login_Click" />
-            <asp:Label ID="lblLoginError" runat="server" ForeColor="Red" Visible="false" Text="Invalid credentials."></asp:Label>
+            <asp:Label ID="LoginError" runat="server" ForeColor="Red" Visible="false" Text="Invalid credentials."></asp:Label>
         </div>
     </asp:Panel>
 
-    <asp:Panel ID="pnlAdminSection" runat="server" Visible="false">
+    <asp:Panel ID="Users" runat="server" Visible="false">
         <div class="admin-container">
             <h2>Admin - User Management</h2>
             <div class="search-form">
-                <asp:TextBox ID="txtSearchUsername" runat="server" placeholder="Search by Username"></asp:TextBox>
-                <asp:TextBox ID="txtSearchEmail" runat="server" placeholder="Search by Email"></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="Search_Click" />
-                <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="ClearSearch_Click" />
+                <asp:TextBox ID="txtSearchUsername" runat="server" placeholder="Search by Username" CssClass="main-input"></asp:TextBox>
+                <asp:TextBox ID="txtSearchEmail" runat="server" placeholder="Search by Email" CssClass="main-input"></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="Search_Click" CssClass="main-input"/>
+                <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="ClearSearch_Click" CssClass="main-input"/>
             </div>
             <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="admin-table" DataKeyNames="Username" OnRowEditing="User_Editing" OnRowUpdating="User_Updating" OnRowCancelingEdit="User_CancelingEdit" OnRowDeleting="User_Deleting" OnRowDataBound="User_RowDataBound">
                 <Columns>
@@ -149,10 +154,10 @@
         <div class="admin-container">
             <h2>Admin - Quiz Management</h2>
             <div class="search-form">
-                <asp:TextBox ID="TextBox1" runat="server" placeholder="Search by Username"></asp:TextBox>
-                <asp:TextBox ID="TextBox2" runat="server" placeholder="Search by Score"></asp:TextBox>
-                <asp:Button ID="Button1" runat="server" Text="Search" OnClick="SearchQuizResults_Click" />
-                <asp:Button ID="Button2" runat="server" Text="Clear" OnClick="ClearQuizResultsSearch_Click" />
+                <asp:TextBox ID="TextBox1" runat="server" placeholder="Search by Username" CssClass="main-input"></asp:TextBox>
+                <asp:TextBox ID="TextBox2" runat="server" placeholder="Search by Score" CssClass="main-input"></asp:TextBox>
+                <asp:Button ID="Button1" runat="server" Text="Search" OnClick="SearchQuizResults_Click" CssClass="main-input"/>
+                <asp:Button ID="Button2" runat="server" Text="Clear" OnClick="ClearQuizResultsSearch_Click" CssClass="main-input"/>
             </div>
             <asp:GridView ID="gvQuizResults" runat="server" AutoGenerateColumns="False" CssClass="admin-table">
                 <Columns>
@@ -163,6 +168,8 @@
             </asp:GridView>
         </div>
     </asp:Panel>
+
+    <div style="height: 200px"></div>
 
 
 </form>

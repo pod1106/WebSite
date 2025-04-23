@@ -276,8 +276,8 @@
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", () => {
-            const navigation = document.querySelector('#navigation');
+        document.addEventListener("DOMContentLoaded", () => { //מחכה שהחלון יטען
+            const navigation = document.getElementById('navigation');
 
             function toggleNavigation() {
                 if (window.innerWidth > 1800) {
