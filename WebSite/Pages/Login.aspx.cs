@@ -19,6 +19,13 @@ namespace website
 
             if (isUserValid) {
                 Session["Username"] = username;
+                if (IsAdmin(username, password))
+                {
+                    Session["Admin"] = "TRUE";
+                } else
+                {
+                    Session["Admin"] = "FALSE";
+                }
 
                 string returnUrl = Request.QueryString["ReturnUrl"];
 
@@ -56,6 +63,26 @@ namespace website
             }
 
             return userExists;
+        }
+
+
+        private bool IsAdmin(string username, string password) // for the admin login
+        {
+            string dbPath = Server.MapPath("~/DataBase/database.sqlite");
+            string connectionString = $"Data Source={dbPath};Version=3;";
+
+            using (SQLiteConnection conn = new SQLiteConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT COUNT(*) FROM Admins WHERE Username = @Username AND Password = @Password";
+                using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Username", username);
+                    cmd.Parameters.AddWithValue("@Password", password);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
         }
 
 

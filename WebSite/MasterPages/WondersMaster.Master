@@ -354,6 +354,10 @@
             <span><a href="../Register.aspx">Register</a></span>
             <span><a href="../Quiz.aspx">Quiz</a></span>
             <span>&copy; 2024 All rights reserved.</span>
+            <% if (Session["Admin"] == "TRUE") { %>
+                <span><a href="../Admin.aspx">Admin Page</a></span>
+            <% } %>
+
         </div>
     </footer>
 

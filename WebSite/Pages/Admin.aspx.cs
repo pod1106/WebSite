@@ -19,6 +19,14 @@ namespace website
             {
                 LoadUsers();
                 LoadQuizResults("", "");
+
+                if (Session["Admin"] == "TRUE")
+                {
+                    Users.Visible = true;
+                    QuizResults.Visible = true;
+                    lblLoginError.Visible = false;
+                    LoginSection.Visible = false;
+                }
             }
         }
 
@@ -29,15 +37,14 @@ namespace website
 
             if (ValidateUser(username, password))
             {
-                Session["LoggedInUser"] = username; // Store user in session
                 Users.Visible = true;           // Show admin panel
                 QuizResults.Visible = true;
-                LoginError.Visible = false;     // Hide error message
+                lblLoginError.Visible = false;     // Hide error message
                 LoginSection.Visible = false;   // Hide login section
             }
             else
             {
-                LoginError.Visible = true;      // Show error if login fails
+                lblLoginError.Visible = true;      // Show error if login fails
             }
         }
 

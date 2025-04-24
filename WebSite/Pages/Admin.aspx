@@ -99,7 +99,7 @@
             <asp:TextBox ID="txtUsername" runat="server" placeholder="Enter Username"></asp:TextBox>
             <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
             <asp:Button ID="btnLogin" runat="server" Text="Login" OnClick="Login_Click" />
-            <asp:Label ID="LoginError" runat="server" ForeColor="Red" Visible="false" Text="Invalid credentials."></asp:Label>
+            <asp:Label ID="lblLoginError" runat="server" ForeColor="Red" Visible="false" Text="Invalid credentials."></asp:Label>
         </div>
     </asp:Panel>
 
