@@ -236,6 +236,9 @@
             background-color: white;
             width: min(600px, 95%);
         }
+        input:focus {
+            background-color: yellow;
+        }
 
     </style>
 
@@ -303,7 +306,7 @@
             }
 
             if (email) {
-                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                const emailRegex = /^[a-zA-Z0-9_-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
                 // if (!(email.indexOf("@") > 0 && email.indexOf(".") > 3)) {
                 if (!emailRegex.test(email)) {
                     showPopup("Email is not valid!", 'red', 'popupEmailText');

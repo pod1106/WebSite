@@ -92,6 +92,7 @@
     <Content Include="Pages\Quiz.aspx" />
     <Content Include="Pages\Quiz.js" />
     <Content Include="Pages\Register.aspx" />
+    <Content Include="Pages\SiteMap.aspx" />
     <Content Include="Pages\test.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -165,6 +166,13 @@
     </Compile>
     <Compile Include="MasterPages\MyMaster.Master.designer.cs">
       <DependentUpon>MyMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SiteMap.aspx.cs">
+      <DependentUpon>SiteMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\SiteMap.aspx.designer.cs">
+      <DependentUpon>SiteMap.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\test.aspx.cs">
       <DependentUpon>test.aspx</DependentUpon>

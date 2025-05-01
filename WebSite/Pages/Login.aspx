@@ -144,6 +144,10 @@ a.create-account {
     text-decoration: none!important;
 }
 
+input:focus {
+    background-color: yellow;
+}
+
     </style>
 
     <script>

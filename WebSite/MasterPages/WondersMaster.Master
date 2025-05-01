@@ -191,7 +191,7 @@
             
         }
 
-        .tooltip .tooltiptext {
+        .tooltiptext {
             visibility: hidden;
             width: 220px;
             background-color: rgba(100, 100, 0, 0.95);
@@ -214,6 +214,10 @@
             opacity: 1;
         }
 
+         .tooltip:active {
+            background: rgb(116, 219, 233);
+        }
+
 
         section {
             margin-bottom: 30px;
@@ -226,9 +230,15 @@
 
 
         #navigation {
+
             position: fixed;
             top: 150px;
             left: 50px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
 
             width: 220px;
             height: auto;
@@ -239,12 +249,9 @@
 
             padding-top: 20px;
             padding-bottom: 20px;
-            gap: 20px;
+            
 
-            display: flex;
 
-            flex-direction: column;
-            align-items: center;
             text-align: center;
             justify-content: space-between;
 
@@ -296,9 +303,10 @@
             const items = document.querySelectorAll(".navigation-item");
             const sections = document.querySelectorAll("#main h2");
 
-            items.forEach((item, index) => {
-                item.addEventListener("click", () => navigateAndHighlight(sections[index]));
-            });
+
+            for (let index = 0; index < items.length; index++) {
+                items[index].addEventListener("click", () => navigateAndHighlight(sections[index]));
+            }
         });
 
         function navigateAndHighlight(target) {
