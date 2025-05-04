@@ -5,60 +5,54 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .admin-container {
-            margin: 20px;
             padding: 20px;
             border: 3px solid black;
             border-radius: 6px;
             background-color: rgb(240, 240, 240);
-
+            width: 70%;
+            margin: 20px auto;
+        }
+        hr {
+            width: 85%;
+            margin: 10px auto;
+            border: 2px solid #3498db;
+            border-radius: 4px;
         }
 
-        .admin-table {
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
             background-color: rgb(225, 254, 152);
         }
 
-        .admin-table th, .admin-table td {
-            border: 1px solid #ccc;
+        table td {
+            border: 1px solid #999;
             padding: 10px;
             text-align: left;
         }
 
-        .admin-table th {
-            background-color: #f2f2f2;
+        table th {
+            padding: 10px;
+            background-color: #fafafa;
         }
 
 
-        .admin-table tr:hover {
+        table tr:hover {
             background-color: rgb(210, 240, 145);
         }
 
-        .add-user-form {
-            margin-top: 20px;
-        }
-
         .add-user-form input, .add-user-form select {
-            margin-bottom: 10px;
-            padding: 8px;
-            width: 100%;
-            max-width: 200px;
-            box-sizing: border-box;
-            font-size: 20px;
+            padding: 6px;
+            width: 150px;
+            font-size: 16px;
         }
 
-        .add-user-form button {
-            padding: 10px 20px;
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            border-radius: 5px;
+        .add-user-form-button {
             cursor: pointer;
         }
 
-        .add-user-form button:hover {
-            background-color: #4cae4c;
+        .add-user-form-button:hover {
+            background-color: rgb(115, 255, 126);
         }
 
         .search-form {
@@ -71,13 +65,10 @@
             max-width: 250px;
         }
 
-        .search-form button {
-            padding: 8px 20px;
-        }
 
         input {
             padding: 2px;
-            max-width: 300px;
+            width: 300px;
             font-size: 16px;
         }
 
@@ -112,7 +103,7 @@
                 <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="Search_Click" CssClass="main-input"/>
                 <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="ClearSearch_Click" CssClass="main-input"/>
             </div>
-            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" CssClass="admin-table" DataKeyNames="Username" OnRowEditing="User_Editing" OnRowUpdating="User_Updating" OnRowCancelingEdit="User_CancelingEdit" OnRowDeleting="User_Deleting" OnRowDataBound="User_RowDataBound">
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="Username" OnRowEditing="User_Editing" OnRowUpdating="User_Updating" OnRowCancelingEdit="User_CancelingEdit" OnRowDeleting="User_Deleting" OnRowDataBound="User_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />
                     <asp:BoundField DataField="Password" HeaderText="Password" />
@@ -143,12 +134,12 @@
                     <asp:ListItem Text="MALE" Value="MALE" />
                     <asp:ListItem Text="FEMALE" Value="FEMALE" />
                 </asp:DropDownList>
-                <asp:Button ID="btnAddUser" runat="server" Text="Add User" OnClick="AddUser_Click" CssClass="add-user-button" />
+                <asp:Button ID="btnAddUser" runat="server" Text="Add User" OnClick="AddUser_Click" CssClass="add-user-form-button" />
             </div>
         </div>
     </asp:Panel>
 
-    <div style="height: 50px;" > </div>
+    <hr />
 
     <asp:Panel ID="QuizResults" runat="server" Visible="false">
         <div class="admin-container">
@@ -159,7 +150,7 @@
                 <asp:Button ID="Button1" runat="server" Text="Search" OnClick="SearchQuizResults_Click" CssClass="main-input"/>
                 <asp:Button ID="Button2" runat="server" Text="Clear" OnClick="ClearQuizResultsSearch_Click" CssClass="main-input"/>
             </div>
-            <asp:GridView ID="gvQuizResults" runat="server" AutoGenerateColumns="False" CssClass="admin-table">
+            <asp:GridView ID="gvQuizResults" runat="server" AutoGenerateColumns="False">
                 <Columns>
                     <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" />
                     <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />

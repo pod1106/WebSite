@@ -141,6 +141,7 @@
             <span><a href="Login.aspx">Login</a></span>
             <span><a href="Register.aspx">Register</a></span>
             <span><a href="Quiz.aspx">Quiz</a></span>
+            <span><a href="SiteMap.aspx">Site Map</a></span>
             <span>&copy; 2025 All rights reserved.</span>
             <% if (Session["Admin"] == "TRUE") { %>
                 <span><a href="Admin.aspx">Admin Page</a></span>

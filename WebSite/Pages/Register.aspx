@@ -306,18 +306,64 @@
             }
 
             if (email) {
-                const emailRegex = /^[a-zA-Z0-9_-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
-                // if (!(email.indexOf("@") > 0 && email.indexOf(".") > 3)) {
+                const emailRegex = /^[a-zA-Z0-9_.-]+@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+
                 if (!emailRegex.test(email)) {
                     showPopup("Email is not valid!", 'red', 'popupEmailText');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return false;
                 }
+
+                //if (email.indexOf('.') < email.indexOf('@')) {
+                //    showPopup("there is a point before the @", 'green', 'popupEmailText');
+                //    window.scrollTo({ top: 0, behavior: 'smooth' });
+                //}
+
             } else {
                 showPopup("Email is not set!", 'red', 'popupEmailText');
                 window.scrollTo({ top: 0, behavior: 'smooth' });
                 return false;
             }
+
+
+            // between 6 and 8
+            // middel tav +-()
+            // no more then 3 _+()
+            //if (password) {
+            //    if (password.length < 6 || password.length > 8) {
+            //        showPopup("Password need to be between 6 and 8 chars!", 'red', 'popupPasswordText');
+            //        window.scrollTo({ top: 0, behavior: 'smooth' });
+            //        return false;
+            //    }
+
+            //    let count = 0;
+            //    let m = parseInt(password.length / 2);
+            //    for (let i = 0; i < password.length; i++) {
+
+            //        let c = password.charAt(i);
+            //        if (i == m && (c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z' || c >= '0' && c <= '9')) {
+                        
+            //            showPopup("The middle char needs to be a Spacial character!", 'red', 'popupPasswordText');
+            //            window.scrollTo({ top: 0, behavior: 'smooth' });
+            //            return false;
+            //        }
+            //        if (!(c >= 'A' && c <= 'Z' || c >= 'a' && c <= 'z' || c >= '0' && c <= '9')) {
+            //            count++;
+            //        }
+                    
+
+            //    }
+            //    if (count > 3) {
+            //        showPopup("Password can't have more then 3 spacial characters!", 'red', 'popupPasswordText');
+            //        window.scrollTo({ top: 0, behavior: 'smooth' });
+            //        return false;
+            //    }
+
+            //} else {
+            //    showPopup("Password is not set!", 'red', 'popupPasswordText');
+            //    window.scrollTo({ top: 0, behavior: 'smooth' });
+            //    return false;
+            //}
+
 
             if (password) {
                 if (password.length >= 7) {

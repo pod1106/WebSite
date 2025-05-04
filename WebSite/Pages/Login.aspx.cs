@@ -21,10 +21,10 @@ namespace website
                 Session["Username"] = username;
                 if (IsAdmin(username, password))
                 {
-                    Session["Admin"] = "TRUE";
+                    Session["Admin"] = true;
                 } else
                 {
-                    Session["Admin"] = "FALSE";
+                    Session["Admin"] = false;
                 }
 
                 string returnUrl = Request.QueryString["ReturnUrl"];

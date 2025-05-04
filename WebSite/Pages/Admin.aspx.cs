@@ -20,7 +20,7 @@ namespace website
                 LoadUsers();
                 LoadQuizResults("", "");
 
-                if (Session["Admin"] == "TRUE")
+                if (Session["Admin"] != null && (bool)Session["Admin"] == true)
                 {
                     Users.Visible = true;
                     QuizResults.Visible = true;
@@ -37,18 +37,18 @@ namespace website
 
             if (ValidateUser(username, password))
             {
-                Users.Visible = true;           // Show admin panel
-                QuizResults.Visible = true;
-                lblLoginError.Visible = false;     // Hide error message
+                Users.Visible = true;           // Show users panel
+                QuizResults.Visible = true;     // Show quiz panel
+                lblLoginError.Visible = false;  // Hide error message
                 LoginSection.Visible = false;   // Hide login section
             }
             else
             {
-                lblLoginError.Visible = true;      // Show error if login fails
+                lblLoginError.Visible = true;   // Show error if login fails
             }
         }
 
-        private bool ValidateUser(string username, string password) // for the admin login
+        private bool ValidateUser(string username, string password)     // for the admin login
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
@@ -56,17 +56,15 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT COUNT(*) FROM Admins WHERE Username = @Username AND Password = @Password";
+                string query = $"SELECT COUNT(*) FROM Admins WHERE Username = '{username}' AND Password = '{password}'";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Password", password);
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count > 0;
                 }
             }
         }
-        private void LoadUsers(string usernameFilter = "", string emailFilter = "") // load all user table
+        private void LoadUsers(string usernameFilter = "", string emailFilter = "") // load all users table
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
