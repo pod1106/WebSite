@@ -103,7 +103,7 @@
                 <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="Search_Click" CssClass="main-input"/>
                 <asp:Button ID="btnClearSearch" runat="server" Text="Clear" OnClick="ClearSearch_Click" CssClass="main-input"/>
             </div>
-            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="Username" OnRowEditing="User_Editing" OnRowUpdating="User_Updating" OnRowCancelingEdit="User_CancelingEdit" OnRowDeleting="User_Deleting" OnRowDataBound="User_RowDataBound">
+            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="False" DataKeyNames="Username" OnRowEditing="User_Editing" OnRowUpdating="User_Updating" OnRowCancelingEdit="User_CancelingEdit" OnRowDeleting="User_Deleting">
                 <Columns>
                     <asp:BoundField DataField="Username" HeaderText="Username" ReadOnly="True" />
                     <asp:BoundField DataField="Password" HeaderText="Password" />

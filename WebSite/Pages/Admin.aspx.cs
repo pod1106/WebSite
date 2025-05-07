@@ -87,7 +87,7 @@ namespace website
                 }
             }
         }
-        private void LoadQuizResults(string usernameFilter = "", string scoreFilter = "") // load all quiz results
+        private void LoadQuizResults(string usernameFilter = "", string scoreFilter = "") // load quiz results
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
             string connectionString = $"Data Source={dbPath};Version=3;";
@@ -113,8 +113,8 @@ namespace website
 
         protected void User_Editing(object sender, GridViewEditEventArgs e) // allow the user to edit the data.
         {
-            gvUsers.EditIndex = e.NewEditIndex;
-            LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
+            gvUsers.EditIndex = e.NewEditIndex; // alowing the user to edit the data.
+            LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text); // load again the users to allow the edit.
         }
 
         protected void User_Updating(object sender, GridViewUpdateEventArgs e)
@@ -186,7 +186,7 @@ namespace website
             string email = txtNewEmail.Text.Trim();
             string gender = ddlNewGender.SelectedValue;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 return;
             }
@@ -222,13 +222,13 @@ namespace website
                 }
             }
 
-            // Clear the input fields after adding user
+            // clear the input fields after adding user
             txtNewUsername.Text = "";
             txtNewPassword.Text = "";
             txtNewEmail.Text = "";
             ddlNewGender.SelectedIndex = 0;
 
-            // Reload users list after adding a new user
+            // reload users list after adding a new user
             LoadUsers(txtSearchUsername.Text, txtSearchEmail.Text);
         }
 
@@ -244,19 +244,6 @@ namespace website
             LoadUsers();
         }
 
-        protected void User_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow && e.Row.RowState.HasFlag(DataControlRowState.Edit))
-            {
-                DropDownList ddlGender = (DropDownList)e.Row.FindControl("ddlGender");
-                string gender = DataBinder.Eval(e.Row.DataItem, "Gender").ToString();
-
-                if (ddlGender != null)
-                {
-                    ddlGender.SelectedValue = string.IsNullOrEmpty(gender) ? "null" : gender;
-                }
-            }
-        }
 
         protected void SearchQuizResults_Click(object sender, EventArgs e)
         {
