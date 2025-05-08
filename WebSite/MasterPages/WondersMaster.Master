@@ -85,11 +85,6 @@
             width: 70%;
         }
 
-        .footer-content a.footer-link {
-            text-decoration: none; 
-            color: inherit;             
-        }
-
         a {
             color: #3498db;
             text-decoration: none;
