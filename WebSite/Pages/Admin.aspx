@@ -110,7 +110,7 @@
                     <asp:BoundField DataField="Email" HeaderText="Email" />
                     <asp:TemplateField HeaderText="Gender">
                         <ItemTemplate>
-                            <%# Eval("Gender") %>
+                            <%# Eval("GenderVal") %>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:DropDownList ID="ddlGender" runat="server">
@@ -145,8 +145,8 @@
         <div class="admin-container">
             <h2>Admin - Quiz Management</h2>
             <div class="search-form">
-                <asp:TextBox ID="TextBox1" runat="server" placeholder="Search by Username" CssClass="main-input"></asp:TextBox>
-                <asp:TextBox ID="TextBox2" runat="server" placeholder="Search by Score" CssClass="main-input"></asp:TextBox>
+                <asp:TextBox ID="textbox1" runat="server" placeholder="Search by Username" CssClass="main-input"></asp:TextBox>
+                <asp:TextBox ID="textbox2" runat="server" placeholder="Search by Score" CssClass="main-input"></asp:TextBox>
                 <asp:Button ID="Button1" runat="server" Text="Search" OnClick="SearchQuizResults_Click" CssClass="main-input"/>
                 <asp:Button ID="Button2" runat="server" Text="Clear" OnClick="ClearQuizResultsSearch_Click" CssClass="main-input"/>
             </div>

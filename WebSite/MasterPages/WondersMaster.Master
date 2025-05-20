@@ -9,13 +9,17 @@
     </asp:ContentPlaceHolder>
 
     <style>
-        html, body {
-            font-family: Arial, sans-serif; 
-            line-height: 1.6;
+        html {
             background: linear-gradient(to bottom, #e6ffbe, #ffdaac);
+            padding-bottom: 120px;
+
+        }
+
+        body {
+            font-family: Arial;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            margin-bottom: 40px;
         }
         
         header {
@@ -25,7 +29,7 @@
             justify-content: space-between;
             align-items: center;
             position: relative;
-            padding: 15px 30px 20px 15px
+            padding: 20px;
         }
 
         .site-name {
@@ -357,7 +361,7 @@
             <span><a href="../Register.aspx">Register</a></span>
             <span><a href="../Quiz.aspx">Quiz</a></span>
             <span><a href="../SiteMap.aspx">Site Map</a></span>
-            <span>&copy; 2024 All rights reserved.</span>
+            <span>&copy; 2025 All rights reserved.</span>
 
 
         </div>

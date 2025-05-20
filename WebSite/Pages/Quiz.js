@@ -1,6 +1,4 @@
-﻿
-
-const questions = [
+﻿let questions = [
     {
         question: "Which of the following is one of the Seven Wonders of the Ancient World?",
         options: ["The Great Wall of China", "The Colosseum", "The Lighthouse of Alexandria", "Christ the Redeemer"],
@@ -80,8 +78,7 @@ let currentQuestionIndex = 0;
 document.addEventListener("DOMContentLoaded", function () {
     loadQuestion();
 
-    const submitBtn = document.getElementById("submit-btn");
-    submitBtn.addEventListener("click", handleSubmit);
+    document.getElementById("submit-btn").addEventListener("click", handleSubmit);
 });
 
 function loadQuestion() {
@@ -96,7 +93,9 @@ function loadQuestion() {
     document.getElementById("answ-4").innerText = currentQuestion.options[3];
 
     const radioButtons = document.querySelectorAll('input[name="answ"]');
-    radioButtons.forEach(radio => radio.checked = false);
+    for (let i = 0; i < radioButtons.length; i++) {
+        radioButtons[i].checked = false;
+    }
 
     const submitBtn = document.getElementById("submit-btn");
     if (currentQuestionIndex === questions.length - 1) {
@@ -107,7 +106,7 @@ function loadQuestion() {
 function handleSubmit() {
     const selectedOption = document.querySelector('input[name="answ"]:checked');
     if (!selectedOption) {
-        alert("Please select an option!");
+        alert("Please select an answer!");
         return;
     }
 

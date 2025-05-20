@@ -56,9 +56,13 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string query = $"SELECT COUNT(*) FROM Admins WHERE Username = '{username}' AND Password = '{password}'";
+                // string query = $"SELECT COUNT(*) FROM Admins WHERE Username = '{username}' AND Password = '{password}'";
+                string query = $"SELECT COUNT(*) FROM Admins WHERE Username = @username AND Password = @password";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@username",username);
+                    cmd.Parameters.AddWithValue("@password", password);
+
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     return count > 0;
                 }
@@ -72,21 +76,21 @@ namespace website
             using (SQLiteConnection conn = new SQLiteConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT Username, Password, Email, IFNULL(Gender, 'null') AS Gender FROM Users WHERE Username LIKE @Username AND Email LIKE @Email";
+                string query = "SELECT Username, Password, Email, IFNULL(Gender, 'null') AS GenderVal FROM Users WHERE Username LIKE @Username AND Email LIKE @Email";
                 using (SQLiteCommand cmd = new SQLiteCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@Username", "%" + usernameFilter + "%");
                     cmd.Parameters.AddWithValue("@Email", "%" + emailFilter + "%");
-                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        gvUsers.DataSource = dt;
-                        gvUsers.DataBind();
-                    }
+
+                    DataTable dt = new DataTable();
+                    new SQLiteDataAdapter(cmd).Fill(dt);
+
+                    gvUsers.DataSource = dt;
+                    gvUsers.DataBind();
                 }
             }
         }
+
         private void LoadQuizResults(string usernameFilter = "", string scoreFilter = "") // load quiz results
         {
             string dbPath = Server.MapPath("~/DataBase/database.sqlite");
@@ -100,13 +104,13 @@ namespace website
                 {
                     cmd.Parameters.AddWithValue("@Username", "%" + usernameFilter + "%");
                     cmd.Parameters.AddWithValue("@Score", "%" + scoreFilter + "%");
-                    using (SQLiteDataAdapter da = new SQLiteDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        gvQuizResults.DataSource = dt;
-                        gvQuizResults.DataBind();
-                    }
+
+                    DataTable dt = new DataTable();
+                    new SQLiteDataAdapter(cmd).Fill(dt);
+
+                    gvQuizResults.DataSource = dt;
+                    gvQuizResults.DataBind();
+                 
                 }
             }
         }
@@ -247,13 +251,13 @@ namespace website
 
         protected void SearchQuizResults_Click(object sender, EventArgs e)
         {
-            LoadQuizResults(TextBox1.Text, TextBox2.Text);
+            LoadQuizResults(textbox1.Text, textbox2.Text);
         }
 
         protected void ClearQuizResultsSearch_Click(object sender, EventArgs e)
         {
-            TextBox1.Text = "";
-            TextBox2.Text = "";
+            textbox1.Text = "";
+            textbox2.Text = "";
             LoadQuizResults();
         }
 
