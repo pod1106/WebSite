@@ -176,44 +176,44 @@ input:focus {
             const name = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
-            if (name) {
-                if (name.length < 4) {
-                    showPopup("Username too short!", 'red', 'popupNameText');
-                    return false;
-                }
-            } else {
-                showPopup("Username is not set!", 'red', 'popupNameText');
-                return false;
-            }
+            //if (name) {
+            //    if (name.length < 4) {
+            //        showPopup("Username too short!", 'red', 'popupNameText');
+            //        return false;
+            //    }
+            //} else {
+            //    showPopup("Username is not set!", 'red', 'popupNameText');
+            //    return false;
+            //}
 
 
-            if (password) {
-                if (password.length >= 7) {
-                    if (!/[a-z]/.test(password)) {
-                        showPopup("Password needs to contain a lowercase letter.", 'red', 'popupPasswordText');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return false;
-                    }
-                    if (!/[A-Z]/.test(password)) {
-                        showPopup("Password needs to contain an uppercase letter.", 'red', 'popupPasswordText');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return false;
-                    }
-                    if (!/[0-9]/.test(password)) {
-                        showPopup("Password needs to contain a number.", 'red', 'popupPasswordText');
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                        return false;
-                    }
-                } else {
-                    showPopup("Password must be at least 7 characters long.", 'red', 'popupPasswordText');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return false;
-                }
-            } else {
-                showPopup("Password is not set!", 'red', 'popupPasswordText');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                return false;
-            }
+            //if (password) {
+            //    if (password.length >= 7) {
+            //        if (!/[a-z]/.test(password)) {
+            //            showPopup("Password needs to contain a lowercase letter.", 'red', 'popupPasswordText');
+            //            window.scrollTo({ top: 0, behavior: 'smooth' });
+            //            return false;
+            //        }
+            //        if (!/[A-Z]/.test(password)) {
+            //            showPopup("Password needs to contain an uppercase letter.", 'red', 'popupPasswordText');
+            //            window.scrollTo({ top: 0, behavior: 'smooth' });
+            //            return false;
+            //        }
+            //        if (!/[0-9]/.test(password)) {
+            //            showPopup("Password needs to contain a number.", 'red', 'popupPasswordText');
+            //            window.scrollTo({ top: 0, behavior: 'smooth' });
+            //            return false;
+            //        }
+            //    } else {
+            //        showPopup("Password must be at least 7 characters long.", 'red', 'popupPasswordText');
+            //        window.scrollTo({ top: 0, behavior: 'smooth' });
+            //        return false;
+            //    }
+            //} else {
+            //    showPopup("Password is not set!", 'red', 'popupPasswordText');
+            //    window.scrollTo({ top: 0, behavior: 'smooth' });
+            //    return false;
+            //}
 
 
             return true;

@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="website.Register" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPages/MyMaster.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="website.Register" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
     <style>    
@@ -274,6 +275,9 @@
             const female = document.getElementById('female').checked;
             const other = document.getElementById('other').checked;
 
+            const interestLevel = document.getElementById('interest-level').value;
+            const wonders = document.getElementById('wonders').value;
+
 
 
             if (male === true) {
@@ -406,6 +410,23 @@
                 return false;
             }
 
+
+
+
+            if (interestLevel < 8) {
+                showPopup("you need to select 8 or more in the interest level", 'red', 'popupSlider');
+                return false;
+            }
+
+
+            if (wonders === "none") {
+                showPopup("you need to select one of the wonders!", 'red', 'popupWonders');
+                return false;
+            }
+
+
+
+
             showPopup("New account was created!", "green", 'popupText', 8000);
 
 
@@ -511,8 +532,10 @@
 
             <!-- Interest Slider -->
             <div>
+                
                 <label for="interest-level" style="margin-top: 30px;">Rate your interest in learning about the 7 Wonders <br>(1 - Not Interested, 10 - Very Interested)
                     <span class="tooltip-text">Use the slider to indicate your interest.</span>
+                    <span class="popup-text" id="popupSlider"></span>
                 </label>
 
                 <input style="width: 80%; display: block; margin: 0 auto;" type="range" id="interest-level" name="interest-level" min="1" max="10" value="5"
@@ -527,8 +550,13 @@
 
 
 
-            <label for="wonders">Choose a Wonder of the World:</label>
+            <label for="wonders">Choose a Wonder of the World:
+                <span class="popup-text" id="popupWonders"></span>
+            </label>
+            
             <select id="wonders" name="wonder">
+
+              <option value="none">select one...</option>
               <option value="great_wall">Great Wall of China</option>
               <option value="petra">Petra, Jordan</option>
               <option value="colosseum">Colosseum, Italy</option>

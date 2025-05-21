@@ -25,7 +25,7 @@
                     <span class="tooltiptext">Known for building the most durable sections of the wall</span>
                 </strong>
                 (<em>1368–1644</em>).
-                <img src="\img\great_wall_of_china_history.jpg" style="border: 2px solid #ccc; border-radius: 10px; box-shadow: 2px 2px 10px #aaa;" />
+                <img src="\img\great_wall_of_china_history.jpg"/>
             </p>
         </section>
          <span class="tooltiptext"></span>
